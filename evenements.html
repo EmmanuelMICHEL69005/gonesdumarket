@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Événements 2026 — Les Gones du Market'</title>
+  <style>
+    :root {
+      --corail: #E8614A;
+      --corail-fonce: #C94D38;
+      --noir: #1A1A1A;
+      --gris-clair: #F5F4F2;
+      --gris: #888;
+      --blanc: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--noir);
+      background: var(--blanc);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--blanc);
+      border-bottom: 1px solid #E8E8E8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .logo-text {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--noir);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-text span { color: var(--corail); }
+
+    nav { display: flex; align-items: center; gap: 2rem; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--noir);
+      font-size: 0.875rem;
+      font-weight: 500;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+    nav a.active { opacity: 1; font-weight: 700; }
+
+    .nav-cta {
+      background: var(--corail) !important;
+      color: var(--blanc) !important;
+      opacity: 1 !important;
+      padding: 0.55rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--corail-fonce) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--corail);
+      color: white;
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── CONTENU PRINCIPAL ── */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+    }
+
+    /* ── PROCHAIN EVENT (highlight) ── */
+    .next-event {
+      background: var(--noir);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .next-badge {
+      background: var(--corail);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .next-date-block {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .next-month {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--corail);
+    }
+
+    .next-day {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: white;
+    }
+
+    .next-info h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .next-info p {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .next-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .meta-item strong {
+      color: var(--corail);
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+
+    .next-cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--corail);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .next-cta:hover { background: var(--corail-fonce); }
+
+    /* ── SECTIONS UPCOMING / PAST ── */
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--corail);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .events-group { margin-bottom: 4rem; }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      align-items: start;
+    }
+
+    .event-card:last-child { border-bottom: none; }
+
+    .event-date {
+      text-align: center;
+    }
+
+    .event-month-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--corail);
+      display: block;
+    }
+
+    .event-day-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--noir);
+      line-height: 1.1;
+      display: block;
+    }
+
+    .event-day-dash {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ccc;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .event-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .event-format {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--corail);
+      background: #FEF0ED;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    .event-body p {
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    .event-body .event-speakers {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    .event-lieu-line {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    /* ── PASSÉ ── */
+    .event-card.past .event-day-num { color: #bbb; }
+    .event-card.past h3 { color: #888; }
+    .event-card.past .event-format {
+      color: #aaa;
+      background: #f5f5f5;
+    }
+
+    /* ── CTA BAS DE PAGE ── */
+    .bottom-cta {
+      background: var(--corail);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    .bottom-cta h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .bottom-cta p {
+      opacity: 0.85;
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .bottom-cta a {
+      display: inline-block;
+      background: white;
+      color: var(--corail);
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: transform 0.15s;
+    }
+
+    .bottom-cta a:hover { transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid #2a2a2a;
+      color: #666;
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--corail); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      nav a:not(.nav-cta) { display: none; }
+      .page-hero { padding: 3rem 1.5rem; }
+      .main { padding: 2.5rem 1.5rem; }
+      .next-event { flex-direction: column; gap: 1.5rem; }
+      .event-card { grid-template-columns: 70px 1fr; gap: 1rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="images/logo.jpeg" alt="Les Gones du Market'" /></div>
+      <span class="logo-text">Les <span>Gones</span> du Market'</span>
+    </a>
+    <nav>
+      <a href="evenements.html" class="active">Événements</a>
+      <a href="index.html#candidature" class="nav-cta">Nous rejoindre</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Événements 2026</h1>
+    <p>7 rendez-vous pour les responsables marketing lyonnais — masterclasses, afterworks et petits-déjeuners.</p>
+  </div>
+
+  <div class="main">
+
+    <!-- PROCHAIN ÉVÉNEMENT -->
+    <div class="next-event">
+      <div class="next-date-block">
+        <div class="next-month">Juin</div>
+        <div class="next-day">—</div>
+      </div>
+      <div class="next-info">
+        <span class="next-badge">Prochain événement</span>
+        <h2>Matinale — Hack IA Marketing</h2>
+        <p>Comment l'IA transforme concrètement nos pratiques marketing ? Cas d'usage réels, outils testés en conditions réelles, retours terrain sans bullshit. Un format matinée pour repartir avec des actions concrètes.</p>
+        <div class="next-meta">
+          <div class="meta-item"><strong>Format</strong>Matinale 9h–11h</div>
+          <div class="meta-item"><strong>Lieu</strong>Lyon · À confirmer</div>
+          <div class="meta-item"><strong>Accès</strong>Membres uniquement</div>
+        </div>
+        <a href="index.html#candidature" class="next-cta">Rejoindre le club pour participer</a>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTS À VENIR -->
+    <div class="events-group">
+      <div class="section-title">À venir en 2026</div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-month-label">Sept.</span>
+          <span class="event-day-dash">—</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Acquisition & Média</h3>
+          <p>Quels leviers d'acquisition font vraiment bouger les résultats en 2026 ? SEO, paid, influence, presse — tour d'horizon avec des marketeurs qui les ont testés.</p>
+          <div class="event-lieu-line">Lyon · Lieu à confirmer</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-month-label">Oct.</span>
+          <span class="event-day-dash">—</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Petit-déjeuner</span>
+          <h3>Pitch ton plan marketing</h3>
+          <p>Format atelier en petits groupes : tu présentes ton plan, la communauté te challenge. Repartir avec des pistes concrètes pour l'année à venir.</p>
+          <div class="event-lieu-line">Lyon · Lieu à confirmer</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-month-label">Nov.</span>
+          <span class="event-day-dash">—</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Brand</h3>
+          <p>Construire et défendre sa marque dans un contexte saturé. Identité, cohérence, brand equity — comment les marketeurs lyonnais abordent le sujet.</p>
+          <div class="event-lieu-line">Lyon · Lieu à confirmer</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-month-label">Déc.</span>
+          <span class="event-day-dash">—</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Déjeuner</span>
+          <h3>Déjeuner de fin d'année</h3>
+          <p>Le rendez-vous incontournable pour clôturer l'année ensemble, faire le bilan et retrouver toute la communauté autour d'un bon repas lyonnais.</p>
+          <div class="event-lieu-line">Lyon · Lieu à confirmer</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTS PASSÉS -->
+    <div class="events-group">
+      <div class="section-title">Déjà organisés en 2026</div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Avr.</span>
+          <span class="event-day-num">28</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Stack Marketing & IA</h3>
+          <p>Trop d'outils tue l'outil. La stack se stratifie : SaaS pour l'orchestration, outils IA-natifs pour la création, solutions maison pour la différenciation. La vraie question — est-ce que ça vaut vraiment son coût ?</p>
+          <div class="event-speakers">Avec Julian Maurel (Jahia Solutions), Laurent Davesne (Signitic), Laura Nguyen (Rapidmooc) · Chez Signitic, Lyon 3e</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Mars</span>
+          <span class="event-day-num">26</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Masterclass</span>
+          <h3>Employee Advocacy sur LinkedIn</h3>
+          <p>On ne force jamais un collectif à publier — on crée les conditions pour que ça devienne possible. Rituels éditoriaux, réduction de la friction, passer du personal branding au personal média.</p>
+          <div class="event-speakers">Avec Marie-Francine Phan, experte Social Media & Content · Ballab Café, Les Terreaux</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Janv.</span>
+          <span class="event-day-num">20</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Marketing sans bullshit — ce qui marche vraiment en 2026</h3>
+          <p>Défendre son budget avec 3 indicateurs compris par la direction vaut mieux que 15 métriques. ROI, alignement Sales & Marketing, authenticité — des retours terrain sans langue de bois.</p>
+          <div class="event-speakers">Avec Audrey Digonnat (CMO Asys), Benjamin Poirier (elmy), Adeline Dubost (Ellisphere) · L'Ellipse by FlexJob, en partenariat avec futur proche</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉVÉNEMENTS PASSÉS 2025 -->
+    <div class="events-group">
+      <div class="section-title">Retrospective 2025 — 8 événements organisés</div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Déc.</span>
+          <span class="event-day-num">18</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Déjeuner</span>
+          <h3>Déjeuner de fin d'année</h3>
+          <p>Bilan de l'année entre Gones. 8 événements, 175 membres, une communauté qui grandit.</p>
+          <div class="event-speakers">La Brasserie des 2 Rives, Lyon</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Déc.</span>
+          <span class="event-day-num">4</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Stratégie Vidéo 2026</h3>
+          <p>"On veut faire de la vidéo" n'est pas une stratégie. Objectifs clairs, formats adaptés, recyclage intelligent, impact de l'IA sur la production.</p>
+          <div class="event-speakers">Avec Emilien Colombain (CEO Teazit) · Chez Teazit, Lyon</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Nov.</span>
+          <span class="event-day-num">4</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Petit-déjeuner</span>
+          <h3>Challenge ton plan marketing 2026</h3>
+          <p>Format atelier en petits groupes : intelligence collective pour affiner les stratégies. Fondations solides, alignement interne, IA, nouveaux leviers.</p>
+          <div class="event-speakers">Chez Positive Signitic, Lyon</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Oct.</span>
+          <span class="event-day-num">2</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Afterwork</span>
+          <h3>Microcanaux & Intent Data</h3>
+          <p>Signature email comme micro-canal marketing mesurable, micro-influenceurs, Intent Data pour transformer les signaux faibles en actions à fort impact. Faire plus avec moins.</p>
+          <div class="event-speakers">Avec Aurore Agnes (Signitic), Margot Duchêne (Share Bien), Alexandre Jeanpetit · Chez Positive Signitic</div>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="event-date">
+          <span class="event-month-label">Juin</span>
+          <span class="event-day-num">3</span>
+        </div>
+        <div class="event-body">
+          <span class="event-format">Partenariat</span>
+          <h3>Matinales Publicis Media Connect</h3>
+          <p>Digitalisation de la consommation vidéo, géographie comme levier de croissance, Amazon, renouveau du BtoB. Les Gones partenaires de l'événement.</p>
+          <div class="event-speakers">Rooftop by Dock40, Lyon · En partenariat avec Publicis Media Connect & TF1 Pub</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BAS DE PAGE -->
+    <div class="bottom-cta">
+      <h3>Rejoins la communauté</h3>
+      <p>Les événements sont réservés aux membres. Tu es responsable marketing à Lyon ? Envoie-nous ta candidature.</p>
+      <a href="index.html#candidature">Candidater maintenant</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Les Gones du Market' — Lyon</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/company/gones-du-market" target="_blank">LinkedIn</a>
+        <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
