@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(gh repo *)",
+      "Bash(git push *)",
+      "Bash(open /Users/emmanuelmichel/gonesdumarket/index.html)",
+      "Bash(open /Users/emmanuelmichel/gonesdumarket/images)",
+      "Bash(cp ~/Downloads/1762332947114.jpeg ~/gonesdumarket/images/event-1.jpeg)",
+      "Bash(cp ~/Downloads/1766068834011.jpeg ~/gonesdumarket/images/event-2.jpeg)",
+      "Bash(cp ~/Downloads/1764934374474.jpeg ~/gonesdumarket/images/event-3.jpeg)",
+      "Bash(cp ~/Downloads/1774968846287.jpeg ~/gonesdumarket/images/event-4.jpeg)",
+      "Bash(cp ~/Downloads/1774968846316.jpeg ~/gonesdumarket/images/event-5.jpeg)",
+      "Bash(open /Users/emmanuelmichel/gonesdumarket/evenements.html)",
+      "Bash(sed -i '' 's/Événements 2026 — Les Gones du Market'\\\\''/Événements 2026 · Les Gones du Market'\\\\''/g' /Users/emmanuelmichel/gonesdumarket/evenements.html)",
+      "Bash(sed -i '' 's/lyonnais — masterclasses/lyonnais : masterclasses/g' /Users/emmanuelmichel/gonesdumarket/evenements.html)",
+      "Bash(sed -i '' 's/Matinale — Hack/Matinale : Hack/g' /Users/emmanuelmichel/gonesdumarket/evenements.html)",
+      "Bash(sed -i '' 's/presse — tour d'\\\\''horizon/presse. Tour d'\\\\''horizon/g' /Users/emmanuelmichel/gonesdumarket/evenements.html)",
+      "Bash(sed -i '' 's/brand equity — comment/brand equity : comment/g' /Users/emmanuelmichel/gonesdumarket/evenements.html)"
+    ]
+  }
+}
