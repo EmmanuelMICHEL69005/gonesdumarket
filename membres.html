@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace membres — Les Gones du Market'</title>
+  <style>
+    :root {
+      --corail: #E8614A;
+      --corail-fonce: #C94D38;
+      --noir: #1A1A1A;
+      --gris-clair: #F5F4F2;
+      --gris: #888;
+      --blanc: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--noir);
+      background: var(--gris-clair);
+      line-height: 1.6;
+    }
+
+    /* ── MOT DE PASSE ── */
+    #password-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--noir);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    #password-gate .logo-icon img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    #password-gate h2 {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    #password-gate p {
+      color: #888;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    #password-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #password-input {
+      padding: 0.85rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #222;
+      color: white;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.05em;
+      border: 1px solid #333;
+      transition: border-color 0.2s;
+    }
+
+    #password-input:focus { border-color: var(--corail); }
+    #password-input.error { border-color: #e74c3c; }
+
+    #password-submit {
+      background: var(--corail);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    #password-submit:hover { background: var(--corail-fonce); }
+
+    #password-error {
+      color: #e74c3c;
+      font-size: 0.8rem;
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    /* ── CONTENU PRINCIPAL ── */
+    #content { display: none; }
+
+    header {
+      background: var(--blanc);
+      border-bottom: 1px solid #E8E8E8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .logo-text {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--noir);
+    }
+
+    .logo-text span { color: var(--corail); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .membres-badge {
+      background: #FEF0ED;
+      color: var(--corail);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    .btn-logout {
+      font-size: 0.8rem;
+      color: var(--gris);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-decoration: underline;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--corail);
+      color: white;
+      padding: 3.5rem 3rem;
+    }
+
+    .page-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-hero p {
+      opacity: 0.85;
+      font-size: 1rem;
+    }
+
+    /* ── BARRE DE RECHERCHE + FILTRES ── */
+    .filters-bar {
+      background: var(--blanc);
+      border-bottom: 1px solid #eee;
+      padding: 1.25rem 3rem;
+      position: sticky;
+      top: 65px;
+      z-index: 99;
+    }
+
+    .filters-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #search-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.6rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    #search-input:focus { border-color: var(--corail); }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      border: 1.5px solid #ddd;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: white;
+      color: #666;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .filter-tab:hover { border-color: var(--corail); color: var(--corail); }
+
+    .filter-tab.active {
+      background: var(--corail);
+      border-color: var(--corail);
+      color: white;
+    }
+
+    .results-count {
+      font-size: 0.8rem;
+      color: var(--gris);
+      white-space: nowrap;
+    }
+
+    /* ── GRILLE DE CONTENU ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem;
+    }
+
+    .category-block { margin-bottom: 3rem; }
+
+    .category-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--corail);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .category-count {
+      background: #FEF0ED;
+      color: var(--corail);
+      font-size: 0.65rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 100px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--blanc);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      border-top: 3px solid transparent;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card[data-type="outil"] { border-top-color: #3B82F6; }
+    .card[data-type="prestataire"] { border-top-color: var(--corail); }
+    .card[data-type="conseil"] { border-top-color: #10B981; }
+
+    .card-type {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .card[data-type="outil"] .card-type { color: #3B82F6; }
+    .card[data-type="prestataire"] .card-type { color: var(--corail); }
+    .card[data-type="conseil"] .card-type { color: #10B981; }
+
+    .card-sujet {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-contenu {
+      font-size: 0.82rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-contact {
+      font-size: 0.75rem;
+      color: var(--gris);
+      border-top: 1px solid #f0f0f0;
+      padding-top: 0.6rem;
+      word-break: break-word;
+    }
+
+    .card-contact a {
+      color: var(--corail);
+      text-decoration: none;
+    }
+
+    .card-contact a:hover { text-decoration: underline; }
+
+    .card-date {
+      font-size: 0.68rem;
+      color: #bbb;
+      margin-top: 0.4rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--gris);
+      font-size: 0.95rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid #2a2a2a;
+      color: #666;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--corail); text-decoration: none; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      header, .filters-bar, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-hero { padding: 2.5rem 1.5rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .filters-inner { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOT DE PASSE -->
+  <div id="password-gate">
+    <div class="logo-icon">
+      <img src="images/logo.jpeg" alt="Les Gones du Market'" />
+    </div>
+    <h2>Espace membres</h2>
+    <p>Réservé aux membres des Gones du Market'</p>
+    <div id="password-form">
+      <input type="password" id="password-input" placeholder="Mot de passe" />
+      <button id="password-submit">Accéder</button>
+      <div id="password-error"></div>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div id="content">
+
+    <header>
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="images/logo.jpeg" alt="Les Gones du Market'" /></div>
+        <span class="logo-text">Les <span>Gones</span> du Market'</span>
+      </a>
+      <div class="header-right">
+        <span class="membres-badge">Espace membres</span>
+        <button class="btn-logout" onclick="logout()">Se déconnecter</button>
+      </div>
+    </header>
+
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <h1>Bons plans & recommandations</h1>
+        <p>Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.</p>
+      </div>
+    </div>
+
+    <div class="filters-bar">
+      <div class="filters-inner">
+        <input type="text" id="search-input" placeholder="Rechercher un outil, prestataire, sujet..." />
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">Tout</button>
+          <button class="filter-tab" data-filter="prestataire">Prestataires</button>
+          <button class="filter-tab" data-filter="outil">Outils</button>
+          <button class="filter-tab" data-filter="conseil">Conseils</button>
+        </div>
+        <span class="results-count" id="results-count"></span>
+      </div>
+    </div>
+
+    <div class="main" id="cards-container"></div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© 2026 Les Gones du Market' · Lyon · Espace membres</span>
+        <a href="index.html">Retour au site</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+  // ── MOT DE PASSE ──
+  const MOT_DE_PASSE = 'gones2026';
+
+  function checkPassword() {
+    const input = document.getElementById('password-input');
+    const error = document.getElementById('password-error');
+    if (input.value === MOT_DE_PASSE) {
+      sessionStorage.setItem('gones_membre', '1');
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      renderCards(DATA, 'all', '');
+    } else {
+      input.classList.add('error');
+      error.textContent = 'Mot de passe incorrect.';
+      setTimeout(() => input.classList.remove('error'), 800);
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem('gones_membre');
+    location.reload();
+  }
+
+  document.getElementById('password-submit').addEventListener('click', checkPassword);
+  document.getElementById('password-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  if (sessionStorage.getItem('gones_membre') === '1') {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+
+  // ── DONNÉES ──
+  const DATA = [
+    {"date":"03/06/2024","type":"outil","sujet":"DAM (Digital Asset Management)","contenu":"Keepeek recommandé pour un DAM orienté marketing, optimisé pour la collaboration dans l'élaboration des assets et la gestion des droits. Cloudinary (non français) est un leader pour ce genre de cas d'usage. Scaleflex à Lyon plus orienté gestion des assets pour un catalogue produit et la performance web.","contact":"+33 6 10 58 43 83 (contacts disponibles chez les 3)"},
+    {"date":"04/06/2024","type":"prestataire","sujet":"Refonte site web","contenu":"No Code Factory recommandé : refonte complète du site de Mylight150 en 2 mois, super efficaces et pro.","contact":"+33 6 07 49 67 44"},
+    {"date":"04/06/2024","type":"prestataire","sujet":"Refonte site web (grands comptes)","contenu":"Ekino (filiale Havas) recommandée pour refonte de sites, orientée grandes comptes, gère les projets de bout en bout.","contact":"+33 6 10 58 43 83"},
+    {"date":"04/06/2024","type":"prestataire","sujet":"Refonte site web (petite structure)","contenu":"SWWWAP, collectif adaptable du petit site vitrine jusqu'à l'outil métier full custom. Contacter Victorien Leleu.","contact":"06 11 03 10 59 (Victorien Leleu)"},
+    {"date":"04/06/2024","type":"prestataire","sujet":"Refonte site web","contenu":"Digital Cover recommandé. Dirigeant Arnaud Challon challenge sur la raison du site, force de proposition, va au-delà d'un simple CDC. Sort de WordPress Elementor.","contact":"06.20.08.62.35 (Arnaud Challon)"},
+    {"date":"04/06/2024","type":"outil","sujet":"Reminder email / prise de RDV","contenu":"Cal.com permet de programmer des reminders email pour les participants à un RDV et d'avoir les RDV sur Google Agenda.","contact":null},
+    {"date":"04/06/2024","type":"outil","sujet":"Automation / reminder email","contenu":"Make (ex-Integromat) peut déclencher des reminders email liés au Google Agenda. Attention : pas de filtre possible sur les destinataires.","contact":null},
+    {"date":"19/06/2024","type":"outil","sujet":"Sondage satisfaction client","contenu":"SurveyMonkey recommandé : test A/B, branchement conditionnel, choix du collecteur, options dans l'analyse. Environ 1000€/an. Surdimensionné si faible volume.","contact":null},
+    {"date":"19/06/2024","type":"outil","sujet":"Sondage satisfaction client","contenu":"HubSpot permet de faire facilement des sondages de satisfaction. Airtable (fonctionnalité questionnaire) et Drag'n Survey aussi.","contact":null},
+    {"date":"21/06/2024","type":"outil","sujet":"Formulaires / collecte leads","contenu":"Jotform a un plan free top : interface facile et fluide, pas mal de widgets et connexions.","contact":null},
+    {"date":"05/07/2024","type":"prestataire","sujet":"Trafic manager freelance (Paris)","contenu":"Thomas Glita recommandé les yeux fermés comme trafic manager freelance, basé à Paris.","contact":"+33 6 64 52 62 29 (pour mise en relation)"},
+    {"date":"10/07/2024","type":"prestataire","sujet":"Motion design / 3D (freelance)","contenu":"Xochitl Florimont, motion designer de Swile, fait du free de temps à autre. Vraiment super forte.","contact":"0617587585 / xflorimont@gmail.com"},
+    {"date":"25/07/2024","type":"prestataire","sujet":"Traduction / localisation","contenu":"Noëlle Plat, experte en localisation, ancienne de Twitch. Profil LinkedIn disponible.","contact":"https://www.linkedin.com/in/noelleplat"},
+    {"date":"30/08/2024","type":"prestataire","sujet":"Facilitation / animation brainstorming marketing","contenu":"Sidonie Demonchaux recommandée pour animer une journée de brainstorming marketing.","contact":"+33 6 65 77 84 61"},
+    {"date":"30/08/2024","type":"prestataire","sujet":"Facilitation / animation brainstorming","contenu":"Charlène Colson recommandée les yeux fermés pour facilitation.","contact":"https://www.linkedin.com/in/charlène-colson (via Alexandre Jeanpetit)"},
+    {"date":"26/08/2024","type":"prestataire","sujet":"Relations presse (Paris)","contenu":"Claire Delzescaux recommandée pour la partie PR.","contact":"https://www.linkedin.com/in/claire-delzescaux"},
+    {"date":"26/08/2024","type":"prestataire","sujet":"Courtier en impression / print","contenu":"Laurent Chabbat recommandé comme courtier en impression (print). Appeler de la part de +33 6 80 89 96 35.","contact":"+33 6 09 58 55 15 (Laurent Chabbat)"},
+    {"date":"01/10/2024","type":"prestataire","sujet":"Décoration espace de ventes / merchandising","contenu":"Agence Crear / Clémence Vannier recommandée pour la déco d'espace de ventes.","contact":"https://www.agence-crear.com/clemence-vannier-conseil-merchandising/"},
+    {"date":"01/10/2024","type":"prestataire","sujet":"Design d'espace événementiel","contenu":"Mission (agence Meyzieu) recommandée. Contact : Philémon Cheze.","contact":"+334 37 44 19 81 ou +336 29 12 34 86 (Philémon Cheze)"},
+    {"date":"01/10/2024","type":"prestataire","sujet":"SEO","contenu":"Foxglove Partner recommandé pour le SEO. Contacter Olivier Job.","contact":"Via +33 6 15 09 64 64 (Olivier Job)"},
+    {"date":"01/10/2024","type":"prestataire","sujet":"SEO","contenu":"Agence Wam recommandée pour le SEO. Contacter David (CEO).","contact":"d.eichholtzer@agence-wam.fr"},
+    {"date":"03/10/2024","type":"outil","sujet":"Génération de contenu IA / SEO","contenu":"Semji recommandé pour la génération de contenu SEO. Se sert des données de la SERP concurrente pour proposer des plans de contenu, résultats moins génériques que ChatGPT. Lyonnais.","contact":null},
+    {"date":"03/10/2024","type":"outil","sujet":"Génération de contenu IA","contenu":"Mark AI recommandé comme de la bombe absolue.","contact":null},
+    {"date":"03/10/2024","type":"outil","sujet":"SEO / génération de contenu","contenu":"ThotSeo (optimisation sémantique et IA) couplé avec ChatGPT recommandé.","contact":null},
+    {"date":"03/10/2024","type":"outil","sujet":"Content / SEO","contenu":"Haloscan pour les clusters de contenus + Perplexity et Claude AI pour la génération de contenu.","contact":null},
+    {"date":"05/10/2024","type":"conseil","sujet":"Tracking efficacité print / flyers","contenu":"Pour tracker un flyer : QR code tracké avec UTM (pas les outils générateurs de QR qui ne donnent que scans/device/pays) et/ou code promo dédié. Le code promo reste le meilleur moyen de tracker. Bitly vers une page UTM est le bon setup.","contact":null},
+    {"date":"08/10/2024","type":"outil","sujet":"Enrichissement données entreprises (Europe)","contenu":"FullEnrich recommandé comme le meilleur outil d'enrichissement en ce moment : enrichissement en cascade via les BDD de fournisseurs tiers. Résultats plus quali que Clearbit.","contact":null},
+    {"date":"08/10/2024","type":"outil","sujet":"Enrichissement données entreprises","contenu":"Infolegale recommandé avec connecteurs CRM. Clearbit racheté par HubSpot, désormais intégré directement dans le CRM.","contact":null},
+    {"date":"09/10/2024","type":"prestataire","sujet":"Intégration web / SEO technique (freelance)","contenu":"Florian Truchot recommandé pour intégration de maquettes HTML et SEO. Que des excellents retours.","contact":"06 30 91 96 33 (Florian Truchot)"},
+    {"date":"11/09/2024","type":"outil","sujet":"Production visuels social media","contenu":"Figma + plugins recommandé pour visuels statiques social media. Playplay pour la vidéo.","contact":null},
+    {"date":"11/09/2024","type":"outil","sujet":"Production visuels social media","contenu":"Feazer recommandé : pas de limites de déclinaisons, outil lyonnais. Retours positifs de plusieurs utilisateurs.","contact":null},
+    {"date":"23/10/2024","type":"prestataire","sujet":"Traiteur événementiel Lyon","contenu":"Nomad Kitchen recommandé pour traiteur événementiel. Hyper réactive.","contact":"camille@nomadkitchens.fr"},
+    {"date":"24/10/2024","type":"prestataire","sujet":"Traiteur haut de gamme Lyon","contenu":"Mr Canaille sur Lyon recommandé ultra quali pour traiteur haut de gamme.","contact":"https://monsieurcanaille.fr/"},
+    {"date":"24/10/2024","type":"conseil","sujet":"Planning shooting / production contenu visuel","contenu":"Méthode chez Balibaris : expressions de besoins canaux → coordination achats → DA (composition looks) → gestion droits → contraintes prestataires. Résultat : plan de shooting + retroplanning de production et diffusion.","contact":"+33 6 64 52 62 29"},
+    {"date":"04/11/2024","type":"outil","sujet":"Gestion réseaux sociaux (alternative Hootsuite)","contenu":"Swello recommandé comme alternative à Hootsuite pour Facebook, Insta, LinkedIn. Metricool également recommandé : connectable avec Google Ads et Meta.","contact":null},
+    {"date":"14/11/2024","type":"outil","sujet":"Création landing page (freemium)","contenu":"Framer recommandé pour jolies LP (premier plan gratuit). Tally gratuit pour LP simples. Webflow pour LP avec plus de personnalisation. Unbounce (free trial 14j). Instapage (simple + intégration facile). Carrd (simple et sympa).","contact":null},
+    {"date":"26/11/2024","type":"conseil","sujet":"Reach LinkedIn / algorithme","contenu":"LinkedIn a mis à jour son algorithme : priorité aux posts sponsorisés et vidéos format TikTok (nouvel onglet). Les vidéos TikTok fonctionnent de mieux en mieux sur LinkedIn. L'organique est en baisse structurelle.","contact":null},
+    {"date":"20/12/2024","type":"prestataire","sujet":"Prospection téléphonique externalisée","contenu":"ReCom recommandé pour la prospection commerciale phoning/lead gen. Très bien organisés, super suivi, bons résultats. Demande un peu de temps au début pour travailler les argumentaires.","contact":"Via Alexandre Chnl"},
+    {"date":"20/12/2024","type":"conseil","sujet":"Plateforme lead / AO - Percy Miller","contenu":"Percy Miller déconseillé : achat de lead sans exclusivité, leads accessibles aux concurrents. Peu de résultats pertinents sur marchés de niche. Perte de temps et d'argent confirmée par plusieurs membres.","contact":null},
+    {"date":"20/01/2025","type":"prestataire","sujet":"Affichage dynamique / installation vidéo retail","contenu":"Crown Heights recommandé les yeux fermés pour solutions d'affichage dynamique et installation vidéo immersive adaptée au retail. Basé à Charbonnières-les-Bains.","contact":null},
+    {"date":"24/01/2025","type":"prestataire","sujet":"Formation conduite du changement","contenu":"Flexjob à Lyon spécialisé sur les thématiques de conduite du changement. Mise en relation possible.","contact":"+33 6 84 33 73 50"},
+    {"date":"10/02/2025","type":"outil","sujet":"Email marketing / outil d'envoi","contenu":"Klaviyo recommandé (bons échos, plus porté sur l'automatisation). Activ Campaign bien noté. HubSpot très bien. Mailchimp arrivait régulièrement en spam.","contact":null},
+    {"date":"10/02/2025","type":"conseil","sujet":"Email marketing / délivrabilité","contenu":"Pour la délivrabilité email, il faut maîtriser DKIM, DMARC et SPF, sinon les emails vers Microsoft (Hotmail, Outlook) finissent en spam. Environ 30% de fail sur Gmail sans bonne config.","contact":null},
+    {"date":"13/02/2025","type":"prestataire","sujet":"SEA / Google Ads / Meta Ads (agence)","contenu":"Agence JOIN recommandée, top. Head of Agency : Arthur Deslandes.","contact":"https://www.linkedin.com/in/arthur-deslandes-05023580"},
+    {"date":"13/02/2025","type":"prestataire","sujet":"SEA Google Ads (freelance)","contenu":"Émile Cottard recommandé, freelance, tarifs très compétitifs. Contacter de la part d'Alexandre Jeanpetit.","contact":"https://www.linkedin.com/in/emilecottard"},
+    {"date":"13/02/2025","type":"prestataire","sujet":"SEA (freelance)","contenu":"Hugo Choneau recommandé très fortement : très efficace et pas très cher. A bossé pour plusieurs clients.","contact":"hchoneau@gmail.com"},
+    {"date":"13/02/2025","type":"prestataire","sujet":"Growth marketing / SEA (freelance)","contenu":"Cécile Muller recommandée, freelance Growth Marketing, coach en formation Growth Hacking.","contact":"https://fr.linkedin.com/in/cecile-muller-growth-marketing"},
+    {"date":"03/03/2025","type":"prestataire","sujet":"Développement WordPress (freelance)","contenu":"Hello Mathilde recommandée pour WordPress.","contact":"06 68 84 28 89"},
+    {"date":"04/03/2025","type":"prestataire","sujet":"Refonte site vitrine B2B","contenu":"Agence Vivandis recommandée. Invox recommandé pour refonte site B2B (copywriting au dev). Antoine Rougeaux (freelance) recommandé : très pro, tarif raisonnable.","contact":"https://www.vivandis.fr/web/ / contact@antoinerougeaux.fr / https://invox.fr/offres/agence-refonte-site-internet/"},
+    {"date":"04/03/2025","type":"prestataire","sujet":"Refonte site web / design","contenu":"Agence 33 degrés recommandée pour la visibilité et le design. Sandrine Miras / Exaltup recommandée : efficace et bon relationnel.","contact":"https://agence33degres.com/"},
+    {"date":"10/03/2025","type":"conseil","sujet":"Plugin SEO WordPress (Yoast vs alternatives)","contenu":"Rank Math recommandé comme alternative à Yoast. SEO Press et SEOKEY (français) également bons. La version payante de Yoast est généralement peu utile : la version gratuite suffit. Le seul usage utile possible est la génération automatique de balise meta desc (~99€/an).","contact":null},
+    {"date":"11/03/2025","type":"prestataire","sujet":"Stratégie réseaux sociaux BtoB (freelance)","contenu":"Charline Douchet recommandée pour stratégie et mise en place réseaux sociaux BtoB.","contact":"Via +33 6 83 28 82 90"},
+    {"date":"13/03/2025","type":"outil","sujet":"Génération d'images IA","contenu":"Leonardo.ai recommandé pour la génération d'images IA réalistes. Conseil : demander à une IA de rédiger les prompts à donner à Leonardo. Recraft.ai simplifie la démarche : on choisit le style et l'IA génère le prompt professionnel.","contact":null},
+    {"date":"14/03/2025","type":"prestataire","sujet":"UGC (plateforme)","contenu":"Ramd.am et Youdji recommandés pour l'UGC.","contact":"https://www.ramd.am/fr / https://youdji.com/fr"},
+    {"date":"26/03/2025","type":"prestataire","sujet":"Identité visuelle événement / créa (collectif)","contenu":"Bulldozer Collective recommandé les yeux fermés pour identité visuelle et stratégie de marque.","contact":"https://www.bulldozer-collective.com/"},
+    {"date":"15/04/2025","type":"prestataire","sujet":"Graphiste / design logo (freelance)","contenu":"Alexandre Padoy recommandé, lyonnais. Studio Kammo (Frédérique Bejjoudi) recommandé. Manon Renucci recommandée.","contact":"+33 6 31 91 64 29 (Padoy) / https://www.studiokammo.com/ / 06 67 05 60 25 (Renucci)"},
+    {"date":"15/04/2025","type":"prestataire","sujet":"Goodies / welcome pack (RSE)","contenu":"GOODETIK recommandé pour goodies RSE, personnalisation dans leur propre atelier.","contact":"+33 6 26 45 25 48"},
+    {"date":"07/04/2025","type":"prestataire","sujet":"Stratégie de marque / branding","contenu":"Agence Seen (Thomas Rebours) recommandée pour la stratégie de marque. Petite agence à taille humaine sur Lyon. Say Tomorrow (Déborah Joncour) recommandée également.","contact":"+33 6 80 06 65 79 (Déborah Joncour) / https://say-tomorrow.com/"},
+    {"date":"25/04/2025","type":"prestataire","sujet":"Rédacteur freelance","contenu":"Juliette Gunther (Plume & Bougeotte) recommandée. Agence Indiana / Simon Piri recommandés. Pauline Reboul recommandée sur Lyon.","contact":"plume.bougeotte@gmail.com / 06 78 91 90 89 / 0478695655 (Simon Piri)"},
+    {"date":"25/04/2025","type":"prestataire","sujet":"Impression / print (en ligne et local Lyon)","contenu":"Easyflyer recommandé (rapide, facile). Printpascher ou Pixarprinting valeurs sûres. En local : Papyrus (69008, entreprise adaptée).","contact":null},
+    {"date":"07/05/2025","type":"prestataire","sujet":"Photographe/vidéographe événementiel (freelance)","contenu":"Vincent Delesvaux recommandé. Studio Casa (Renaud et Marion Delattaignant) recommandé. Philippe Thibault recommandé. Andrew Shellard (Pixploration) recommandé.","contact":"https://vincentdelesvaux.com / +33 6 77 04 65 95 (Philippe Thibault) / +33 6 65 65 81 16 (Andrew Shellard)"},
+    {"date":"13/05/2025","type":"outil","sujet":"NPS / score de recommandation","contenu":"Vocaza recommandé. Delighted.com et Satismeter.com aussi. Les CRM (Intercom, HubSpot) intègrent cette fonctionnalité. Bonne pratique : ne pousser les avis publics (TrustPilot, Google) qu'aux promoteurs.","contact":"https://www.vocaza.com/collecter/"},
+    {"date":"15/05/2025","type":"prestataire","sujet":"GA4 / Search Console (freelance)","contenu":"Cédric Sonrel de Cybercité recommandé pour GTM, GA4 et Search Console.","contact":"https://www.linkedin.com/in/cédric-sonrel-b5445226/"},
+    {"date":"20/05/2025","type":"outil","sujet":"Comptabilité auto-entrepreneur / freelance","contenu":"Indy recommandé pour l'auto-entrepreneur : simple, agréable, aide tip-top. Abby recommandé aussi, gère le multicurrency. Pour les structures SAS/SASU/EURL : expert-comptable physique recommandé (~1500€/an, largement rentabilisé).","contact":null},
+    {"date":"11/06/2025","type":"outil","sujet":"Traduction site web (outil)","contenu":"Weglot recommandé pour traduction de site web : qualité bluffante, crée automatiquement un multisite pour le SEO multilingue. Attention à la dépendance à l'outil et aux contenus critiques mal gérés.","contact":null},
+    {"date":"16/06/2025","type":"prestataire","sujet":"Motion design / 3D (freelance)","contenu":"Marius Longo recommandé, spécialisé motion et 3D. Testé et approuvé par plusieurs membres.","contact":"https://www.linkedin.com/in/marius-longo"},
+    {"date":"24/06/2025","type":"prestataire","sujet":"Traducteur anglais / rapport d'activité (freelance)","contenu":"Jane Rodriguez recommandée (anglaise, traduction EN et DE). Lisa Benes recommandée (franco-américaine, FR/EN). Jan Ledochowski recommandé (EN + polonais). Callum Downs recommandé (natif UK, multi-casquettes).","contact":"+33 7 62 16 04 41 (Jane Rodriguez) / https://www.linkedin.com/in/lisa-benes / +33 6 60 40 72 56 (Jan Ledochowski)"},
+    {"date":"03/07/2025","type":"outil","sujet":"Délivrabilité email / DMARC DKIM SPF","contenu":"EasyDmarc recommandé pour externaliser la gestion DKIM, DMARC, SPF. Gratuit pour faible volume. Se configure sans aide externe si accès au DNS.","contact":null},
+    {"date":"08/07/2025","type":"prestataire","sujet":"OTI / certification entreprise à mission","contenu":"Aupeam recommandé. Endrix également conseillé.","contact":null},
+    {"date":"11/07/2025","type":"prestataire","sujet":"Agence média B2B (campagne urgente)","contenu":"Wizenco (Mathieu Bertoncini) recommandé pour campagne média urgente.","contact":"06 86 33 57 22 (Mathieu Bertoncini)"},
+    {"date":"18/07/2025","type":"outil","sujet":"Génération bannières Google Ads","contenu":"AdCreative.ai recommandé pour générer des bannières Google Ads. Canva et Figma (templates Google Ads) également.","contact":null},
+    {"date":"25/08/2025","type":"outil","sujet":"Outil d'affiliation","contenu":"Tapfiliate recommandé (utilisé pour codes créateur). Afilae également recommandé.","contact":null},
+    {"date":"08/09/2025","type":"prestataire","sujet":"Captation et montage vidéo (freelance)","contenu":"Damien Femy recommandé, 13 ans d'expérience, ultra pro et quali. Teazit recommandé. Studio K7 / Clément Mandrillon (jeune et très pro) recommandé.","contact":"https://www.damienfemy.com/ / e.colombain@teazit.fr / https://studiok7.fr/"},
+    {"date":"09/09/2025","type":"prestataire","sujet":"Captation vidéo interviews clients (freelance)","contenu":"Hook Vidéo / Pierre Grimaud recommandé. Testé et approuvé.","contact":"06 59 08 77 79 / salut.hook@gmail.com"},
+    {"date":"09/09/2025","type":"prestataire","sujet":"Merchandising magasin / communication en magasin","contenu":"ARMONY recommandé pour l'agencement et la com en magasin. Contact : Christophe Bovolenta.","contact":"christophe.bovolenta@armonygroup.com / https://www.armony.online/"},
+    {"date":"01/09/2025","type":"prestataire","sujet":"ABM / stratégie marketing B2B SaaS","contenu":"Invox recommandé pour l'ABM. Say Tomorrow / Déborah Joncour recommandée. Vanessa Digonal recommandée, Head of Growth freelance SaaS B2B 7 ans, références Google, Qonto, Mooncard.","contact":"guilhem@invox.fr / https://laegger.com/"},
+    {"date":"19/09/2025","type":"prestataire","sujet":"Formation IA pour équipes marketing","contenu":"Formation IA+Marketing Invox/Le Bahut (CPF). Boeckli & Gomes (OPCO). Mantra (ex Growth Makers, CPF). Sociaty pour com/marketing (agence IA Lyon). Time2Scale.ai pour création d'assets par IA.","contact":"https://boeckli-gomes.org/ / https://www.mantra.work/ / https://sociaty.io/ / https://www.time2scale.ai/"},
+    {"date":"23/09/2025","type":"prestataire","sujet":"Web designer freelance (Lyon)","contenu":"Olivier de Suremain recommandé : hyper pro. Mariia Sycheva recommandée.","contact":"06 37 63 87 18"},
+    {"date":"29/09/2025","type":"prestataire","sujet":"Agence display B2B ciblage médecins/spécialistes","contenu":"Big Neurons recommandé pour campagnes display B2B sur cibles médicales.","contact":"Via +33 6 64 69 94 40"},
+    {"date":"02/10/2025","type":"prestataire","sujet":"Plateforme micro-influenceurs","contenu":"Influence4You recommandé. Favikon recommandé.","contact":"https://www.influence4you.com/ / https://www.favikon.com/fr"},
+    {"date":"07/10/2025","type":"conseil","sujet":"CRM Monday vs HubSpot","contenu":"Monday est un outil de gestion/planification, pas un vrai CRM. La brique CRM de Monday peut fonctionner pour du small business mais est incomparable à HubSpot pour le vrai CRM (leads, opportunités, pipe, forecasts, automatisation). Recommandation : choisir HubSpot pour un usage CRM sérieux en PME/ETI.","contact":null},
+    {"date":"20/10/2025","type":"prestataire","sujet":"Agence Webflow / TMA","contenu":"Petit Hack recommandé : fondateur David très réactif et sympa.","contact":null},
+    {"date":"20/10/2025","type":"outil","sujet":"Formulaires / sondages (alternative Typeform)","contenu":"Tally.so recommandé en gratuit : très bien fait. Fillout également. Eval&Go (petite boîte française très disponible).","contact":null},
+    {"date":"21/10/2025","type":"prestataire","sujet":"Expert-comptable (SAS/SASU/EURL)","contenu":"Coralie Montet chez Fifty Bees recommandée.","contact":"coralie.montet@fifty-bees.com / 0472662024"},
+    {"date":"24/10/2025","type":"prestataire","sujet":"Qualification de leads externalisée / SDR","contenu":"Oliverlist recommandé pour génération de leads cold mail et cold call externalisé. Captains Prospects recommandé également.","contact":"Gabriel.schmit@oliverlist.com / https://www.captainprospect.fr/"},
+    {"date":"24/10/2025","type":"prestataire","sujet":"Call tracking / webcallback","contenu":"Iovox recommandé pour webcallback et call tracking (SEO et SEA).","contact":null},
+    {"date":"29/10/2025","type":"prestataire","sujet":"UGC / agence créa sociale","contenu":"Viewy recommandé : beau vivier de créateurs UGC, 140€/vidéo, système de brief avec postulation des créateurs. Sharebien (agence influence + studio créa, lyonnais) recommandé. Youdji également.","contact":"margot@sharebien.com / https://youdji.com/fr"},
+    {"date":"29/10/2025","type":"prestataire","sujet":"Kits de bienvenue / onboarding collaborateurs","contenu":"JeudiMerci recommandé. Le Regard Français (inclusif handiresponsable) recommandé. GOODETIK recommandé (produits personnalisés, atelier à Romans).","contact":"+33 6 26 45 25 48 (GOODETIK)"},
+    {"date":"09/10/2025","type":"prestataire","sujet":"Coffrets cadeaux clients (international)","contenu":"JeudiMerci recommandé pour coffrets cadeaux clients/partenaires avec livraison internationale.","contact":null},
+    {"date":"04/11/2025","type":"outil","sujet":"Outreach LinkedIn / cold email (automation)","contenu":"Lemlist recommandé unanimement par rapport à Waalaxy : meilleures features, bonne base de données avec intent data, features IA récentes.","contact":null},
+    {"date":"04/11/2025","type":"outil","sujet":"Pop-up site web gamification","contenu":"Wisepop recommandé pour les pop-up de type roue de la fortune.","contact":null},
+    {"date":"06/11/2025","type":"outil","sujet":"Questions/sondages en direct webinaire Zoom","contenu":"Kahoot! et Klaxoon recommandés pour les Q&A en live lors d'un webinaire Zoom.","contact":"https://kahoot.com/fr/"},
+    {"date":"13/11/2025","type":"prestataire","sujet":"Agence événementielle B2B","contenu":"What's On (Pierre Mattes) recommandé. Sophie Berger recommandée (agence full event B2B).","contact":"https://www.linkedin.com/in/sophie-berger-40b2628a/"},
+    {"date":"14/11/2025","type":"prestataire","sujet":"Agence RP tech Allemagne","contenu":"Agence Wam recommandée pour RP en Allemagne. Confirmé par plusieurs membres.","contact":"n.vieuxloup@agence-wam.fr"},
+    {"date":"17/11/2025","type":"outil","sujet":"Édition PDF / conversion PDF-PPT","contenu":"IlovePDF recommandé (gratuit). Sejda.com en complément si problème de mise en forme.","contact":"https://www.ilovepdf.com/fr"},
+    {"date":"18/11/2025","type":"prestataire","sujet":"Production vidéo testimonials clients (Lyon)","contenu":"ProdSquare recommandé (ex Agicap) pour témoignages vidéo à tarifs très compétitifs. Julien Rambaud recommandé (freelance photo+vidéo, tarifs abordables).","contact":"https://www.prodsquare.com/"},
+    {"date":"24/11/2025","type":"prestataire","sujet":"Studio podcast / captation vidéo Lyon","contenu":"Podroom recommandé pour tourner des podcasts ou des interviews en studio à Lyon.","contact":"07 66 80 50 41 (Cyprien Baudouin)"},
+    {"date":"25/11/2025","type":"outil","sujet":"Détecteur de contenu généré par IA","contenu":"Writer AI Content Detector recommandé comme outil de détection.","contact":"https://writer.com/ai-content-detector/"},
+    {"date":"02/12/2025","type":"prestataire","sujet":"Copywriter freelance (fintech / paiement)","contenu":"Marie Cordier recommandée (a travaillé avec Indy et Kolecto). Clément Navoret recommandé pour emailing, posts LinkedIn, pages site.","contact":"https://www.linkedin.com/in/marie-cordier-2a2300a5 / https://www.linkedin.com/in/clément-navoret-46abb6108/"},
+    {"date":"03/12/2025","type":"prestataire","sujet":"Migration WordPress vers Webflow","contenu":"No Code Factory recommandé pour la migration WordPress vers Webflow. Attention : traduction des articles de blog dans Webflow est galère (traduction quasi-automatique par IA sans optimisation).","contact":null},
+    {"date":"04/12/2024","type":"outil","sujet":"Reporting / BI (alternatives gratuites à Looker)","contenu":"MixPanel recommandé (fonctionnalités limitées en version gratuite). Power BI (suite M365) puissant mais complexe sans équipe data. Peut s'appuyer sur Excel pour commencer.","contact":null},
+    {"date":"09/12/2024","type":"outil","sujet":"CRM / alternative HubSpot","contenu":"Attio recommandé comme alternative à HubSpot, jugé plus avancé.","contact":null},
+    {"date":"11/12/2025","type":"conseil","sujet":"TJM freelance marketing (5 ans d'expérience)","contenu":"Pour un profil chargé marketing/communication en temps partagé avec 5 ans d'expérience : TJM recommandé entre 500 et 600€ en région lyonnaise. Bien cadrer les livrables et envisager des forfaits pour éviter les dérapages.","contact":null},
+    {"date":"17/12/2025","type":"prestataire","sujet":"Étude de marché internationale","contenu":"Altios recommandé : cabinet français avec bureaux à l'étranger. Junior entreprise EMLyon recommandée pour études à coût accessible.","contact":null},
+    {"date":"18/12/2024","type":"prestataire","sujet":"Rebranding / identité de marque","contenu":"Axone & Partners recommandé. Claire Tabard recommandée. Agence Seen recommandée.","contact":"0689792020 (Claire Tabard) / https://clairetabard.com/"},
+    {"date":"23/06/2025","type":"prestataire","sujet":"Coach professionnel","contenu":"Aurelle Montanger recommandée. Clotilde Girard recommandée. Bertrand Beauregard (IICH, approche par les valeurs) recommandé. Géraldine Juvin recommandée.","contact":"https://iich-coaching.com/ / Via +33 6 15 09 64 64 (Clotilde Girard)"},
+    {"date":"08/09/2025","type":"prestataire","sujet":"Portage salarial (Lyon)","contenu":"Elycoop recommandé. Contact : Anne Bonnier ou Fahim Chaib.","contact":"04 72 81 96 01"},
+    {"date":"14/08/2025","type":"prestataire","sujet":"Copywriter freelance / page de vente","contenu":"Rémi Capber recommandé les yeux fermés. Oxymore and More recommandé. Cyril Benoit Tremblay (Octobo) recommandé (10 ans de collaboration). Cathy Rince recommandée sans hésitation.","contact":"https://www.linkedin.com/in/rémi-capber-a717a777 / https://Octobo.fr"},
+    {"date":"12/01/2026","type":"prestataire","sujet":"Communication de crise","contenu":"Image7 recommandée (ultra compétents, ont pignon sur rue). Géraldine Musnier recommandée. Servatis recommandée.","contact":"https://www.servatis.fr/"},
+    {"date":"06/01/2026","type":"prestataire","sujet":"Agence média notoriété (on + offline, CTV, DOOH)","contenu":"Stories Out recommandée (agence indépendante, efficace, super culture, basée à Paris). Éléments Groupe recommandé pour plans TV/audio/DOOH/presse/digital.","contact":"https://storiesout.com/"},
+    {"date":"15/01/2026","type":"prestataire","sujet":"Achat média / planning media offline","contenu":"Groupe Partenaire (Sébastien Dufour) recommandé. Wizenco (Mathieu Bertoncini) recommandé. Paul Ammeloot recommandé vivement et confirmé par plusieurs membres.","contact":"+33 6 20 51 03 81 (Sébastien Dufour) / 07 70 05 75 31 (Paul Ammeloot)"},
+    {"date":"16/01/2026","type":"prestataire","sujet":"RP tech / communication institutionnelle Lyon","contenu":"Géraldine Musnier recommandée pour RP et com institutionnelle tech dans l'écosystème lyonnais.","contact":"Via +33 6 15 09 64 64"},
+    {"date":"26/01/2026","type":"outil","sujet":"Audit SEO / mots-clés (sites français)","contenu":"Haloscan recommandé comme meilleur outil pour les mots-clés sur sites français. Semrush et Ahrefs utilisables (Ahrefs meilleure BDD). Semrush peut polluer avec des infos inutiles.","contact":"https://www.haloscan.com/"},
+    {"date":"28/01/2026","type":"outil","sujet":"Reporting / BI social media","contenu":"Qlik recommandé comme outil BI puissant pour agrégation de données sociales.","contact":"https://www.qlik.com/us"},
+    {"date":"29/01/2026","type":"prestataire","sujet":"Cabinet de recrutement tech","contenu":"GetPro recommandé : chers mais très bons. Silkhom recommandé pour dev full stack.","contact":"https://www.getpro.co/ / https://www.linkedin.com/in/alison-donadieu (Silkhom)"},
+    {"date":"04/02/2026","type":"conseil","sujet":"Changement de nom Google My Business bloqué","contenu":"Pour débloquer : ouvrir un ticket support Google My Business, un agent GMB vous contacte et fait des manipulations avec vous.","contact":"googlebusinessprofile-support@google.com / https://support.google.com/business/gethelp"},
+    {"date":"05/02/2026","type":"outil","sujet":"Outil de webinaire","contenu":"Livestorm recommandé pour ceux qui ont déjà une audience. GetContrast offre une super expérience. Webikeo = logiciel + audience intégrée (utile sans audience propre, mais qualité audience variable).","contact":null},
+    {"date":"05/02/2026","type":"prestataire","sujet":"Personnalisation textile / goodies","contenu":"Amikal Design recommandé (15 ans, toujours satisfait). Maximega Lyon recommandé (réactifs). Atelier Coton Lyon 7 recommandé.","contact":"https://www.amikal-design.com/ / https://maximega.fr / https://www.ateliercoton.com"},
+    {"date":"09/02/2026","type":"prestataire","sujet":"SEA Google Ads / Meta Ads (freelance)","contenu":"Hugo Choneau recommandé unanimement par plusieurs membres pour SEA Google + Meta. Candy Peak (Thomas Tritsch) aussi recommandé.","contact":"hchoneau@gmail.com / https://www.linkedin.com/in/thomas-tritsch"},
+    {"date":"19/02/2026","type":"prestataire","sujet":"Agence de communication corporate B2B (Lyon)","contenu":"Agence EKNO recommandée pour com corporate. Jean-Marc Atlan fondateur, basée à Bellecour Lyon. RMedias (Marine Roye) également recommandée.","contact":"marine.roye@rmedias-groupe.com"},
+    {"date":"23/03/2026","type":"outil","sujet":"Plateforme formation / ressources marketing","contenu":"UnlockM recommandé : plateforme avec ressources, discussions, webinaires, formations marketing et IA. Bootcamp IA disponible. Qualité reconnue notamment sur les office hours. Coût élevé.","contact":"https://unlockm.fr/a-propos"},
+    {"date":"26/02/2026","type":"prestataire","sujet":"Webdesign / CRO Shopify B2C","contenu":"Weeby recommandé (Hugues@weeby.fr). Emmanuel Pottier (Axome) recommandé pour expertise Shopify B2C. Mélanie De Sousa recommandée, experte CRO Shopify.","contact":"Hugues@weeby.fr"},
+    {"date":"27/02/2026","type":"prestataire","sujet":"Imprimeur Lyon (délai court)","contenu":"Decomet à Caluire recommandé (efficaces, joignables). VSP à Vaise recommandé (réactifs).","contact":"0478084208 / decomet@wanadoo.fr"},
+    {"date":"09/03/2026","type":"prestataire","sujet":"Vidéaste / captation conférences (Lyon)","contenu":"ProdSquare recommandé. Geoffroy Bourdais (djog.com) recommandé (réactif, pas cher, agile). Antoine Sorel recommandé. Agence Melba recommandée.","contact":"https://www.prodsquare.com/ / https://djog.com / contact@antoinesorel.com / robin@agencemelba.com"},
+    {"date":"07/05/2026","type":"prestataire","sujet":"Communication pour collectivités / mairies","contenu":"Barbara Vernet de Tandem Conseil recommandée, spécialisée en communication publique et RSE.","contact":"https://tandem-conseil.fr/"},
+    {"date":"11/05/2026","type":"prestataire","sujet":"Growth BtoB / outbound / enrichissement données (freelance)","contenu":"Jérôme Rossat (Prospectliz) recommandé pour Growth, outils scraping/LinkedIn, séquences multicanal. Chakib Kissane recommandé en free (full growth outbound).","contact":"jerome-rossat@prospectliz.fr / https://www.linkedin.com/in/chakib-kissane"},
+    {"date":"05/05/2026","type":"prestataire","sujet":"Webmaster WordPress (freelance Lyon)","contenu":"Dareth Niang recommandé : ultra efficace (via Emmanuel). Sylvain Tersoglio recommandé.","contact":"Via Emmanuel 0650679850 / 0781370031 (Sylvain Tersoglio)"},
+    {"date":"19/05/2026","type":"prestataire","sujet":"SEA / SEO Lyon (agence)","contenu":"Empirik recommandée pour SEA et SEO (agence lyonnaise). METRIXX recommandé.","contact":null},
+    {"date":"20/05/2026","type":"prestataire","sujet":"Identité de marque / packaging beauté/cosmétique","contenu":"Agence Seen recommandée. Flying Cars Collective recommandé. The Current Lab recommandé (portfolio cosmétique petite enfance). Éléments Groupe recommandé.","contact":"https://www.thecurrentlab.com/"},
+    {"date":"28/05/2026","type":"prestataire","sujet":"SEO freelance (Lyon)","contenu":"Julien de See You Better recommandé : très efficace et accessible. Foxglove Partner recommandé pour SEO/GEO (confirmé par plusieurs membres). Agence Empirik recommandée (lyonnaise). METRIXX recommandé.","contact":"https://foxglove-partner.com/ / https://www.linkedin.com/in/juliengeoffroyseo"},
+    {"date":"02/06/2026","type":"prestataire","sujet":"Agence digitale / refonte site B2B (Lyon)","contenu":"Cycloé (Olivier de Suremain) recommandée : très pro et sympas, confirmé par plusieurs membres.","contact":"06 37 63 87 18 (Olivier de Suremain)"},
+    {"date":"04/06/2026","type":"outil","sujet":"Gestion événement clients (inscriptions, ateliers, reminders)","contenu":"Eventmaker recommandé. Yurplan recommandé (utilisé par les Gones du Marketing). Inwink recommandé pour portail exposants/visiteurs avec planning d'ateliers.","contact":"https://www.eventmaker.com/fr/ / https://yurplan.com/"},
+    {"date":"04/06/2026","type":"outil","sujet":"Gestion événement / billetterie","contenu":"Yurplan recommandé (utilisé par les Gones du Marketing). Eventmaker recommandé. Inwink recommandé pour événements complexes avec ateliers.","contact":"https://yurplan.com/ / https://www.eventmaker.com/fr/"}
+  ];
+
+  // ── CATÉGORIES ──
+  function getCategorie(item) {
+    const s = item.sujet.toLowerCase();
+    if (s.includes('traiteur') || s.includes('événement') || s.includes('evenem') || s.includes('studio podcast') || s.includes('captation conf') || s.includes('agence événe') || s.includes('design d\'espace')) return 'Événementiel';
+    if (s.includes('vidéo') || s.includes('video') || s.includes('motion') || s.includes('captation') || s.includes('photo') || s.includes('podcast') || s.includes('prodsquare') || s.includes('vidéaste')) return 'Vidéo & Photo';
+    if (s.includes('sea') || s.includes('google ads') || s.includes('meta ads') || s.includes('trafic manager') || s.includes('affichage')) return 'SEA & Paid';
+    if ((s.includes('seo') && !s.includes('sea')) || s.includes('contenu') || s.includes('content') || s.includes('plugin seo') || s.includes('mots-clés') || s.includes('audit seo')) return 'SEO & Contenu';
+    if (s.includes('site') || s.includes('wordpress') || s.includes('webflow') || s.includes('développement') || s.includes('webmaster') || s.includes('webdesign') || s.includes('intégration web') || s.includes('shopify') || s.includes('agence digitale') || s.includes('migration')) return 'Sites web & Dev';
+    if (s.includes('email') || s.includes('automation') || s.includes('outreach') || s.includes('délivrabilité') || s.includes('reminder')) return 'Email & Automation';
+    if (s.includes('social') || s.includes('linkedin') || s.includes('influence') || s.includes('ugc') || s.includes('réseaux sociaux')) return 'Social & Influence';
+    if (s.includes('branding') || s.includes('marque') || s.includes('identité') || s.includes('design') || s.includes('graphiste') || s.includes('logo') || s.includes('packaging') || s.includes('rebranding') || s.includes('créa')) return 'Branding & Design';
+    if (s.includes('copy') || s.includes('rédact') || s.includes('traduct') || s.includes('localisation')) return 'Copywriting & Traduction';
+    if (s.includes('print') || s.includes('impression') || s.includes('goodie') || s.includes('textile') || s.includes('merchandis') || s.includes('kit') || s.includes('coffret') || s.includes('onboarding') || s.includes('imprimeur')) return 'Print & Goodies';
+    if (s.includes('crm') || s.includes('reporting') || s.includes('bi ') || s.includes('formulaire') || s.includes('sondage') || s.includes('landing') || s.includes('webinaire') || s.includes('nps') || s.includes('dam') || s.includes('pop-up') || s.includes('affiliation') || s.includes('billetterie') || s.includes('gestion événement') || s.includes('comptabilité') || s.includes('pdf')) return 'Outils Marketing';
+    if (s.includes('formation') || s.includes('coach') || s.includes('facilit') || s.includes('conduite')) return 'Formation & Coaching';
+    if (s.includes('data') || s.includes('enrichis') || s.includes('tracking') || s.includes('analytics') || s.includes('ga4') || s.includes('call track')) return 'Data & Analytics';
+    if (s.includes('rp') || s.includes('presse') || s.includes('média') || s.includes('media') || s.includes('achat') || s.includes('notoriété') || s.includes('institutionnel') || s.includes('crise')) return 'RP & Médias';
+    if (s.includes('growth') || s.includes('abm') || s.includes('prospection') || s.includes('lead') || s.includes('sdr') || s.includes('outbound')) return 'Growth & Prospection';
+    if (s.includes('recrutement') || s.includes('portage') || s.includes('comptab') || s.includes('expert-comptable') || s.includes('tjm') || s.includes('étude de marché') || s.includes('certification') || s.includes('oti')) return 'RH & Admin';
+    if (s.includes('génération d\'images') || s.includes('images ia') || s.includes('détecteur')) return 'IA & Outils créa';
+    return 'Autres';
+  }
+
+  const CATEGORIES_ORDER = [
+    'Sites web & Dev', 'SEO & Contenu', 'SEA & Paid', 'Growth & Prospection',
+    'Email & Automation', 'Social & Influence', 'Vidéo & Photo', 'Branding & Design',
+    'Copywriting & Traduction', 'Print & Goodies', 'Événementiel', 'Outils Marketing',
+    'Data & Analytics', 'RP & Médias', 'Formation & Coaching', 'IA & Outils créa',
+    'RH & Admin', 'Autres'
+  ];
+
+  // ── RENDU ──
+  function formatContact(contact) {
+    if (!contact) return '';
+    const parts = contact.split(' / ');
+    return parts.map(p => {
+      p = p.trim();
+      if (p.startsWith('http')) {
+        const label = p.replace('https://','').replace('http://','').split('/')[0];
+        return `<a href="${p}" target="_blank">${label}</a>`;
+      }
+      if (p.includes('@') && !p.startsWith('Via') && !p.includes('(')) {
+        return `<a href="mailto:${p}">${p}</a>`;
+      }
+      return p;
+    }).join('<br>');
+  }
+
+  function renderCards(data, typeFilter, searchQuery) {
+    const q = searchQuery.toLowerCase();
+    const filtered = data.filter(item => {
+      const matchType = typeFilter === 'all' || item.type === typeFilter;
+      const matchSearch = !q || item.sujet.toLowerCase().includes(q) || item.contenu.toLowerCase().includes(q) || (item.contact && item.contact.toLowerCase().includes(q));
+      return matchType && matchSearch;
+    });
+
+    document.getElementById('results-count').textContent = `${filtered.length} résultat${filtered.length > 1 ? 's' : ''}`;
+
+    const container = document.getElementById('cards-container');
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="no-results">Aucun résultat pour cette recherche.</div>';
+      return;
+    }
+
+    const byCategory = {};
+    filtered.forEach(item => {
+      const cat = getCategorie(item);
+      if (!byCategory[cat]) byCategory[cat] = [];
+      byCategory[cat].push(item);
+    });
+
+    const orderedKeys = CATEGORIES_ORDER.filter(k => byCategory[k]);
+    Object.keys(byCategory).forEach(k => { if (!orderedKeys.includes(k)) orderedKeys.push(k); });
+
+    container.innerHTML = orderedKeys.map(cat => {
+      const items = byCategory[cat];
+      const cards = items.map(item => `
+        <div class="card" data-type="${item.type}">
+          <div class="card-type">${item.type === 'outil' ? 'Outil' : item.type === 'prestataire' ? 'Prestataire' : 'Conseil'}</div>
+          <div class="card-sujet">${item.sujet}</div>
+          <div class="card-contenu">${item.contenu}</div>
+          ${item.contact ? `<div class="card-contact">${formatContact(item.contact)}</div>` : ''}
+          <div class="card-date">${item.date}</div>
+        </div>
+      `).join('');
+      return `
+        <div class="category-block">
+          <div class="category-title">
+            ${cat}
+            <span class="category-count">${items.length}</span>
+          </div>
+          <div class="cards-grid">${cards}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── FILTRES & RECHERCHE ──
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  document.querySelectorAll('.filter-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderCards(DATA, currentFilter, currentSearch);
+    });
+  });
+
+  document.getElementById('search-input').addEventListener('input', e => {
+    currentSearch = e.target.value;
+    renderCards(DATA, currentFilter, currentSearch);
+  });
+
+  // Init si déjà connecté
+  if (sessionStorage.getItem('gones_membre') === '1') {
+    renderCards(DATA, 'all', '');
+  }
+  </script>
+
+</body>
+</html>
