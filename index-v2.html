@@ -368,6 +368,14 @@
       line-height: 1.75;
     }
 
+    /* ── BANDEAU COMMUNAUTÉ ── */
+    .community-strip { position: relative; height: 480px; overflow: hidden; }
+    .community-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .community-strip-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,26,43,0.75) 0%, rgba(10,26,43,0.05) 55%); display: flex; align-items: flex-end; padding: 2.5rem 3rem; }
+    .community-strip-caption { color: rgba(255,255,255,0.9); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; font-family: 'Satoshi', sans-serif; }
+    .community-strip-caption em { color: var(--corail); font-style: normal; }
+    @media (max-width: 768px) { .community-strip { height: 320px; } .community-strip-overlay { padding: 1.5rem; } }
+
     /* ── CONCEPT ── */
     .concept {
       background: var(--bg);
@@ -1176,6 +1184,14 @@
     </div>
   </div>
 
+  <!-- BANDEAU COMMUNAUTÉ -->
+  <div class="community-strip">
+    <img src="images/afterwork 2026 04 28 (11).jpg" alt="La communauté des Gones du Market'" />
+    <div class="community-strip-overlay">
+      <div class="community-strip-caption"><em>180 marketeurs lyonnais.</em> Une vraie communauté.</div>
+    </div>
+  </div>
+
   <!-- CONCEPT -->
   <div class="concept" id="concept">
     <div class="concept-inner">
@@ -1252,20 +1268,20 @@
       <div class="section-tag">La vie du club</div>
       <h2>Nos événements en images</h2>
       <div class="photo-grid">
+        <img src="images/afterwork 2026 04 28 (11).jpg" alt="La salle lors d'un afterwork" class="wide" />
+        <img src="images/afterwork 2026 04 28 (5).jpeg" alt="Panel de speakers" />
+        <img src="images/WhatsApp Image 2026-06-18 at 15.13.42.jpeg" alt="Photo de groupe rooftop" class="wide" />
+        <img src="images/WhatsApp Image 2026-06-18 at 10.05.06.jpeg" alt="Workshop IA Marketing" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.37.25 (1).jpeg" alt="Atelier en table ronde" />
         <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" class="wide" />
-        <img src="images/event-2.jpeg" alt="Atelier des Gones du Market'" />
-        <img src="images/event-3.jpeg" alt="Masterclass Employee Advocacy" />
-        <img src="images/event-4.jpeg" alt="Masterclass en atelier" />
-        <img src="images/event-5.jpeg" alt="Déjeuner de fin d'année des Gones" />
-        <img src="images/afterwork 2026 04 28 (5).jpeg" alt="Afterwork avril 2026" class="wide" />
-        <img src="images/afterwork 2026 04 28 (11).jpg" alt="Afterwork avril 2026" />
-        <img src="images/WhatsApp Image 2026-06-18 at 09.48.29 (2).jpeg" alt="Événement juin 2026" />
-        <img src="images/WhatsApp Image 2026-06-18 at 10.05.06.jpeg" alt="Événement juin 2026" />
-        <img src="images/WhatsApp Image 2026-06-18 at 14.37.25 (1).jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.44.38.jpeg" alt="Échanges entre membres" />
+        <img src="images/WhatsApp Image 2026-06-18 at 09.48.29 (2).jpeg" alt="Networking debout" />
+        <img src="images/event-2.jpeg" alt="Atelier des Gones" />
         <img src="images/WhatsApp Image 2026-06-18 at 14.37.28 (1).jpeg" alt="Événement juin 2026" />
-        <img src="images/WhatsApp Image 2026-06-18 at 14.44.32.jpeg" alt="Événement juin 2026" class="wide" />
-        <img src="images/WhatsApp Image 2026-06-18 at 14.44.38.jpeg" alt="Événement juin 2026" />
-        <img src="images/WhatsApp Image 2026-06-18 at 15.13.42.jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.44.32.jpeg" alt="Échanges en groupe" />
+        <img src="images/event-3.jpeg" alt="Masterclass Employee Advocacy" class="wide" />
+        <img src="images/event-4.jpeg" alt="Masterclass en atelier" />
+        <img src="images/event-5.jpeg" alt="Déjeuner de fin d'année" />
       </div>
     </div>
   </div>
