@@ -20,7 +20,7 @@
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       color: var(--noir);
-      background: var(--blanc);
+      background: var(--corail);
       line-height: 1.6;
     }
 
@@ -350,26 +350,33 @@
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
       gap: 0.75rem;
     }
 
     .photo-grid img {
       width: 100%;
-      height: 260px;
+      height: 240px;
       object-fit: cover;
       border-radius: 8px;
       display: block;
+      transition: opacity 0.2s;
     }
 
-    .photo-grid img:first-child {
+    .photo-grid img:hover { opacity: 0.9; }
+
+    .photo-grid img.wide {
       grid-column: span 2;
-      height: 340px;
     }
 
-    .photo-grid img:nth-child(4) {
-      grid-column: span 2;
-      height: 300px;
+    @media (max-width: 768px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid img { height: 170px; }
+    }
+
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid img,
+      .photo-grid img.wide { grid-column: span 1; height: 210px; }
     }
 
     /* ── THÈMES PASSÉS ── */
@@ -700,6 +707,55 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
+    /* ── TÉMOIGNAGES ── */
+    .temoignages-bg { background: #222; padding: 6rem 3rem; }
+    .temoignages-inner { max-width: 1100px; margin: 0 auto; }
+    .temoignages-bg .section-label { color: var(--corail); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.75rem; }
+    .temoignages-bg h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .temoignages-intro { color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-bottom: 3rem; }
+    .temoignages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .temoignage-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .temoignage-quote { font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.8); font-style: italic; flex: 1; }
+    .temoignage-quote::before { content: '\201C'; font-size: 3rem; color: var(--corail); line-height: 1; display: block; margin-bottom: -0.5rem; font-style: normal; }
+    .temoignage-author { display: flex; align-items: center; gap: 0.9rem; }
+    .temoignage-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--corail); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; color: white; flex-shrink: 0; }
+    .temoignage-name { font-weight: 700; font-size: 0.85rem; color: white; }
+    .temoignage-job { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.15rem; }
+    .temoignage-fictif { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--corail); font-weight: 700; margin-bottom: 0.2rem; }
+    @media (max-width: 768px) { .temoignages-grid { grid-template-columns: 1fr; } .temoignages-bg { padding: 3.5rem 1.5rem; } }
+
+    /* ── FAQ ── */
+    .faq-bg { background: var(--gris-clair); padding: 6rem 3rem; }
+    .faq-inner { max-width: 780px; margin: 0 auto; }
+    .faq-bg .section-label { color: var(--corail); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.75rem; }
+    .faq-bg h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--noir); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .faq-lead { color: var(--gris); font-size: 1rem; margin-bottom: 3rem; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid #e0e0e0; }
+    .faq-item:first-child { border-top: 1px solid #e0e0e0; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; cursor: pointer; font-weight: 700; font-size: 0.95rem; color: var(--noir); list-style: none; user-select: none; }
+    .faq-q::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--corail); flex-shrink: 0; transition: transform 0.2s; line-height: 1; }
+    details[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a { font-size: 0.9rem; color: var(--gris); line-height: 1.7; padding-bottom: 1.25rem; max-width: 640px; }
+    .faq-a strong { color: var(--noir); font-weight: 700; }
+    @media (max-width: 768px) { .faq-bg { padding: 3.5rem 1.5rem; } }
+
+    /* ── PROCESSUS ── */
+    .processus-bg { background: var(--blanc); padding: 6rem 3rem; }
+    .processus-inner { max-width: 1000px; margin: 0 auto; }
+    .processus-bg .section-label { color: var(--corail); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.75rem; }
+    .processus-bg h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--noir); letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .processus-intro { color: var(--gris); font-size: 0.9rem; margin-bottom: 3.5rem; }
+    .processus-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .processus-steps::before { content: ''; position: absolute; top: 22px; left: calc(12.5% + 22px); right: calc(12.5% + 22px); height: 2px; background: #e0e0e0; z-index: 0; }
+    .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--noir); color: white; font-weight: 900; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; flex-shrink: 0; }
+    .step:last-child .step-num { background: var(--corail); }
+    .step-title { font-weight: 700; font-size: 0.9rem; color: var(--noir); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.6; }
+    @media (max-width: 768px) { .processus-steps { grid-template-columns: 1fr 1fr; gap: 2rem; } .processus-steps::before { display: none; } .processus-bg { padding: 3.5rem 1.5rem; } }
+    @media (max-width: 480px) { .processus-steps { grid-template-columns: 1fr; gap: 1.75rem; } .step { flex-direction: row; text-align: left; gap: 1rem; } .step-num { margin-bottom: 0; } }
+
     /* ── FOOTER ── */
     footer {
       background: var(--noir);
@@ -741,9 +797,9 @@
       .raisons-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .raisons-grid { grid-template-columns: 1fr; }
       .raisons-bg { padding: 3.5rem 1.5rem; }
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-      .photo-grid img:first-child { grid-column: span 2; }
-      .photo-grid img:nth-child(4) { grid-column: 1; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid img { height: 160px; }
+      .photo-grid img.wide { height: 200px; }
       .themes-grid { grid-template-columns: 1fr 1fr; }
       .event-card { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
@@ -765,6 +821,7 @@
         <a href="#concept">Le concept</a>
         <a href="#themes">Les thèmes</a>
         <a href="#agenda">Événements</a>
+        <a href="membres.html">Espace membres</a>
         <a href="#candidature" class="nav-cta">Nous rejoindre →</a>
       </nav>
     </div>
@@ -872,11 +929,20 @@
       <div class="section-label">La vie du club</div>
       <h2>Nos événements en images</h2>
       <div class="photo-grid">
-        <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" />
+        <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" class="wide" />
         <img src="images/event-2.jpeg" alt="Atelier des Gones du Market'" />
         <img src="images/event-3.jpeg" alt="Masterclass Employee Advocacy" />
         <img src="images/event-4.jpeg" alt="Masterclass en atelier" />
         <img src="images/event-5.jpeg" alt="Déjeuner de fin d'année des Gones" />
+        <img src="images/afterwork 2026 04 28 (5).jpeg" alt="Afterwork avril 2026" class="wide" />
+        <img src="images/afterwork 2026 04 28 (11).jpg" alt="Afterwork avril 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 09.48.29 (2).jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 10.05.06.jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.37.25 (1).jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.37.28 (1).jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.44.32.jpeg" alt="Événement juin 2026" class="wide" />
+        <img src="images/WhatsApp Image 2026-06-18 at 14.44.38.jpeg" alt="Événement juin 2026" />
+        <img src="images/WhatsApp Image 2026-06-18 at 15.13.42.jpeg" alt="Événement juin 2026" />
       </div>
     </div>
   </div>
@@ -1164,6 +1230,151 @@
         Voir la chaîne YouTube
       </a>
       <a href="#candidature" class="youtube-btn" style="background:white;color:var(--corail);">Rejoindre le club →</a>
+    </div>
+  </div>
+
+  <!-- TÉMOIGNAGES -->
+  <div class="temoignages-bg">
+    <div class="temoignages-inner">
+      <div class="section-label">Ce qu'ils en pensent</div>
+      <h2>Ils auraient adoré<br>être membres.</h2>
+      <p class="temoignages-intro">Témoignages fictifs de personnalités qui auraient pu nous rejoindre.</p>
+      <div class="temoignages-grid">
+
+        <div class="temoignage-card">
+          <div class="temoignage-quote">
+            Les Gones du Market' incarnent ce que j'ai toujours défendu : le marketing commence par la communauté, pas par le produit. Ces marketeurs lyonnais l'ont compris avant tout le monde.
+          </div>
+          <div class="temoignage-author">
+            <div class="temoignage-avatar">PK</div>
+            <div>
+              <div class="temoignage-fictif">Témoignage fictif</div>
+              <div class="temoignage-name">Philip Kotler</div>
+              <div class="temoignage-job">Père du marketing moderne · Kellogg School of Management</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="temoignage-card">
+          <div class="temoignage-quote">
+            La permission, c'est la base. Mais ce qui se passe dans ce club, c'est encore mieux : la confiance entre pairs. Un réseau qui se construit sur la valeur, pas sur le bruit. Remarquable.
+          </div>
+          <div class="temoignage-author">
+            <div class="temoignage-avatar">SG</div>
+            <div>
+              <div class="temoignage-fictif">Témoignage fictif</div>
+              <div class="temoignage-name">Seth Godin</div>
+              <div class="temoignage-job">Auteur de Purple Cow · This Is Marketing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="temoignage-card">
+          <div class="temoignage-quote">
+            J'aurais voulu avoir un truc comme ça quand je démarrais. L'entraide vraie, les bons plans concrets, pas du personal branding creux. C'est ça le marketing de demain.
+          </div>
+          <div class="temoignage-author">
+            <div class="temoignage-avatar">GV</div>
+            <div>
+              <div class="temoignage-fictif">Témoignage fictif</div>
+              <div class="temoignage-name">Gary Vaynerchuk</div>
+              <div class="temoignage-job">CEO VaynerMedia · Entrepreneur & speaker</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-bg">
+    <div class="faq-inner">
+      <div class="section-label">Questions fréquentes</div>
+      <h2>Tu hésites encore ?</h2>
+      <p class="faq-lead">Les questions qu'on nous pose le plus souvent avant de candidater.</p>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-q">Est-ce que mon profil correspond ?</summary>
+          <p class="faq-a">Le club est ouvert à toutes les personnes qui exercent une fonction <strong>marketing au sens large</strong> — acquisition, brand, growth, CRM, contenu, product marketing, communication marketing — avec <strong>au moins 3 ans d'expérience</strong>. Freelances, salarié·es et consultant·es sont les bienvenu·es. Il faut habiter ou travailler en <strong>région lyonnaise</strong>.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Les profils 100% communication, c'est exclu ?</summary>
+          <p class="faq-a">Les profils orientés <strong>communication institutionnelle pure</strong> (relations presse, com interne, événementiel sans dimension marketing) sont généralement hors scope. Si tu as un doute sur ton profil, postule quand même — on te répondra honnêtement.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Est-ce que je dois m'engager à venir à tous les événements ?</summary>
+          <p class="faq-a"><strong>Aucune obligation.</strong> Pas de quota de présence, pas de durée d'engagement minimum. Tu viens aux événements qui t'intéressent, quand tu peux. La communauté, c'est aussi ce qui se passe entre les événements sur WhatsApp.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">C'est combien ?</summary>
+          <p class="faq-a">L'<strong>adhésion est gratuite</strong> pour l'instant. Certains événements (dîners, lieux privatisés) sont payants pour couvrir les frais de fonctionnement — les tarifs sont toujours communiqués en amont. Aucune mauvaise surprise.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Combien de temps pour avoir une réponse après ma candidature ?</summary>
+          <p class="faq-a">En général <strong>sous 48h</strong>. Le bureau est entièrement bénévole — ses membres ont des jobs et des vies de famille. Ils font au mieux pour répondre rapidement à chaque candidature.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Qu'est-ce que ça apporte concrètement ?</summary>
+          <p class="faq-a">Un accès à un réseau de marketeurs lyonnais qui se font vraiment confiance : <strong>prestataires validés par des pairs</strong>, bons plans partagés, <strong>entraide pour la recherche d'emploi</strong>, et parfois des opportunités de jobs diffusées en avant-première dans le groupe — avant d'être publiées ailleurs.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">C'est quoi le groupe WhatsApp concrètement ?</summary>
+          <p class="faq-a">Plusieurs fils actifs entre membres : un fil <strong>entraide métier</strong> (recommandations de prestataires, conseils, bons plans), un fil <strong>jobs</strong> (offres et recherches de profils), et un fil <strong>général</strong> pour la vie du club et les prochains événements.</p>
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESSUS DE CANDIDATURE -->
+  <div class="processus-bg">
+    <div class="processus-inner">
+      <div class="section-label">Comment ça marche</div>
+      <h2>Rejoindre le club<br>en 4 étapes.</h2>
+      <p class="processus-intro">Pas de cooptation obligatoire, pas de dossier complexe. Un formulaire, une vérification rapide.</p>
+      <div class="processus-steps">
+
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Tu envoies ta candidature</div>
+            <div class="step-desc">Nom, poste, entreprise et quelques mots sur ton rapport au marketing lyonnais. 2 minutes chrono.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">On vérifie ton profil</div>
+            <div class="step-desc">Le bureau s'assure que tu travailles bien dans le marketing à Lyon. Pas un entretien — une simple vérification.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">Réponse sous 48h</div>
+            <div class="step-desc">On revient vers toi rapidement par e-mail. En cas de refus, on t'explique pourquoi et tu peux recandidater.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-title">Bienvenue dans le club</div>
+            <div class="step-desc">Accès au groupe WhatsApp, aux recommandations membres et aux invitations pour les prochains événements.</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
