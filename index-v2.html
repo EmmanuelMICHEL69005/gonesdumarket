@@ -4,31 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Gones du Market' · Club marketing lyonnais</title>
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --corail: #E8614A;
+      --corail:       #E8614A;
       --corail-fonce: #C94D38;
-      --noir: #1A1A1A;
-      --gris-clair: #F5F4F2;
-      --gris: #888;
-      --blanc: #FFFFFF;
+      --navy:         #0a1a2b;
+      --navy-mid:     #0f2540;
+      --navy-light:   #1a3a5c;
+      --slate:        #464D72;
+      --bg:           #f8f9ff;
+      --bg-muted:     #f0f1fc;
+      --blanc:        #ffffff;
+      --text-muted:   #718096;
+      --border:       #e2e8f0;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: var(--noir);
-      background: var(--blanc);
-      line-height: 1.6;
+      font-family: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--slate);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HEADER ── */
-    header {
+    /* ── NAV ── */
+    .nav {
       position: sticky;
       top: 1rem;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       justify-content: center;
       padding: 0 2rem;
@@ -36,10 +44,10 @@
       pointer-events: none;
     }
 
-    .header-inner {
-      background: var(--blanc);
+    .nav-inner {
+      background: white;
       border-radius: 100px;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.15);
       display: flex;
       align-items: center;
       gap: 2.5rem;
@@ -47,43 +55,38 @@
       pointer-events: all;
     }
 
-    .logo {
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
+      gap: 1.75rem;
     }
 
-    .logo-text {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--noir);
-      letter-spacing: -0.01em;
-    }
-
-    .logo-text span { color: var(--corail); }
-
-    nav { display: flex; align-items: center; gap: 1.75rem; }
-
-    nav a {
+    .nav-link {
       text-decoration: none;
-      color: var(--noir);
+      color: var(--navy);
       font-size: 0.875rem;
       font-weight: 500;
-      opacity: 0.6;
+      letter-spacing: 0.01em;
       transition: opacity 0.2s;
+      opacity: 0.6;
       white-space: nowrap;
     }
 
-    nav a:hover { opacity: 1; }
+    .nav-link:hover { opacity: 1; }
 
     .nav-cta {
-      background: var(--corail) !important;
-      color: var(--blanc) !important;
+      background: var(--corail);
+      color: white !important;
       opacity: 1 !important;
       padding: 0.6rem 1.35rem;
       border-radius: 100px;
-      font-weight: 600 !important;
+      font-weight: 700;
       transition: background 0.2s !important;
       display: flex;
       align-items: center;
@@ -94,23 +97,52 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--corail);
-      color: var(--blanc);
-      padding: 6rem 3rem 5rem;
-      text-align: center;
+      background: var(--navy);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(232,97,74,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(28,57,216,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
+      letter-spacing: 0.15em;
+      color: var(--corail);
       margin-bottom: 2rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--corail);
     }
 
     .hero h1 {
@@ -118,8 +150,9 @@
       font-weight: 900;
       line-height: 0.95;
       letter-spacing: -0.04em;
+      color: white;
+      margin-bottom: 1.5rem;
       max-width: none;
-      margin: 0 auto 1.5rem;
     }
 
     .hero h1 em {
@@ -127,216 +160,323 @@
       color: var(--corail);
     }
 
-    .hero p {
-      font-size: 1.15rem;
-      opacity: 0.85;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
       line-height: 1.7;
+      margin-bottom: 2.5rem;
     }
 
-    .hero-cta {
-      display: inline-block;
-      background: var(--blanc);
-      color: var(--corail);
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--corail);
+      color: white;
       font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 8px;
       text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .hero-cta:hover {
+    .btn-primary:hover {
+      background: var(--corail-fonce);
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: white;
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    /* ── NEXT EVENT BAND ── */
+    .next-band {
+      background: var(--corail);
+      color: white;
+      padding: 1.5rem 3rem;
+    }
+
+    .next-band-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .next-band-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 0.25rem;
+    }
+
+    .next-band-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .next-band-meta {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 0.2rem;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .cd-block {
+      text-align: center;
+    }
+
+    .cd-num {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .cd-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin-top: 0.2rem;
+    }
+
+    .cd-sep {
+      font-size: 1.5rem;
+      font-weight: 800;
+      opacity: 0.4;
+      margin-bottom: 0.5rem;
     }
 
     /* ── STATS ── */
     .stats {
-      background: var(--noir);
-      color: var(--blanc);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      text-align: center;
+      background: var(--blanc);
+      border-bottom: 1px solid var(--border);
     }
 
-    .stat-item {
-      padding: 2.5rem 1.5rem;
-      border-right: 1px solid #333;
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--corail);
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: #999;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    /* ── SECTIONS COMMUNES ── */
-    section {
-      padding: 5rem 3rem;
+    .stats-inner {
       max-width: 1100px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .section-label {
-      font-size: 0.72rem;
+    .stat {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 2.75rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-num span { color: var(--corail); }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    /* ── SECTION COMMONS ── */
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--corail);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--corail);
     }
 
     h2 {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      line-height: 1.05;
       margin-bottom: 1rem;
     }
 
     .lead {
-      font-size: 1.05rem;
-      color: #555;
-      max-width: 620px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 580px;
       line-height: 1.75;
     }
 
-    /* ── COMMENT ÇA MARCHE ── */
-    .steps {
+    /* ── CONCEPT ── */
+    .concept {
+      background: var(--bg);
+      padding: 6rem 3rem;
+    }
+
+    .concept-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .concept-steps {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .concept-step {
+      background: var(--blanc);
+      border-radius: 16px;
+      padding: 2.25rem;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .concept-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(10,26,43,0.08);
+    }
+
+    .step-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: var(--bg-muted);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .concept-step h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .concept-step p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── THEMES (dark section) ── */
+    .themes {
+      background: var(--navy);
+      padding: 6rem 3rem;
+    }
+
+    .themes-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .themes .section-tag { color: var(--corail); }
+    .themes h2 { color: white; }
+    .themes .lead { color: rgba(255,255,255,0.5); }
+
+    .themes-grid {
       margin-top: 3rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .step {
-      padding: 2rem;
-      background: var(--gris-clair);
-      border-radius: 12px;
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
-      background: var(--corail);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-
-    .step p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.65;
-    }
-
-    /* ── TROIS RAISONS ── */
-    .raisons-bg {
-      background: var(--noir);
-      padding: 5rem 3rem;
-    }
-
-    .raisons-inner { max-width: 1100px; margin: 0 auto; }
-
-    .raisons-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: end;
-      margin-bottom: 3rem;
-    }
-
-    .raisons-bg .section-label { color: var(--corail); }
-
-    .raisons-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0;
-      color: var(--blanc);
-    }
-
-    .raisons-right p {
-      font-size: 1rem;
-      color: #888;
-      line-height: 1.75;
-    }
-
-    .raisons-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-
-    .raison-card {
-      background: #242424;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
       border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .theme-card {
       padding: 2rem;
-      display: flex;
-      flex-direction: column;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
     }
 
-    .raison-num {
-      width: 44px;
-      height: 44px;
-      background: var(--corail);
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.88rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.25rem;
-      flex-shrink: 0;
-    }
+    .theme-card:hover { background: rgba(255,255,255,0.07); }
 
-    .raison-card h3 {
-      font-size: 1rem;
+    .theme-date {
+      font-size: 0.65rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--corail);
+      margin-bottom: 0.75rem;
+    }
+
+    .theme-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
       margin-bottom: 0.6rem;
-      line-height: 1.3;
-      color: var(--blanc);
+      line-height: 1.25;
     }
 
-    .raison-card p {
-      font-size: 0.875rem;
-      color: #888;
-      line-height: 1.65;
+    .theme-card p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
     }
 
-    /* ── GALERIE PHOTOS ── */
-    .galerie-bg {
-      background: var(--noir);
-      padding: 5rem 3rem;
+    /* ── GALERIE ── */
+    .galerie {
+      background: var(--navy-mid);
+      padding: 6rem 3rem;
     }
 
     .galerie-inner {
@@ -344,27 +484,29 @@
       margin: 0 auto;
     }
 
-    .galerie-bg .section-label { color: var(--corail); }
-    .galerie-bg h2 { color: var(--blanc); margin-bottom: 2.5rem; }
+    .galerie .section-tag { color: var(--corail); }
+    .galerie h2 { color: white; margin-bottom: 2.5rem; }
 
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .photo-grid img {
       width: 100%;
       height: 260px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
       display: block;
+      transition: opacity 0.2s;
     }
+
+    .photo-grid img:hover { opacity: 0.85; }
 
     .photo-grid img:first-child {
       grid-column: span 2;
-      height: 340px;
+      height: 360px;
     }
 
     .photo-grid img:nth-child(4) {
@@ -372,66 +514,16 @@
       height: 300px;
     }
 
-    /* ── THÈMES PASSÉS ── */
-    .themes-bg {
-      background: var(--gris-clair);
+    /* ── AGENDA ── */
+    .agenda {
+      background: var(--navy);
+      padding: 6rem 3rem;
     }
 
-    .themes-bg > div {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 3rem;
-    }
+    .agenda-inner { max-width: 1100px; margin: 0 auto; }
 
-    .themes-grid {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .theme-card {
-      background: var(--blanc);
-      border-radius: 10px;
-      padding: 1.5rem;
-      border-top: 3px solid var(--corail);
-    }
-
-    .theme-date {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gris);
-      margin-bottom: 0.6rem;
-    }
-
-    .theme-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      line-height: 1.3;
-    }
-
-    .theme-card p {
-      font-size: 0.82rem;
-      color: #777;
-      line-height: 1.5;
-    }
-
-    /* ── AGENDA COMPLET ── */
-    .agenda-section {
-      background: #0f1623;
-      color: var(--blanc);
-    }
-
-    .agenda-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 3rem;
-    }
-
-    .agenda-section .section-label { color: var(--corail); }
-    .agenda-section h2 { color: var(--blanc); margin-bottom: 2rem; }
+    .agenda .section-tag { color: var(--corail); }
+    .agenda h2 { color: white; margin-bottom: 2rem; }
 
     .agenda-filters {
       display: flex;
@@ -442,8 +534,8 @@
 
     .filter-btn {
       background: transparent;
-      border: 1px solid #2a3040;
-      color: #6b7a99;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.35);
       padding: 0.5rem 1.25rem;
       border-radius: 100px;
       font-size: 0.85rem;
@@ -453,17 +545,17 @@
       font-family: inherit;
     }
 
-    .filter-btn:hover { border-color: #4a5568; color: #a0aec0; }
-    .filter-btn.active { background: var(--blanc); color: var(--noir); border-color: var(--blanc); font-weight: 600; }
+    .filter-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+    .filter-btn.active { background: white; color: var(--navy); border-color: white; font-weight: 700; }
 
     .ev-group-label {
       font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: #3a4a60;
+      color: rgba(255,255,255,0.2);
       padding: 2rem 0 0.75rem;
-      border-bottom: 1px solid #1a2333;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       margin-bottom: 0.75rem;
     }
 
@@ -475,13 +567,13 @@
       gap: 2rem;
       align-items: center;
       padding: 1.75rem 2rem;
-      border: 1px solid #1a2333;
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 12px;
       margin-bottom: 0.6rem;
       transition: border-color 0.2s, background 0.2s;
     }
 
-    .event-row:hover { border-color: #2a3a50; background: #111827; }
+    .event-row:hover { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); }
 
     .ev-dow {
       display: block;
@@ -489,17 +581,17 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #3a4a60;
+      color: rgba(255,255,255,0.2);
       margin-bottom: 0.15rem;
     }
 
     .ev-num {
       display: block;
       font-size: 1.6rem;
-      font-weight: 800;
-      color: #3a4a60;
+      font-weight: 900;
+      color: rgba(255,255,255,0.2);
       line-height: 1.1;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .event-row.upcoming .ev-num { color: var(--corail); }
@@ -508,30 +600,31 @@
     .ev-year {
       display: block;
       font-size: 0.68rem;
-      color: #2a3a50;
+      color: rgba(255,255,255,0.12);
       margin-top: 0.2rem;
     }
 
     .ev-center h3 {
       font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--blanc);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
       margin-bottom: 0.35rem;
       line-height: 1.3;
     }
 
-    .event-row.past .ev-center h3 { color: #6b7a99; }
+    .event-row.past .ev-center h3 { color: rgba(255,255,255,0.3); }
 
     .ev-sub {
       font-size: 0.82rem;
-      color: #4a5a70;
+      color: rgba(255,255,255,0.28);
       margin-bottom: 0.25rem;
       line-height: 1.5;
     }
 
     .ev-speakers {
       font-size: 0.78rem;
-      color: #3a4a60;
+      color: rgba(255,255,255,0.18);
       font-style: italic;
     }
 
@@ -555,7 +648,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #2a3a50;
+      color: rgba(255,255,255,0.15);
     }
 
     .ev-btn {
@@ -568,7 +661,7 @@
       padding: 0.6rem 1.25rem;
       border-radius: 100px;
       font-size: 0.82rem;
-      font-weight: 600;
+      font-weight: 700;
       transition: background 0.2s;
     }
 
@@ -578,8 +671,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: #1a2333;
-      color: #6b7a99;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.4);
       text-decoration: none;
       padding: 0.6rem 1.25rem;
       border-radius: 100px;
@@ -588,72 +681,167 @@
       transition: all 0.2s;
     }
 
-    .ev-btn-ghost:hover { background: #2a3a50; color: #a0aec0; }
+    .ev-btn-ghost:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
 
-    /* ── LINKEDIN FEED ── */
-    .linkedin-section > div {
+    /* ── TROIS RAISONS ── */
+    .raisons-bg {
+      background: var(--navy-mid);
+      padding: 6rem 3rem;
+    }
+
+    .raisons-inner { max-width: 1100px; margin: 0 auto; }
+
+    .raisons-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+
+    .raisons-bg .section-tag { color: var(--corail); }
+
+    .raisons-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 0;
+      color: white;
+    }
+
+    .raisons-right p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+    }
+
+    .raisons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .raison-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 2.25rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .raison-num {
+      width: 44px;
+      height: 44px;
+      background: var(--corail);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .raison-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .raison-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+    }
+
+    /* ── LINKEDIN ── */
+    .linkedin {
+      background: var(--bg);
+      padding: 6rem 3rem;
+    }
+
+    .linkedin-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 5rem 3rem;
     }
 
-    .linkedin-section .lead { margin-bottom: 2.5rem; }
+    .linkedin .lead { margin-bottom: 2.5rem; }
 
     /* ── YOUTUBE ── */
-    .youtube-section {
-      background: var(--noir);
-      color: var(--blanc);
+    .youtube {
+      background: var(--navy);
+      color: white;
+      padding: 5rem 3rem;
       text-align: center;
-      padding: 4rem 3rem;
     }
 
-    .youtube-section .section-label { color: var(--corail); margin-bottom: 0.75rem; }
-    .youtube-section h2 { color: var(--blanc); margin-bottom: 1rem; }
+    .youtube .section-tag { color: var(--corail); justify-content: center; }
+    .youtube .section-tag::before { display: none; }
+    .youtube h2 { color: white; margin-bottom: 1rem; }
 
-    .youtube-section p {
-      color: #999;
-      margin-bottom: 2rem;
+    .youtube p {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2.5rem;
       font-size: 1rem;
     }
 
-    .youtube-btn {
+    .yt-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
       background: var(--corail);
       color: white;
       text-decoration: none;
-      padding: 0.85rem 2rem;
+      padding: 0.9rem 2rem;
       border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: 0.9rem;
       transition: background 0.2s, transform 0.15s;
     }
 
-    .youtube-btn:hover {
+    .yt-btn:hover {
       background: var(--corail-fonce);
       transform: translateY(-2px);
     }
 
-    /* ── FORMULAIRE DE CANDIDATURE ── */
-    .candidature-section {
+    /* ── JOIN (CTA) ── */
+    .join {
       background: var(--corail);
       color: white;
+      padding: 6rem 3rem;
     }
 
-    .candidature-section > div {
+    .join-inner {
       max-width: 700px;
       margin: 0 auto;
-      padding: 5rem 3rem;
       text-align: center;
     }
 
-    .candidature-section .section-label { color: rgba(255,255,255,0.7); }
-    .candidature-section h2 { color: white; }
+    .join .section-tag {
+      color: rgba(255,255,255,0.6);
+      justify-content: center;
+    }
 
-    .candidature-section .lead {
-      color: rgba(255,255,255,0.85);
-      margin: 0 auto 2.5rem;
+    .join .section-tag::before { background: rgba(255,255,255,0.4); }
+
+    .join h2 {
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .join .lead {
+      color: rgba(255,255,255,0.8);
+      margin: 0 auto 3rem;
+      max-width: 500px;
     }
 
     form { display: grid; gap: 1rem; text-align: left; }
@@ -666,169 +854,229 @@
 
     input, textarea {
       width: 100%;
-      padding: 0.85rem 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      font-size: 0.9rem;
       font-family: inherit;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
       color: white;
       outline: none;
-      transition: background 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.6); }
-    input:focus, textarea:focus { background: rgba(255,255,255,0.25); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
+
+    input:focus, textarea:focus {
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.2);
+    }
 
     textarea { resize: vertical; min-height: 110px; }
 
     .form-submit {
       background: var(--blanc);
       color: var(--corail);
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.9rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.95rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
+      font-family: inherit;
+      letter-spacing: -0.01em;
       transition: transform 0.15s, box-shadow 0.15s;
       margin-top: 0.5rem;
     }
 
     .form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--noir);
-      border-top: 1px solid #2a2a2a;
-      color: #666;
-      text-align: center;
-      padding: 2.5rem;
+      background: var(--navy);
+      color: rgba(255,255,255,0.35);
+      padding: 2.5rem 3rem;
       font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    footer a { color: var(--corail); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
     .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 1100px;
-      margin: 0 auto;
     }
 
-    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--corail); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      header { top: 0.5rem; padding: 0 1rem; }
-      .header-inner { gap: 1rem; padding: 0.5rem 0.5rem 0.5rem 1rem; border-radius: 100px; }
-      nav a:not(.nav-cta) { display: none; }
+      .nav { top: 0.5rem; padding: 0 1rem; }
+      .nav-inner { gap: 1rem; padding: 0.5rem 0.5rem 0.5rem 1rem; }
+      .nav-link:not(.nav-cta) { display: none; }
       .event-row { grid-template-columns: 100px 1fr; grid-template-rows: auto auto; gap: 1rem; padding: 1.25rem; }
       .ev-right { grid-column: 2; grid-row: 2; text-align: left; }
-      .agenda-inner { padding: 3.5rem 1.5rem; }
-      .hero { padding: 4rem 1.5rem 3.5rem; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3) { border-top: 1px solid #333; }
-      .stat-item:nth-child(4) { border-top: 1px solid #333; border-right: none; }
-      section { padding: 3.5rem 1.5rem; }
-      .steps { grid-template-columns: 1fr; }
       .raisons-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .raisons-grid { grid-template-columns: 1fr; }
-      .raisons-bg { padding: 3.5rem 1.5rem; }
+      .raisons-bg { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .next-band { padding: 1.25rem 1.5rem; }
+      .next-band-inner { flex-direction: column; gap: 1rem; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+      .concept { padding: 4rem 1.5rem; }
+      .concept-steps { grid-template-columns: 1fr; }
+      .themes { padding: 4rem 1.5rem; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .galerie { padding: 4rem 1.5rem; }
       .photo-grid { grid-template-columns: 1fr 1fr; }
       .photo-grid img:first-child { grid-column: span 2; }
       .photo-grid img:nth-child(4) { grid-column: 1; }
-      .themes-grid { grid-template-columns: 1fr 1fr; }
-      .event-card { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .agenda { padding: 4rem 1.5rem; }
+      .next-event { grid-template-columns: 1fr; gap: 1.5rem; }
+      .linkedin { padding: 4rem 1.5rem; }
+      .youtube { padding: 4rem 1.5rem; }
+      .join { padding: 4rem 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; gap: 1rem; }
-      .galerie-bg { padding: 3.5rem 1.5rem; }
-      .themes-bg > div, .event-section > div, .linkedin-section > div { padding: 3.5rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <a href="/" class="logo">
-        <img src="images/logo-black.svg" alt="Les Gones du Market'" style="height:36px;width:auto;display:block;" />
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="images/logo-black.svg" alt="Les Gones du Market'" />
       </a>
-      <nav>
-        <a href="#concept">Le concept</a>
-        <a href="#themes">Les thèmes</a>
-        <a href="#agenda">Événements</a>
-        <a href="#candidature" class="nav-cta">Nous rejoindre →</a>
-      </nav>
+      <div class="nav-links">
+        <a href="#concept" class="nav-link">Le concept</a>
+        <a href="#themes" class="nav-link">Les thèmes</a>
+        <a href="#agenda" class="nav-link">Événements</a>
+        <a href="#candidature" class="nav-link nav-cta">Nous rejoindre →</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge">Lyon · Fondé en 2023</div>
-    <h1>180 passionné·es<br>de marketing<br>à <em>Lyon.</em></h1>
-    <p>Le club qui réunit heads of marketing, chargé·es de com' et experts marketing lyonnais pour échanger, apprendre et grandir ensemble. Sans bullshit.</p>
-    <a href="#candidature" class="hero-cta">Demander à rejoindre le club</a>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Lyon · Fondé en 2023</div>
+      <h1>180 passionné·es<br />de marketing<br />à <em>Lyon.</em></h1>
+      <p class="hero-desc">Le club qui réunit heads of marketing, chargé·es de com' et experts marketing lyonnais pour échanger, apprendre et grandir ensemble. Sans bullshit.</p>
+      <div class="hero-actions">
+        <a href="#candidature" class="btn-primary">Demander à rejoindre →</a>
+        <a href="#agenda" class="btn-ghost">Voir les événements</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT EVENT BAND (countdown) -->
+  <div class="next-band">
+    <div class="next-band-inner">
+      <div>
+        <div class="next-band-label">Prochain départ dans</div>
+        <div class="next-band-title">Matinale : Hack IA Marketing</div>
+        <div class="next-band-meta">Juin 2026 · 9h–11h · Lyon</div>
+      </div>
+      <div class="countdown" id="countdown">
+        <div class="cd-block">
+          <div class="cd-num" id="cd-days">—</div>
+          <div class="cd-label">Jours</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-hours">—</div>
+          <div class="cd-label">Heures</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-min">—</div>
+          <div class="cd-label">Min</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-sec">—</div>
+          <div class="cd-label">Sec</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- STATS -->
   <div class="stats">
-    <div class="stat-item">
-      <div class="stat-number">180</div>
-      <div class="stat-label">Membres</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">8</div>
-      <div class="stat-label">Événements en 2025</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">6 sem.</div>
-      <div class="stat-label">Entre chaque masterclass</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">2023</div>
-      <div class="stat-label">Année de création</div>
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">180</div>
+        <div class="stat-desc">Membres</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-desc">Événements en 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6<span> sem.</span></div>
+        <div class="stat-desc">Entre chaque masterclass</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2023</div>
+        <div class="stat-desc">Année de création</div>
+      </div>
     </div>
   </div>
 
-  <!-- COMMENT ÇA MARCHE -->
-  <section id="concept">
-    <div class="section-label">Le concept</div>
-    <h2>Comment ça fonctionne</h2>
-    <p class="lead">Les Gones du Market' c'est un espace de confiance pour toutes les personnes qui font du marketing à Lyon. Pas un réseau de façade, une vraie communauté.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Un club sérieux, sans chichis</h3>
-        <p>Pas besoin d'un grand titre pour rejoindre les Gones. Ce qui compte, c'est ta curiosité, ton envie d'échanger et ton ancrage dans le marketing lyonnais.</p>
+  <!-- CONCEPT -->
+  <div class="concept" id="concept">
+    <div class="concept-inner">
+      <div class="section-tag">Le concept</div>
+      <h2>Trois temps,<br />une communauté.</h2>
+      <p class="lead">Les Gones du Market' c'est un espace de confiance pour toutes les personnes qui font du marketing à Lyon. Pas un réseau de façade, une vraie communauté.</p>
+      <div class="concept-steps">
+        <div class="concept-step">
+          <div class="step-num">01</div>
+          <h3>Un club sérieux, sans chichis</h3>
+          <p>Pas besoin d'un grand titre pour rejoindre les Gones. Ce qui compte, c'est ta curiosité, ton envie d'échanger et ton ancrage dans le marketing lyonnais.</p>
+        </div>
+        <div class="concept-step">
+          <div class="step-num">02</div>
+          <h3>Des formats variés toutes les 6 semaines</h3>
+          <p>Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année... chaque édition a son propre format.</p>
+        </div>
+        <div class="concept-step">
+          <div class="step-num">03</div>
+          <h3>Concret, sans langue de bois</h3>
+          <p>Pas de paillettes. Des retours d'expérience réels, des échanges entre pairs, et une entraide active au sein de la communauté marketing lyonnaise.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Des formats variés toutes les 6 semaines</h3>
-        <p>Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année... chaque édition a son propre format.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Concret, sans langue de bois</h3>
-        <p>Pas de paillettes. Des retours d'expérience réels, des échanges entre pairs, et une entraide active au sein de la communauté marketing lyonnaise.</p>
+      <div style="margin-top:2.5rem;">
+        <a href="#candidature" class="btn-primary">Rejoindre le club →</a>
       </div>
     </div>
-    <div style="margin-top:2.5rem;">
-      <a href="#candidature" class="hero-cta" style="background:var(--corail);color:white;display:inline-block;padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Rejoindre le club →</a>
-    </div>
-  </section>
+  </div>
 
-  <!-- THÈMES DES MASTERCLASSES -->
-  <div class="themes-bg" id="themes">
-    <div>
-      <div class="section-label">Nos sujets</div>
+  <!-- THÈMES (dark) -->
+  <div class="themes" id="themes">
+    <div class="themes-inner">
+      <div class="section-tag">Nos sujets</div>
       <h2>Les thèmes abordés</h2>
       <p class="lead">Des sujets concrets, choisis par et pour la communauté marketing lyonnaise.</p>
       <div class="themes-grid">
@@ -866,10 +1114,10 @@
     </div>
   </div>
 
-  <!-- GALERIE PHOTOS -->
-  <div class="galerie-bg">
+  <!-- GALERIE -->
+  <div class="galerie">
     <div class="galerie-inner">
-      <div class="section-label">La vie du club</div>
+      <div class="section-tag">La vie du club</div>
       <h2>Nos événements en images</h2>
       <div class="photo-grid">
         <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" />
@@ -886,7 +1134,7 @@
     <div class="raisons-inner">
       <div class="raisons-header">
         <div class="raisons-left">
-          <div class="section-label">Pourquoi nous rejoindre</div>
+          <div class="section-tag">Pourquoi nous rejoindre</div>
           <h2 class="raisons-title">Trois raisons<br>(et une bonne ambiance).</h2>
         </div>
         <div class="raisons-right">
@@ -911,16 +1159,16 @@
         </div>
       </div>
       <div style="margin-top:2.5rem;text-align:center;">
-        <a href="#candidature" style="display:inline-block;background:var(--corail);color:white;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Candidater pour rejoindre le club →</a>
-        <p style="margin-top:0.75rem;font-size:0.8rem;color:#666;">Sélection sur candidature · Réponse sous 48h</p>
+        <a href="#candidature" class="btn-primary">Candidater pour rejoindre le club →</a>
+        <p style="margin-top:0.75rem;font-size:0.8rem;color:rgba(255,255,255,0.3);">Sélection sur candidature · Réponse sous 48h</p>
       </div>
     </div>
   </div>
 
-  <!-- AGENDA COMPLET -->
-  <div class="agenda-section" id="agenda">
+  <!-- AGENDA -->
+  <div class="agenda" id="agenda">
     <div class="agenda-inner">
-      <div class="section-label">Prochaines masterclasses</div>
+      <div class="section-tag">Prochaines masterclasses</div>
       <h2>L'agenda 2026</h2>
 
       <div class="agenda-filters">
@@ -959,9 +1207,7 @@
             <h3>Acquisition & Média</h3>
             <p class="ev-sub">Afterwork · Lyon · Lieu à confirmer</p>
           </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
+          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
@@ -974,9 +1220,7 @@
             <h3>Pitch ton plan marketing</h3>
             <p class="ev-sub">Petit-déjeuner · Lyon · Lieu à confirmer</p>
           </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
+          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
@@ -989,9 +1233,7 @@
             <h3>Brand</h3>
             <p class="ev-sub">Afterwork · Lyon · Lieu à confirmer</p>
           </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
+          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
@@ -1004,9 +1246,7 @@
             <h3>Déjeuner de fin d'année</h3>
             <p class="ev-sub">Déjeuner · Lyon · Lieu à confirmer</p>
           </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
+          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="ev-group-label" data-group="past">Déjà organisés en 2026</div>
@@ -1144,9 +1384,9 @@
   </div>
 
   <!-- LINKEDIN FEED -->
-  <div class="linkedin-section">
-    <div>
-      <div class="section-label">Communauté</div>
+  <div class="linkedin">
+    <div class="linkedin-inner">
+      <div class="section-tag">Communauté</div>
       <h2>Nos derniers posts</h2>
       <p class="lead">Suivez l'actualité du club sur LinkedIn avec <strong>#lesgonesdumarket</strong></p>
       <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
@@ -1154,27 +1394,26 @@
   </div>
 
   <!-- YOUTUBE -->
-  <div class="youtube-section">
-    <div class="section-label">Replays</div>
+  <div class="youtube">
+    <div class="section-tag">Replays</div>
     <h2>Nos masterclasses en vidéo</h2>
     <p>Retrouvez les replays et extraits de nos événements sur notre chaîne YouTube.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank" class="youtube-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.8 3.6 12 3.6 12 3.6s-7.8 0-9.5.5c-1 .3-1.7 1.1-2 2.1C0 7.9 0 12 0 12s0 4.1.5 5.8c.3 1 1 1.8 2 2.1 1.7.5 9.5.5 9.5.5s7.8 0 9.5-.5c1-.3 1.7-1.1 2-2.1.5-1.7.5-5.8.5-5.8s0-4.1-.5-5.8zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+      <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank" class="yt-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.8 3.6 12 3.6 12 3.6s-7.8 0-9.5.5c-1 .3-1.7 1.1-2 2.1C0 7.9 0 12 0 12s0 4.1.5 5.8c.3 1 1 1.8 2 2.1 1.7.5 9.5.5 9.5.5s7.8 0 9.5-.5c1-.3 1.7-1.1 2-2.1.5-1.7.5-5.8.5-5.8s0-4.1-.5-5.8zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
         Voir la chaîne YouTube
       </a>
-      <a href="#candidature" class="youtube-btn" style="background:white;color:var(--corail);">Rejoindre le club →</a>
+      <a href="#candidature" class="yt-btn" style="background:rgba(255,255,255,0.12);">Rejoindre le club →</a>
     </div>
   </div>
 
-  <!-- FORMULAIRE DE CANDIDATURE -->
-  <div class="candidature-section" id="candidature">
-    <div>
-      <div class="section-label">Nous rejoindre</div>
+  <!-- JOIN / CANDIDATURE -->
+  <div class="join" id="candidature">
+    <div class="join-inner">
+      <div class="section-tag">Nous rejoindre</div>
       <h2>Candidater pour rejoindre le club</h2>
       <p class="lead">Tu travailles dans le marketing à Lyon ? Envoie-nous ta candidature, on revient vers toi rapidement.</p>
 
-      <!-- Remplace l'action par ton URL Formspree : https://formspree.io/f/XXXXXXXX -->
       <form action="https://formspree.io/f/XXXXXXXX" method="POST">
         <div class="form-row">
           <input type="text" name="prenom" placeholder="Prénom" required />
@@ -1186,7 +1425,7 @@
           <input type="text" name="poste" placeholder="Poste / Titre" required />
         </div>
         <textarea name="message" placeholder="En quelques mots, parle-nous de ton parcours marketing et de ce qui t'attire dans le club…"></textarea>
-        <button type="submit" class="form-submit">Envoyer ma candidature</button>
+        <button type="submit" class="form-submit">Envoyer ma candidature →</button>
       </form>
     </div>
   </div>
@@ -1203,19 +1442,38 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.dataset.filter;
-        document.querySelectorAll('.event-row').forEach(row => {
-          row.style.display = (filter === 'all' || row.dataset.status === filter) ? '' : 'none';
-        });
-        document.querySelectorAll('.ev-group-label').forEach(label => {
-          label.style.display = (filter === 'all' || label.dataset.group === filter) ? '' : 'none';
-        });
+  // Agenda filters
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.event-row').forEach(row => {
+        row.style.display = (filter === 'all' || row.dataset.status === filter) ? '' : 'none';
+      });
+      document.querySelectorAll('.ev-group-label').forEach(label => {
+        label.style.display = (filter === 'all' || label.dataset.group === filter) ? '' : 'none';
       });
     });
+  });
+
+  // Countdown to next event (target: Juin 2026 → set to June 24, 2026 09:00)
+  const target = new Date('2026-06-24T09:00:00');
+  function tick() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+    document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
   </script>
 
   <script type="text/javascript">
