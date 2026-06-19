@@ -4,56 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espace membres — Les Gones du Market'</title>
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --corail: #E8614A;
+      --corail:     #E8614A;
       --corail-fonce: #C94D38;
-      --noir: #1A1A1A;
-      --gris-clair: #F5F4F2;
-      --gris: #888;
-      --blanc: #FFFFFF;
+      --navy:       #0a1a2b;
+      --navy-mid:   #0f2540;
+      --slate:      #464D72;
+      --bg:         #f8f9ff;
+      --bg-muted:   #f0f1fc;
+      --blanc:      #ffffff;
+      --text-muted: #718096;
+      --border:     #e2e8f0;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: var(--noir);
-      background: var(--gris-clair);
-      line-height: 1.6;
+      font-family: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--slate);
+      background: var(--navy);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ── MOT DE PASSE ── */
     #password-gate {
       position: fixed;
       inset: 0;
-      background: var(--noir);
+      background: var(--navy);
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    #password-gate .logo-icon img {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: block;
-      margin: 0 auto 1rem;
+      gap: 1.25rem;
     }
 
     #password-gate h2 {
       color: white;
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 800;
       text-align: center;
+      letter-spacing: -0.02em;
     }
 
     #password-gate p {
-      color: #888;
+      color: rgba(255,255,255,0.45);
       font-size: 0.85rem;
       text-align: center;
     }
@@ -68,19 +68,19 @@
 
     #password-input {
       padding: 0.85rem 1rem;
-      border: none;
-      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
       font-size: 1rem;
       font-family: inherit;
-      background: #222;
+      background: rgba(255,255,255,0.06);
       color: white;
       outline: none;
       text-align: center;
       letter-spacing: 0.05em;
-      border: 1px solid #333;
       transition: border-color 0.2s;
     }
 
+    #password-input::placeholder { color: rgba(255,255,255,0.35); }
     #password-input:focus { border-color: var(--corail); }
     #password-input.error { border-color: #e74c3c; }
 
@@ -88,7 +88,7 @@
       background: var(--corail);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 0.85rem;
       font-size: 0.95rem;
       font-weight: 700;
@@ -109,47 +109,51 @@
     /* ── CONTENU PRINCIPAL ── */
     #content { display: none; }
 
-    header {
-      background: var(--blanc);
-      border-bottom: 1px solid #E8E8E8;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 3rem;
+    /* ── NAV PILL ── */
+    .nav {
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top: 1rem;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+      background: transparent;
+      pointer-events: none;
     }
 
-    .logo {
+    .nav-inner {
+      background: white;
+      border-radius: 100px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.15);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 2rem;
+      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+      pointer-events: all;
+    }
+
+    .nav-logo img { height: 36px; width: auto; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
       text-decoration: none;
+      color: var(--navy);
+      font-size: 0.875rem;
+      font-weight: 500;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      white-space: nowrap;
     }
 
-    .logo-icon img {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      display: block;
-    }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; font-weight: 700; }
 
-    .logo-text {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--noir);
-    }
-
-    .logo-text span { color: var(--corail); }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .membres-badge {
+    .nav-badge {
       background: #FEF0ED;
       color: var(--corail);
       font-size: 0.7rem;
@@ -162,19 +166,25 @@
 
     .btn-logout {
       font-size: 0.8rem;
-      color: var(--gris);
+      font-weight: 600;
+      color: var(--navy);
+      opacity: 0.5;
       cursor: pointer;
       background: none;
       border: none;
       font-family: inherit;
-      text-decoration: underline;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
     }
+
+    .btn-logout:hover { opacity: 1; }
 
     /* ── PAGE HERO ── */
     .page-hero {
-      background: var(--corail);
+      background: var(--navy-mid);
       color: white;
-      padding: 3.5rem 3rem;
+      padding: 4rem 3rem 3.5rem;
     }
 
     .page-hero-inner {
@@ -182,25 +192,48 @@
       margin: 0 auto;
     }
 
+    .page-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--corail);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero-tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--corail);
+    }
+
     .page-hero h1 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.5rem;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: white;
+      margin-bottom: 0.75rem;
     }
 
     .page-hero p {
-      opacity: 0.85;
+      color: rgba(255,255,255,0.55);
       font-size: 1rem;
+      max-width: 580px;
     }
 
     /* ── BARRE DE RECHERCHE + FILTRES ── */
     .filters-bar {
       background: var(--blanc);
-      border-bottom: 1px solid #eee;
-      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 3rem;
       position: sticky;
-      top: 65px;
+      top: 72px;
       z-index: 99;
     }
 
@@ -217,46 +250,44 @@
       flex: 1;
       min-width: 220px;
       padding: 0.6rem 1rem;
-      border: 1px solid #ddd;
+      border: 1px solid var(--border);
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-family: inherit;
+      color: var(--navy);
       outline: none;
       transition: border-color 0.2s;
+      background: var(--bg);
     }
 
-    #search-input:focus { border-color: var(--corail); }
+    #search-input:focus { border-color: var(--corail); background: white; }
 
-    .filter-tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+    .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     .filter-tab {
-      padding: 0.45rem 1rem;
+      padding: 0.4rem 1rem;
       border-radius: 100px;
-      border: 1.5px solid #ddd;
+      border: 1px solid var(--border);
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      background: white;
-      color: #666;
+      background: transparent;
+      color: var(--text-muted);
       font-family: inherit;
       transition: all 0.15s;
     }
 
-    .filter-tab:hover { border-color: var(--corail); color: var(--corail); }
+    .filter-tab:hover { border-color: var(--navy); color: var(--navy); }
 
     .filter-tab.active {
-      background: var(--corail);
-      border-color: var(--corail);
+      background: var(--navy);
+      border-color: var(--navy);
       color: white;
     }
 
     .results-count {
       font-size: 0.8rem;
-      color: var(--gris);
+      color: var(--text-muted);
       white-space: nowrap;
     }
 
@@ -270,14 +301,14 @@
     .category-block { margin-bottom: 3rem; }
 
     .category-title {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--corail);
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid #e8e8e8;
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -299,14 +330,17 @@
 
     .card {
       background: var(--blanc);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
       border-top: 3px solid transparent;
       transition: box-shadow 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(10,26,43,0.08);
       transform: translateY(-2px);
     }
 
@@ -315,7 +349,7 @@
     .card[data-type="conseil"] { border-top-color: #10B981; }
 
     .card-type {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -327,54 +361,50 @@
     .card[data-type="conseil"] .card-type { color: #10B981; }
 
     .card-sujet {
-      font-size: 0.95rem;
-      font-weight: 700;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
       margin-bottom: 0.5rem;
       line-height: 1.3;
     }
 
     .card-contenu {
       font-size: 0.82rem;
-      color: #555;
+      color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 0.75rem;
+      flex: 1;
     }
 
     .card-contact {
       font-size: 0.75rem;
-      color: var(--gris);
-      border-top: 1px solid #f0f0f0;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
       padding-top: 0.6rem;
       word-break: break-word;
     }
 
-    .card-contact a {
-      color: var(--corail);
-      text-decoration: none;
-    }
-
+    .card-contact a { color: var(--corail); text-decoration: none; }
     .card-contact a:hover { text-decoration: underline; }
 
     .card-date {
-      font-size: 0.68rem;
-      color: #bbb;
+      font-size: 0.65rem;
+      color: rgba(10,26,43,0.25);
       margin-top: 0.4rem;
     }
 
     .no-results {
       text-align: center;
       padding: 4rem 2rem;
-      color: var(--gris);
+      color: var(--text-muted);
       font-size: 0.95rem;
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--noir);
-      border-top: 1px solid #2a2a2a;
-      color: #666;
-      text-align: center;
-      padding: 2rem;
+      background: var(--navy);
+      color: rgba(255,255,255,0.35);
+      padding: 2rem 3rem;
       font-size: 0.8rem;
     }
 
@@ -394,10 +424,11 @@
     }
 
     @media (max-width: 640px) {
-      header, .filters-bar, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .page-hero { padding: 2.5rem 1.5rem; }
+      .filters-bar, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-hero { padding: 3rem 1.5rem; }
       .cards-grid { grid-template-columns: 1fr; }
       .filters-inner { flex-direction: column; align-items: stretch; }
+      .nav-link:not(.active) { display: none; }
     }
   </style>
 </head>
@@ -418,19 +449,25 @@
   <!-- CONTENU PRINCIPAL -->
   <div id="content">
 
-    <header>
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Les Gones du Market'" style="height:44px;width:auto;display:block;" />
-      </a>
-      <div class="header-right">
-        <span class="membres-badge">Espace membres</span>
-        <button class="btn-logout" onclick="logout()">Se déconnecter</button>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="index-v2.html" class="nav-logo">
+          <img src="images/logo-black.svg" alt="Les Gones du Market'" />
+        </a>
+        <div class="nav-links">
+          <a href="index-v2.html#concept" class="nav-link">Le concept</a>
+          <a href="index-v2.html#themes" class="nav-link">Les thèmes</a>
+          <a href="index-v2.html#agenda" class="nav-link">Événements</a>
+          <span class="nav-link active">Espace membres</span>
+          <button class="btn-logout" onclick="logout()">Se déconnecter →</button>
+        </div>
       </div>
-    </header>
+    </nav>
 
     <div class="page-hero">
       <div class="page-hero-inner">
-        <h1>Bons plans & recommandations</h1>
+        <div class="page-hero-tag">Espace membres</div>
+        <h1>Bons plans &<br>recommandations</h1>
         <p>Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.</p>
       </div>
     </div>
@@ -448,7 +485,9 @@
       </div>
     </div>
 
-    <div class="main" id="cards-container"></div>
+    <div style="background: var(--bg);">
+      <div class="main" id="cards-container"></div>
+    </div>
 
     <footer>
       <div class="footer-inner">
