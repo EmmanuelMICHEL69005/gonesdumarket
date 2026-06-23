@@ -31,7 +31,7 @@
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { font-size: 18px; scroll-behavior: smooth; }
 
     body {
       font-family: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -90,7 +90,7 @@
     .nav-link {
       text-decoration: none;
       color: var(--navy);
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-weight: 500;
       letter-spacing: 0.01em;
       transition: opacity 0.2s;
@@ -149,7 +149,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -181,7 +181,7 @@
     }
 
     .hero-desc {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--w65);
       max-width: 520px;
       line-height: 1.7;
@@ -202,7 +202,7 @@
       background: var(--corail);
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 1rem;
       padding: 0.85rem 1.75rem;
       border-radius: 8px;
       text-decoration: none;
@@ -219,7 +219,7 @@
       align-items: center;
       gap: 0.5rem;
       color: var(--w65);
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       border-bottom: 1px solid var(--w20);
@@ -250,7 +250,7 @@
     }
 
     .next-band-label {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -259,13 +259,13 @@
     }
 
     .next-band-title {
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: -0.01em;
     }
 
     .next-band-meta {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       opacity: 0.8;
       margin-top: 0.2rem;
     }
@@ -288,7 +288,7 @@
     }
 
     .cd-label {
-      font-size: 0.55rem;
+      font-size: 0.62rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -335,7 +335,7 @@
     .stat-num span { color: var(--corail); }
 
     .stat-desc {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -347,7 +347,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -383,7 +383,7 @@
     .community-strip { position: relative; height: 480px; overflow: hidden; }
     .community-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
     .community-strip-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,26,43,0.75) 0%, rgba(10,26,43,0.05) 55%); display: flex; align-items: flex-end; padding: 2.5rem 3rem; }
-    .community-strip-caption { color: rgba(255,255,255,0.9); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; font-family: 'Satoshi', sans-serif; }
+    .community-strip-caption { color: rgba(255,255,255,0.9); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; font-family: 'Satoshi', sans-serif; }
     .community-strip-caption em { color: var(--corail); font-style: normal; }
     @media (max-width: 768px) { .community-strip { height: 320px; } .community-strip-overlay { padding: 1.5rem; } }
 
@@ -430,7 +430,7 @@
     }
 
     .concept-step h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--navy);
       letter-spacing: -0.02em;
@@ -438,7 +438,7 @@
     }
 
     .concept-step p {
-      font-size: 0.875rem;
+      font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.7;
     }
@@ -478,7 +478,7 @@
     .theme-card:hover { background: var(--w6); }
 
     .theme-date {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -496,7 +496,7 @@
     }
 
     .theme-card p {
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       color: var(--w45);
       line-height: 1.6;
     }
@@ -551,16 +551,16 @@
     .temoignages { background: var(--navy-mid); padding: 6rem 3rem; }
     .temoignages-inner { max-width: 1100px; margin: 0 auto; }
     .temoignages h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-    .temoignages .section-intro { color: var(--w45); font-size: 0.9rem; margin-bottom: 3rem; }
+    .temoignages .section-intro { color: var(--w45); font-size: 1rem; margin-bottom: 3rem; }
     .temoignages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .temoignage-card { background: var(--w6); border: 1px solid var(--w15); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
     .temoignage-quote { font-size: 0.95rem; line-height: 1.75; color: var(--w80); font-style: italic; flex: 1; position: relative; }
     .temoignage-quote::before { content: '\201C'; font-size: 3rem; color: var(--corail); line-height: 1; display: block; margin-bottom: -0.5rem; font-style: normal; }
     .temoignage-author { display: flex; align-items: center; gap: 0.9rem; }
-    .temoignage-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--corail); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; color: white; flex-shrink: 0; }
-    .temoignage-name { font-weight: 700; font-size: 0.85rem; color: white; }
-    .temoignage-title { font-size: 0.75rem; color: var(--w45); margin-top: 0.15rem; }
-    .temoignage-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--corail); font-weight: 700; margin-bottom: 0.25rem; }
+    .temoignage-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--corail); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; color: white; flex-shrink: 0; }
+    .temoignage-name { font-weight: 700; font-size: 0.95rem; color: white; }
+    .temoignage-title { font-size: 0.8rem; color: var(--w45); margin-top: 0.15rem; }
+    .temoignage-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--corail); font-weight: 700; margin-bottom: 0.25rem; }
     @media (max-width: 768px) { .temoignages-grid { grid-template-columns: 1fr; } }
 
     /* ── AGENDA ── */
@@ -587,7 +587,7 @@
       color: var(--text-muted);
       padding: 0.5rem 1.25rem;
       border-radius: 100px;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
@@ -598,7 +598,7 @@
     .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); font-weight: 700; }
 
     .ev-group-label {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -627,7 +627,7 @@
 
     .ev-dow {
       display: block;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -649,13 +649,13 @@
 
     .ev-year {
       display: block;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       color: rgba(10,26,43,0.3);
       margin-top: 0.2rem;
     }
 
     .ev-center h3 {
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--navy);
       letter-spacing: -0.02em;
@@ -666,21 +666,21 @@
     .event-row.past .ev-center h3 { color: rgba(10,26,43,0.35); }
 
     .ev-sub {
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 0.25rem;
       line-height: 1.5;
     }
 
     .ev-speakers {
-      font-size: 0.78rem;
+      font-size: 0.875rem;
       color: rgba(10,26,43,0.35);
       font-style: italic;
     }
 
     .ev-badge {
       display: inline-block;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -694,7 +694,7 @@
     .ev-right { text-align: right; white-space: nowrap; }
 
     .ev-status {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -710,7 +710,7 @@
       text-decoration: none;
       padding: 0.6rem 1.25rem;
       border-radius: 100px;
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       font-weight: 700;
       transition: background 0.2s;
     }
@@ -726,7 +726,7 @@
       text-decoration: none;
       padding: 0.6rem 1.25rem;
       border-radius: 100px;
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       font-weight: 600;
       transition: all 0.2s;
     }
@@ -792,14 +792,14 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 1rem;
       letter-spacing: 0.05em;
       margin-bottom: 1.25rem;
       flex-shrink: 0;
     }
 
     .raison-card h3 {
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       font-weight: 800;
       margin-bottom: 0.6rem;
       line-height: 1.3;
@@ -808,7 +808,7 @@
     }
 
     .raison-card p {
-      font-size: 0.875rem;
+      font-size: 1rem;
       color: var(--w45);
       line-height: 1.65;
     }
@@ -855,7 +855,7 @@
       padding: 0.9rem 2rem;
       border-radius: 8px;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 1rem;
       transition: background 0.2s, transform 0.15s;
     }
 
@@ -932,7 +932,7 @@
     }
 
     .faq-a {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.7;
       padding-bottom: 1.25rem;
@@ -945,14 +945,14 @@
     .processus { background: var(--blanc); padding: 6rem 3rem; }
     .processus-inner { max-width: 1000px; margin: 0 auto; }
     .processus h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--navy); letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-    .processus .section-intro { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3.5rem; }
+    .processus .section-intro { color: var(--text-muted); font-size: 1rem; margin-bottom: 3.5rem; }
     .processus-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
     .processus-steps::before { content: ''; position: absolute; top: 22px; left: calc(12.5% + 22px); right: calc(12.5% + 22px); height: 2px; background: var(--border); z-index: 0; }
     .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
-    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: white; font-weight: 900; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; flex-shrink: 0; }
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: white; font-weight: 900; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; flex-shrink: 0; }
     .step:last-child .step-num { background: var(--corail); }
-    .step-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 0.4rem; }
-    .step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+    .step-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
     @media (max-width: 768px) {
       .processus-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .processus-steps::before { display: none; }
@@ -1007,7 +1007,7 @@
       padding: 0.9rem 1rem;
       border: 1.5px solid var(--w20);
       border-radius: 10px;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-family: inherit;
       background: var(--w15);
       color: white;
@@ -1049,7 +1049,7 @@
       background: var(--navy);
       color: var(--w35);
       padding: 2.5rem 3rem;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       border-top: 1px solid var(--w6);
     }
 
@@ -1181,8 +1181,8 @@
         <div class="stat-desc">Membres</div>
       </div>
       <div class="stat">
-        <div class="stat-num">6</div>
-        <div class="stat-desc">Événements par an</div>
+        <div class="stat-num">8</div>
+        <div class="stat-desc">Éditions en 2025</div>
       </div>
       <div class="stat">
         <div class="stat-num">6</div>
@@ -1217,8 +1217,8 @@
         </div>
         <div class="concept-step">
           <div class="step-num">02</div>
-          <h3>Des formats variés toutes les 6 semaines</h3>
-          <p>Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année... chaque édition a son propre format.</p>
+          <h3>Des formats variés</h3>
+          <p>Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année… Chaque édition a son propre format.</p>
         </div>
         <div class="concept-step">
           <div class="step-num">03</div>
@@ -1306,7 +1306,7 @@
           <h2 class="raisons-title">Trois raisons<br>(et une bonne ambiance).</h2>
         </div>
         <div class="raisons-right">
-          <p>Les Gones du Market', c'est plus qu'un événement toutes les 6 semaines. C'est un endroit où les marketeurs lyonnais progressent ensemble, sans chichis et sans langue de bois.</p>
+          <p>Les Gones du Market', c'est plus qu'un événement . C'est un endroit où les marketeurs lyonnais progressent ensemble, sans chichis et sans langue de bois.</p>
         </div>
       </div>
       <div class="raisons-grid">
