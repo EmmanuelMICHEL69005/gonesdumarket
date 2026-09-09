@@ -1,0 +1,10 @@
+# Système
+.DS_Store
+**/.DS_Store
+
+# Archives / gros fichiers hors site
+*.zip
+
+# Réglages locaux Claude Code
+.claude/settings.local.json
+.claude/launch.json

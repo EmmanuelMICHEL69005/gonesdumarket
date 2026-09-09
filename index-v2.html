@@ -4,7 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Gones du Market' · Club marketing lyonnais</title>
-  <link rel="preconnect" href="https://api.fontshare.com" />
+  <meta name="google-site-verification" content="zRjsic6LWotRy7oeAsCIwBWLqNuXnJYjLoC9CalU2GU" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Les Gones du Market' réunissent +200 dirigeants et responsables marketing lyonnais : afterworks, masterclasses et un WhatsApp actif entre les événements. Sélection sur candidature." />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.curator.io" />
+  <link rel="dns-prefetch" href="https://cdn.curator.io" />
+  <link rel="dns-prefetch" href="https://tally.so" />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -65,14 +74,14 @@
     }
 
     .nav-logo img {
-      height: 44px;
+      height: 76px;
       width: auto;
       display: block;
       mix-blend-mode: multiply;
     }
 
     .footer-logo img {
-      height: 40px;
+      height: 48px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1);
@@ -143,6 +152,33 @@
       margin: 0 auto;
       width: 100%;
       position: relative;
+    }
+
+    /* ── BANDEAU MARQUE (≈ 1/3 et 2/3 de la page) ── */
+    .brand-divider {
+      background: var(--corail);
+      padding: 2.75rem 2rem;
+      text-align: center;
+    }
+    .brand-divider img {
+      height: 210px;
+      width: auto;
+      max-width: 92%;
+      display: inline-block;
+      filter: brightness(0) invert(1);
+    }
+    .brand-divider p {
+      margin: 1.1rem 0 0;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+    @media (max-width: 768px) {
+      .brand-divider { padding: 2.25rem 1.5rem; }
+      .brand-divider img { height: 120px; }
+      .brand-divider p { font-size: 0.82rem; letter-spacing: 0.12em; }
     }
 
     .hero-tag {
@@ -994,6 +1030,16 @@
       max-width: 500px;
     }
 
+    .tally-embed {
+      background: var(--blanc);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+      text-align: left;
+    }
+    .tally-embed iframe { display: block; width: 100%; border: 0; }
+    @media (max-width: 768px) { .tally-embed { padding: 1.25rem; } }
+
     form { display: grid; gap: 1rem; text-align: left; }
 
     .form-row {
@@ -1076,15 +1122,19 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      html, body { overflow-x: hidden; }
       .nav { top: 0.5rem; padding: 0 1rem; }
-      .nav-inner { gap: 1rem; padding: 0.5rem 0.5rem 0.5rem 1rem; }
+      .nav-inner { gap: 0.75rem; padding: 0.4rem 0.4rem 0.4rem 0.9rem; }
+      .nav-logo img { height: 48px; }
       .nav-link:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 0.55rem 1rem; font-size: 0.85rem; }
       .event-row { grid-template-columns: 100px 1fr; grid-template-rows: auto auto; gap: 1rem; padding: 1.25rem; }
       .ev-right { grid-column: 2; grid-row: 2; text-align: left; }
       .raisons-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .raisons-grid { grid-template-columns: 1fr; }
       .raisons-bg { padding: 4rem 1.5rem; }
-      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .hero h1 { font-size: clamp(1.9rem, 8.5vw, 3.25rem); overflow-wrap: anywhere; }
       .next-band { padding: 1.25rem 1.5rem; }
       .next-band-inner { flex-direction: column; gap: 1rem; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -1116,7 +1166,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="images/logo-cropped.png" alt="Les Gones du Market'" />
+        <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" fetchpriority="high" decoding="async" />
       </a>
       <div class="nav-links">
         <a href="#concept" class="nav-link">Le concept</a>
@@ -1146,8 +1196,8 @@
     <div class="next-band-inner">
       <div>
         <div class="next-band-label">Prochain départ dans</div>
-        <div class="next-band-title">Matinale : Hack IA Marketing</div>
-        <div class="next-band-meta">Juin 2026 · 9h–11h · Lyon</div>
+        <div class="next-band-title">Afterwork de rentrée</div>
+        <div class="next-band-meta">Jeudi 24 septembre 2026 · Lyon</div>
       </div>
       <div class="countdown" id="countdown">
         <div class="cd-block">
@@ -1197,7 +1247,7 @@
 
   <!-- BANDEAU COMMUNAUTÉ -->
   <div class="community-strip">
-    <img src="images/afterwork-2026-1.jpg" alt="La communauté des Gones du Market'" />
+    <img src="images/afterwork-2026-1.jpg" alt="La communauté des Gones du Market'" width="1920" height="1280" loading="lazy" decoding="async" />
     <div class="community-strip-overlay">
       <div class="community-strip-caption"><em>+200 marketeurs lyonnais,</em> un WhatsApp, des événements. Une vraie communauté.</div>
     </div>
@@ -1232,6 +1282,12 @@
     </div>
   </div>
 
+  <!-- BANDEAU MARQUE (≈ 1/3) -->
+  <div class="brand-divider">
+    <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
+    <p>Le club marketing lyonnais</p>
+  </div>
+
   <!-- THÈMES (dark) -->
   <div class="themes" id="themes">
     <div class="themes-inner">
@@ -1240,8 +1296,13 @@
       <p class="lead">Des sujets concrets, choisis par et pour la communauté marketing lyonnaise.</p>
       <div class="themes-grid">
         <div class="theme-card">
+          <div class="theme-date">Juin 2026</div>
+          <h4>Matinée IA Pratique</h4>
+          <p>Trois ateliers en petit comité, laptop sur la table : GEO et visibilité dans les moteurs génératifs, construction d'un agent IA utile, et vibe coding. Repartir avec des compétences activables dès le lendemain.</p>
+        </div>
+        <div class="theme-card">
           <div class="theme-date">Avril 2026</div>
-          <h4>Stack Marketing & IA</h4>
+          <h4>Stack Marketing &amp; IA</h4>
           <p>La stack ne se consolide pas, elle se stratifie. SaaS pour l'orchestration, outils IA-natifs pour la création, solutions maison pour la différenciation. La vraie question : est-ce que ça vaut vraiment son coût ?</p>
         </div>
         <div class="theme-card">
@@ -1266,7 +1327,7 @@
         </div>
         <div class="theme-card">
           <div class="theme-date">Octobre 2025</div>
-          <h4>Microcanaux & Intent Data</h4>
+          <h4>Microcanaux &amp; Intent Data</h4>
           <p>Signature email comme micro-canal mesurable, micro-influenceurs comme levier d'amplification authentique, Intent Data pour transformer les signaux faibles en actions à fort impact. Faire plus avec moins.</p>
         </div>
       </div>
@@ -1279,20 +1340,20 @@
       <div class="section-tag">La vie du club</div>
       <h2>Nos événements en images</h2>
       <div class="photo-grid">
-        <img src="images/afterwork-2026-1.jpg" alt="La salle lors d'un afterwork" class="wide" />
-        <img src="images/afterwork-2026-2.jpeg" alt="Panel de speakers" />
-        <img src="images/wa-rooftop.jpeg" alt="Photo de groupe rooftop" class="wide" />
-        <img src="images/wa-workshop.jpeg" alt="Workshop IA Marketing" />
-        <img src="images/wa-atelier.jpeg" alt="Atelier en table ronde" />
-        <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" class="wide" />
-        <img src="images/wa-members.jpeg" alt="Échanges entre membres" />
-        <img src="images/wa-networking.jpeg" alt="Networking debout" />
-        <img src="images/event-2.jpeg" alt="Atelier des Gones" />
-        <img src="images/wa-event-juin.jpeg" alt="Événement juin 2026" />
-        <img src="images/wa-echanges.jpeg" alt="Échanges en groupe" />
-        <img src="images/event-3.jpeg" alt="Masterclass Employee Advocacy" class="wide" />
-        <img src="images/event-4.jpeg" alt="Masterclass en atelier" />
-        <img src="images/event-5.jpeg" alt="Déjeuner de fin d'année" />
+        <img src="images/afterwork-2026-1.jpg" alt="La salle lors d'un afterwork" class="wide" loading="lazy" decoding="async" />
+        <img src="images/afterwork-2026-2.jpeg" alt="Panel de speakers" loading="lazy" decoding="async" />
+        <img src="images/wa-rooftop.jpeg" alt="Photo de groupe rooftop" class="wide" loading="lazy" decoding="async" />
+        <img src="images/wa-workshop.jpeg" alt="Workshop IA Marketing" loading="lazy" decoding="async" />
+        <img src="images/wa-atelier.jpeg" alt="Atelier en table ronde" loading="lazy" decoding="async" />
+        <img src="images/event-1.jpeg" alt="Conférence des Gones du Market'" class="wide" loading="lazy" decoding="async" />
+        <img src="images/wa-members.jpeg" alt="Échanges entre membres" loading="lazy" decoding="async" />
+        <img src="images/wa-networking.jpeg" alt="Networking debout" loading="lazy" decoding="async" />
+        <img src="images/event-2.jpeg" alt="Atelier des Gones" loading="lazy" decoding="async" />
+        <img src="images/wa-event-juin.jpeg" alt="Événement juin 2026" loading="lazy" decoding="async" />
+        <img src="images/wa-echanges.jpeg" alt="Échanges en groupe" loading="lazy" decoding="async" />
+        <img src="images/event-3.jpeg" alt="Masterclass Employee Advocacy" class="wide" loading="lazy" decoding="async" />
+        <img src="images/event-4.jpeg" alt="Masterclass en atelier" loading="lazy" decoding="async" />
+        <img src="images/event-5.jpeg" alt="Déjeuner de fin d'année" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
@@ -1378,7 +1439,7 @@
             <div>
               <div class="temoignage-label">Témoignage fictif</div>
               <div class="temoignage-name">Gary Vaynerchuk</div>
-              <div class="temoignage-title">CEO VaynerMedia · Entrepreneur & speaker</div>
+              <div class="temoignage-title">CEO VaynerMedia · Entrepreneur &amp; speaker</div>
             </div>
           </div>
         </div>
@@ -1405,13 +1466,13 @@
 
         <div class="event-row next-up upcoming" data-status="upcoming">
           <div class="ev-left">
-            <span class="ev-dow">Juin</span>
-            
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">24 sept.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
-            <h3>Matinale : Hack IA Marketing</h3>
-            <p class="ev-sub">Matinale · 9h–11h · Lyon · Date à confirmer</p>
+            <h3>Afterwork de rentrée</h3>
+            <p class="ev-sub">Afterwork · Lyon · On se retrouve et on accueille les nouveaux</p>
             <span class="ev-badge badge-special">Prochain événement</span>
           </div>
           <div class="ev-right">
@@ -1421,52 +1482,65 @@
 
         <div class="event-row upcoming" data-status="upcoming">
           <div class="ev-left">
-            <span class="ev-dow">Sept.</span>
-            
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">8 oct.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
-            <h3>Acquisition & Média</h3>
-            <p class="ev-sub">Afterwork · Lyon · Lieu à confirmer</p>
+            <h3>Talk REX avec Léa Gueniffet</h3>
+            <p class="ev-sub">Acquisition payante : ce qui marche vraiment et ce qui crame votre budget</p>
           </div>
           <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
           <div class="ev-left">
-            <span class="ev-dow">Oct.</span>
-            
+            <span class="ev-dow">Mardi</span>
+            <span class="ev-num">27 oct.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
-            <h3>Pitch ton plan marketing</h3>
-            <p class="ev-sub">Petit-déjeuner · Lyon · Lieu à confirmer</p>
+            <h3>Le Dîner des Gones</h3>
+            <p class="ev-sub">Dîner · 15 places · Le CMO face au Comex</p>
           </div>
           <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
           <div class="ev-left">
-            <span class="ev-dow">Nov.</span>
-            
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">12 nov.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
-            <h3>Brand</h3>
-            <p class="ev-sub">Afterwork · Lyon · Lieu à confirmer</p>
+            <h3>Grand Débat RH</h3>
+            <p class="ev-sub">Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing</p>
           </div>
           <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
 
         <div class="event-row upcoming" data-status="upcoming">
           <div class="ev-left">
-            <span class="ev-dow">Déc.</span>
-            
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">26 nov.</span>
+            <span class="ev-year">2026</span>
+          </div>
+          <div class="ev-center">
+            <h3>Challenge ton plan marketing 2027</h3>
+            <p class="ev-sub">Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté</p>
+          </div>
+          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
+        </div>
+
+        <div class="event-row upcoming" data-status="upcoming">
+          <div class="ev-left">
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">17 déc.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
             <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · Lyon · Lieu à confirmer</p>
+            <p class="ev-sub">Déjeuner · On boucle 2026 ensemble</p>
           </div>
           <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
         </div>
@@ -1475,12 +1549,28 @@
 
         <div class="event-row past" data-status="past">
           <div class="ev-left">
+            <span class="ev-dow">Jeudi</span>
+            <span class="ev-num">18 juin</span>
+            <span class="ev-year">2026</span>
+          </div>
+          <div class="ev-center">
+            <h3>Matinée IA Pratique</h3>
+            <p class="ev-sub">Ateliers en petit comité · Chez Ellisphere, Lyon · 24 membres</p>
+            <p class="ev-speakers">GEO (Florian Chapelier), Agents IA (Alexandre Jeanpetit), Vibe coding (Arthur Burnichon)</p>
+          </div>
+          <div class="ev-right">
+            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <div class="event-row past" data-status="past">
+          <div class="ev-left">
             <span class="ev-dow">Mardi</span>
             <span class="ev-num">28 avr.</span>
             <span class="ev-year">2026</span>
           </div>
           <div class="ev-center">
-            <h3>Stack Marketing & IA</h3>
+            <h3>Stack Marketing &amp; IA</h3>
             <p class="ev-sub">Afterwork · Chez Signitic, Lyon 3e</p>
             <p class="ev-speakers">Avec Julian Maurel, Laurent Davesne, Laura Nguyen</p>
           </div>
@@ -1498,7 +1588,7 @@
           <div class="ev-center">
             <h3>Employee Advocacy sur LinkedIn</h3>
             <p class="ev-sub">Masterclass · Ballab Café, Les Terreaux</p>
-            <p class="ev-speakers">Avec Marie-Francine Phan, experte Social Media & Content</p>
+            <p class="ev-speakers">Avec Marie-Francine Phan, experte Social Media &amp; Content</p>
           </div>
           <div class="ev-right">
             <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
@@ -1576,7 +1666,7 @@
             <span class="ev-year">2025</span>
           </div>
           <div class="ev-center">
-            <h3>Microcanaux & Intent Data</h3>
+            <h3>Microcanaux &amp; Intent Data</h3>
             <p class="ev-sub">Afterwork · Chez Positive Signitic, Lyon</p>
             <p class="ev-speakers">Avec Aurore Agnes, Margot Duchêne, Alexandre Jeanpetit</p>
           </div>
@@ -1594,7 +1684,7 @@
           <div class="ev-center">
             <h3>Matinales Publicis Media Connect</h3>
             <p class="ev-sub">Partenariat · Rooftop by Dock40, Lyon</p>
-            <p class="ev-speakers">En partenariat avec Publicis Media Connect & TF1 Pub</p>
+            <p class="ev-speakers">En partenariat avec Publicis Media Connect &amp; TF1 Pub</p>
           </div>
           <div class="ev-right">
             <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
@@ -1603,6 +1693,12 @@
 
       </div>
     </div>
+  </div>
+
+  <!-- BANDEAU MARQUE (≈ 2/3) -->
+  <div class="brand-divider">
+    <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
+    <p>Le club marketing lyonnais</p>
   </div>
 
   <!-- LINKEDIN FEED -->
@@ -1723,31 +1819,24 @@
   <!-- JOIN / CANDIDATURE -->
   <div class="join" id="candidature">
     <div class="join-inner">
-      <img src="images/logo-cropped.png" alt="Les Gones du Market'" style="height:48px;mix-blend-mode:lighten;opacity:0.9;margin:0 auto 2rem;display:block;" />
+      <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" style="height:64px;width:auto;filter:brightness(0) invert(1);opacity:0.92;margin:0 auto 2rem;display:block;" />
       <div class="section-tag">Nous rejoindre</div>
       <h2>Candidater pour rejoindre le club</h2>
       <p class="lead">Tu travailles dans le marketing à Lyon ? Envoie-nous ta candidature, on revient vers toi rapidement.</p>
 
-      <form action="https://formspree.io/f/XXXXXXXX" method="POST">
-        <div class="form-row">
-          <input type="text" name="prenom" placeholder="Prénom" required />
-          <input type="text" name="nom" placeholder="Nom" required />
-        </div>
-        <input type="email" name="email" placeholder="Email professionnel" required />
-        <div class="form-row">
-          <input type="text" name="entreprise" placeholder="Entreprise" required />
-          <input type="text" name="poste" placeholder="Poste / Titre" required />
-        </div>
-        <textarea name="message" placeholder="En quelques mots, parle-nous de ton parcours marketing et de ce qui t'attire dans le club…"></textarea>
-        <button type="submit" class="form-submit">Envoyer ma candidature →</button>
-      </form>
+      <!-- Formulaire de candidature — embarqué depuis Tally -->
+      <div class="tally-embed">
+        <iframe data-tally-src="https://tally.so/embed/9qpeEY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+                title="Candidature — Les Gones du Market'"></iframe>
+      </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <a href="/" class="footer-logo"><img src="images/logo-transparent.png" alt="Les Gones du Market'" /></a>
+      <a href="/" class="footer-logo"><img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" /></a>
       <div class="footer-links">
         <a href="https://linkedin.com/company/gones-du-market" target="_blank">LinkedIn</a>
         <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank">YouTube</a>
@@ -1755,48 +1844,8 @@
     </div>
   </footer>
 
-  <script>
-  // Agenda filters
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const filter = this.dataset.filter;
-      document.querySelectorAll('.event-row').forEach(row => {
-        row.style.display = (filter === 'all' || row.dataset.status === filter) ? '' : 'none';
-      });
-      document.querySelectorAll('.ev-group-label').forEach(label => {
-        label.style.display = (filter === 'all' || label.dataset.group === filter) ? '' : 'none';
-      });
-    });
-  });
-
-  // Countdown to next event (target: Juin 2026 → set to June 24, 2026 09:00)
-  const target = new Date('2026-06-24T09:00:00');
-  function tick() {
-    const now = new Date();
-    const diff = target - now;
-    if (diff <= 0) return;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
-    document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
-  }
-  tick();
-  setInterval(tick, 1000);
-  </script>
-
-  <script type="text/javascript">
-  (function(){
-  var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
-  i.src="https://cdn.curator.io/published/df2326c7-04a7-443d-9134-7cdfbb54d5d4.js";
-  e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
-  })();
-  </script>
-
+  <!-- Comportements de page (agenda, compte à rebours, feed LinkedIn, Tally) + widget bêta -->
+  <script src="/site.js" defer></script>
+  <script src="/beta-widget.js" defer></script>
 </body>
 </html>

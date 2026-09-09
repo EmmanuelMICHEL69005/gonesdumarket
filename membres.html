@@ -4,30 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espace membres — Les Gones du Market'</title>
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet" />
+  <meta name="google-site-verification" content="zRjsic6LWotRy7oeAsCIwBWLqNuXnJYjLoC9CalU2GU" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <style>
     :root {
-      --corail:     #E8614A;
+      --corail:       #E8614A;
       --corail-fonce: #C94D38;
-      --navy:       #0a1a2b;
-      --navy-mid:   #0f2540;
-      --slate:      #464D72;
-      --bg:         #f8f9ff;
-      --bg-muted:   #f0f1fc;
-      --blanc:      #ffffff;
-      --text-muted: #718096;
-      --border:     #e2e8f0;
+      --noir:         #1A1A1A;
+      --gris-clair:   #F5F4F2;
+      --gris:         #888888;
+      --blanc:        #FFFFFF;
+      /* alias hérités, mappés sur la charte du site */
+      --navy:         #1A1A1A;
+      --navy-mid:     #E8614A;
+      --slate:        #1A1A1A;
+      --bg:           #F5F4F2;
+      --bg-muted:     #EFEDEA;
+      --text-muted:   #666666;
+      --border:       #E4E2DD;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: var(--slate);
-      background: var(--navy);
-      line-height: 1.55;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--noir);
+      background: var(--blanc);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -132,7 +139,7 @@
       pointer-events: all;
     }
 
-    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-logo img { height: 68px; width: auto; display: block; mix-blend-mode: multiply; }
 
     .nav-links {
       display: flex;
@@ -151,7 +158,7 @@
     }
 
     .nav-link:hover { opacity: 1; }
-    .nav-link.active { opacity: 1; font-weight: 700; }
+    .nav-link.active { opacity: 1; font-weight: 700; color: var(--corail); }
 
     .nav-badge {
       background: #FEF0ED;
@@ -193,37 +200,28 @@
     }
 
     .page-hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.7rem;
+      display: inline-block;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--corail);
+      color: rgba(255,255,255,0.8);
       margin-bottom: 1rem;
     }
 
-    .page-hero-tag::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--corail);
-    }
-
     .page-hero h1 {
-      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-size: clamp(2rem, 5vw, 3.25rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
       color: white;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.9rem;
     }
 
     .page-hero p {
-      color: rgba(255,255,255,0.55);
-      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      line-height: 1.7;
       max-width: 580px;
     }
 
@@ -233,7 +231,7 @@
       border-bottom: 1px solid var(--border);
       padding: 1rem 3rem;
       position: sticky;
-      top: 72px;
+      top: 96px;
       z-index: 99;
     }
 
@@ -423,12 +421,21 @@
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden; }
+      .nav { padding: 0 1rem; }
+      .nav-inner { gap: 0.75rem; padding: 0.4rem 0.4rem 0.4rem 0.9rem; }
+      .nav-logo img { height: 46px; }
+      .nav-link:not(.active) { display: none; }
+      .btn-logout { padding: 0.5rem 0.9rem; }
+      .filters-bar { top: 76px; }
+    }
+
     @media (max-width: 640px) {
       .filters-bar, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
       .page-hero { padding: 3rem 1.5rem; }
       .cards-grid { grid-template-columns: 1fr; }
       .filters-inner { flex-direction: column; align-items: stretch; }
-      .nav-link:not(.active) { display: none; }
     }
   </style>
 </head>
@@ -436,7 +443,7 @@
 
   <!-- MOT DE PASSE -->
   <div id="password-gate">
-    <img src="images/logo-orange.svg" alt="Les Gones du Market'" style="width:80px;height:auto;display:block;margin:0 auto 1rem;" />
+    <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" style="width:120px;height:auto;display:block;margin:0 auto 1rem;filter:brightness(0) invert(1);" />
     <h2>Espace membres</h2>
     <p>Réservé aux membres des Gones du Market'</p>
     <div id="password-form">
@@ -451,13 +458,13 @@
 
     <nav class="nav">
       <div class="nav-inner">
-        <a href="index-v2.html" class="nav-logo">
-          <img src="images/logo-black.svg" alt="Les Gones du Market'" />
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" />
         </a>
         <div class="nav-links">
-          <a href="index-v2.html#concept" class="nav-link">Le concept</a>
-          <a href="index-v2.html#themes" class="nav-link">Les thèmes</a>
-          <a href="index-v2.html#agenda" class="nav-link">Événements</a>
+          <a href="index.html#concept" class="nav-link">Le concept</a>
+          <a href="index.html#themes" class="nav-link">Les thèmes</a>
+          <a href="index.html#agenda" class="nav-link">Événements</a>
           <span class="nav-link active">Espace membres</span>
           <button class="btn-logout" onclick="logout()">Se déconnecter →</button>
         </div>
@@ -467,7 +474,7 @@
     <div class="page-hero">
       <div class="page-hero-inner">
         <div class="page-hero-tag">Espace membres</div>
-        <h1>Bons plans &<br>recommandations</h1>
+        <h1>Bons plans &amp;<br>recommandations</h1>
         <p>Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.</p>
       </div>
     </div>
@@ -791,5 +798,8 @@
   }
   </script>
 
+
+  <!-- Widget version bêta + signalement de bug -->
+  <script src="/beta-widget.js" defer></script>
 </body>
 </html>
