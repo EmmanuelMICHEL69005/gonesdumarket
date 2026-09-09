@@ -1,0 +1,48 @@
+# Configuration Pages CMS — pagescms.org
+# Définit ce que le bureau peut éditer, sans toucher au code.
+# (Première brique : les événements. Les autres contenus s'ajouteront ici.)
+
+media:
+  input: src/images
+  output: images
+
+content:
+  - name: events
+    label: Événements (agenda)
+    type: file
+    path: src/_data/events.json
+    fields:
+      - name: groups
+        label: Groupes d'événements
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Titre du groupe, type: string }
+          - name: datagroup
+            label: Filtre
+            type: select
+            options:
+              values: [upcoming, past]
+          - name: events
+            label: Événements
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Titre, type: string }
+              - name: status
+                label: Statut
+                type: select
+                options:
+                  values: [upcoming, past]
+              - { name: featured, label: Mettre en avant (prochain événement), type: boolean }
+              - { name: dow, label: Jour de la semaine (ex. Jeudi), type: string }
+              - { name: num, label: Date (ex. 24 sept.), type: string }
+              - { name: year, label: Année (ex. 2026), type: string }
+              - { name: sub, label: Sous-titre / lieu, type: text }
+              - { name: speakers, label: Intervenants (optionnel), type: text }
+              - { name: badge, label: Badge (optionnel), type: string }
+              - name: action
+                label: Bouton à droite
+                type: select
+                options:
+                  values: [register, soon, linkedin]

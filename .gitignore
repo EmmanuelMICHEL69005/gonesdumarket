@@ -8,3 +8,7 @@
 # Réglages locaux Claude Code
 .claude/settings.local.json
 .claude/launch.json
+
+# Node / build
+node_modules/
+_site/

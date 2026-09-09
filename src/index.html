@@ -1098,247 +1098,29 @@
       </div>
 
       <div class="events-list">
-
-        <div class="ev-group-label" data-group="upcoming">À venir</div>
-
-        <div class="event-row next-up upcoming" data-status="upcoming">
+{% for grp in events.groups %}
+        <div class="ev-group-label" data-group="{{ grp.datagroup }}">{{ grp.label }}</div>
+{% for ev in grp.events %}
+        <div class="event-row{% if ev.featured %} next-up{% endif %} {{ ev.status }}" data-status="{{ ev.status }}">
           <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">24 sept.</span>
-            <span class="ev-year">2026</span>
+            <span class="ev-dow">{{ ev.dow }}</span>
+            <span class="ev-num">{{ ev.num }}</span>
+            <span class="ev-year">{{ ev.year }}</span>
           </div>
           <div class="ev-center">
-            <h3>Afterwork de rentrée</h3>
-            <p class="ev-sub">Afterwork · Lyon · On se retrouve et on accueille les nouveaux</p>
-            <span class="ev-badge badge-special">Prochain événement</span>
-          </div>
+            <h3>{{ ev.title }}</h3>
+            <p class="ev-sub">{{ ev.sub }}</p>
+{% if ev.speakers %}            <p class="ev-speakers">{{ ev.speakers }}</p>
+{% endif %}{% if ev.badge %}            <span class="ev-badge badge-special">{{ ev.badge }}</span>
+{% endif %}          </div>
           <div class="ev-right">
-            <a href="#candidature" class="ev-btn">S'inscrire →</a>
-          </div>
+{% if ev.action == "register" %}            <a href="#candidature" class="ev-btn">S'inscrire →</a>
+{% elif ev.action == "linkedin" %}            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
+{% else %}            <span class="ev-status">BIENTÔT</span>
+{% endif %}          </div>
         </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">8 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Talk REX avec Léa Gueniffet</h3>
-            <p class="ev-sub">Acquisition payante : ce qui marche vraiment et ce qui crame votre budget</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">27 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Le Dîner des Gones</h3>
-            <p class="ev-sub">Dîner · 15 places · Le CMO face au Comex</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">12 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Grand Débat RH</h3>
-            <p class="ev-sub">Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2027</h3>
-            <p class="ev-sub">Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">17 déc.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · On boucle 2026 ensemble</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Déjà organisés en 2026</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 juin</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinée IA Pratique</h3>
-            <p class="ev-sub">Ateliers en petit comité · Chez Ellisphere, Lyon · 24 membres</p>
-            <p class="ev-speakers">GEO (Florian Chapelier), Agents IA (Alexandre Jeanpetit), Vibe coding (Arthur Burnichon)</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">28 avr.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stack Marketing &amp; IA</h3>
-            <p class="ev-sub">Afterwork · Chez Signitic, Lyon 3e</p>
-            <p class="ev-speakers">Avec Julian Maurel, Laurent Davesne, Laura Nguyen</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 mars</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Employee Advocacy sur LinkedIn</h3>
-            <p class="ev-sub">Masterclass · Ballab Café, Les Terreaux</p>
-            <p class="ev-speakers">Avec Marie-Francine Phan, experte Social Media &amp; Content</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">20 janv.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Marketing sans bullshit</h3>
-            <p class="ev-sub">Afterwork · L'Ellipse by FlexJob</p>
-            <p class="ev-speakers">Avec Audrey Digonnat, Benjamin Poirier, Adeline Dubost</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Retrospective 2025 · 8 événements</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · La Brasserie des 2 Rives, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">4 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stratégie Vidéo 2026</h3>
-            <p class="ev-sub">Afterwork · Chez Teazit, Lyon</p>
-            <p class="ev-speakers">Avec Emilien Colombain (CEO Teazit)</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">4 nov.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2026</h3>
-            <p class="ev-sub">Petit-déjeuner · Chez Positive Signitic, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">2 oct.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Microcanaux &amp; Intent Data</h3>
-            <p class="ev-sub">Afterwork · Chez Positive Signitic, Lyon</p>
-            <p class="ev-speakers">Avec Aurore Agnes, Margot Duchêne, Alexandre Jeanpetit</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">3 juin</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinales Publicis Media Connect</h3>
-            <p class="ev-sub">Partenariat · Rooftop by Dock40, Lyon</p>
-            <p class="ev-speakers">En partenariat avec Publicis Media Connect &amp; TF1 Pub</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-      </div>
+{% endfor %}{% endfor %}
+            </div>
     </div>
   </div>
 
