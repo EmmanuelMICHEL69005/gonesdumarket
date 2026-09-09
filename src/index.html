@@ -899,21 +899,21 @@
         <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" fetchpriority="high" decoding="async" style="height:84px;width:auto;display:block;" />
       </a>
       <nav>
-        <a href="#concept">Le concept</a>
-        <a href="#themes">Les thèmes</a>
-        <a href="#agenda">Événements</a>
-        <a href="membres.html">Espace membres</a>
-        <a href="#candidature" class="nav-cta">Nous rejoindre →</a>
+        <a href="#concept">{{ site.nav.concept }}</a>
+        <a href="#themes">{{ site.nav.themes }}</a>
+        <a href="#agenda">{{ site.nav.events }}</a>
+        <a href="membres.html">{{ site.nav.members }}</a>
+        <a href="#candidature" class="nav-cta">{{ site.nav.cta }}</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">Lyon · Fondé en 2023</div>
-    <h1>+200 passionné·es<br>de marketing<br>à <em>Lyon.</em></h1>
-    <p>Le club qui réunit les dirigeants marketing lyonnais pour échanger, apprendre et grandir ensemble. En toute convivialité.</p>
-    <a href="#candidature" class="hero-cta">Demander à rejoindre le club</a>
+    <div class="hero-badge">{{ site.hero.badge }}</div>
+    <h1>{{ site.hero.title_html | safe }}</h1>
+    <p>{{ site.hero.desc }}</p>
+    <a href="#candidature" class="hero-cta">{{ site.hero.cta }}</a>
   </div>
 
   <!-- STATS -->
@@ -930,16 +930,16 @@
   <div class="community-strip">
     <img src="images/afterwork-2026-1.jpg" alt="La communauté des Gones du Market'" width="1920" height="1280" loading="lazy" decoding="async" />
     <div class="community-strip-overlay">
-      <div class="community-strip-caption"><em>+200 marketeurs lyonnais,</em> un WhatsApp, des événements. Une vraie communauté.</div>
+      <div class="community-strip-caption">{{ site.community_caption_html | safe }}</div>
     </div>
   </div>
 
   <!-- COMMENT ÇA MARCHE -->
   <div style="background: var(--blanc);">
   <section id="concept">
-    <div class="section-label">Le concept</div>
-    <h2>Comment ça fonctionne</h2>
-    <p class="lead">Les Gones du Market' c'est un espace de confiance pour toutes les personnes qui font du marketing à Lyon. Pas un réseau de façade, une vraie communauté.</p>
+    <div class="section-label">{{ site.sections.concept.eyebrow }}</div>
+    <h2>{{ site.sections.concept.title }}</h2>
+    <p class="lead">{{ site.sections.concept.lead }}</p>
     <div class="steps">
 {% for st in home.concept_steps %}
       <div class="step">
@@ -950,7 +950,7 @@
 {% endfor %}
     </div>
     <div style="margin-top:2.5rem;">
-      <a href="#candidature" class="hero-cta" style="background:var(--corail);color:white;display:inline-block;padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Rejoindre le club →</a>
+      <a href="#candidature" class="hero-cta" style="background:var(--corail);color:white;display:inline-block;padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">{{ site.sections.concept.cta }}</a>
     </div>
   </section>
   </div>
@@ -958,15 +958,15 @@
   <!-- BANDEAU MARQUE (≈ 1/3) -->
   <div class="brand-divider">
     <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
-    <p>Le club marketing lyonnais</p>
+    <p>{{ site.brand_caption }}</p>
   </div>
 
   <!-- THÈMES DES MASTERCLASSES -->
   <div class="themes-bg" id="themes">
     <div>
-      <div class="section-label">Nos sujets</div>
-      <h2>Les thèmes abordés</h2>
-      <p class="lead">Des sujets concrets, choisis par et pour la communauté marketing lyonnaise.</p>
+      <div class="section-label">{{ site.sections.themes.eyebrow }}</div>
+      <h2>{{ site.sections.themes.title }}</h2>
+      <p class="lead">{{ site.sections.themes.lead }}</p>
       <div class="themes-grid">
 {% for t in themes.items %}
         <div class="theme-card">
@@ -982,8 +982,8 @@
   <!-- GALERIE PHOTOS -->
   <div class="galerie-bg">
     <div class="galerie-inner">
-      <div class="section-label">La vie du club</div>
-      <h2>Nos événements en images</h2>
+      <div class="section-label">{{ site.sections.galerie.eyebrow }}</div>
+      <h2>{{ site.sections.galerie.title }}</h2>
       <div class="photo-grid">
         <img src="images/afterwork-2026-1.jpg" alt="La salle lors d'un afterwork" class="wide" loading="lazy" decoding="async" />
         <img src="images/afterwork-2026-2.jpeg" alt="Panel de speakers" loading="lazy" decoding="async" />
@@ -1008,11 +1008,11 @@
     <div class="raisons-inner">
       <div class="raisons-header">
         <div class="raisons-left">
-          <div class="section-label">Pourquoi nous rejoindre</div>
-          <h2 class="raisons-title">Trois raisons<br>(et une bonne ambiance).</h2>
+          <div class="section-label">{{ site.sections.raisons.eyebrow }}</div>
+          <h2 class="raisons-title">{{ site.sections.raisons.title_html | safe }}</h2>
         </div>
         <div class="raisons-right">
-          <p>Les Gones du Market', c'est plus qu'un événement . C'est un endroit où les marketeurs lyonnais progressent ensemble, sans chichis et sans langue de bois.</p>
+          <p>{{ site.sections.raisons.intro }}</p>
         </div>
       </div>
       <div class="raisons-grid">
@@ -1025,8 +1025,8 @@
 {% endfor %}
       </div>
       <div style="margin-top:2.5rem;text-align:center;">
-        <a href="#candidature" style="display:inline-block;background:var(--corail);color:white;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Candidater pour rejoindre le club →</a>
-        <p style="margin-top:0.75rem;font-size:0.8rem;color:#666;">Sélection sur candidature · Réponse sous 48h</p>
+        <a href="#candidature" style="display:inline-block;background:var(--corail);color:white;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">{{ site.sections.raisons.cta }}</a>
+        <p style="margin-top:0.75rem;font-size:0.8rem;color:#666;">{{ site.sections.raisons.note }}</p>
       </div>
     </div>
   </div>
@@ -1034,13 +1034,13 @@
   <!-- AGENDA COMPLET -->
   <div class="agenda-section" id="agenda">
     <div class="agenda-inner">
-      <div class="section-label">Prochaines masterclasses</div>
-      <h2>L'agenda 2026</h2>
+      <div class="section-label">{{ site.sections.agenda.eyebrow }}</div>
+      <h2>{{ site.sections.agenda.title }}</h2>
 
       <div class="agenda-filters">
-        <button class="filter-btn active" data-filter="all">Toutes</button>
-        <button class="filter-btn" data-filter="upcoming">À venir</button>
-        <button class="filter-btn" data-filter="past">Passés</button>
+        <button class="filter-btn active" data-filter="all">{{ site.sections.agenda.filter_all }}</button>
+        <button class="filter-btn" data-filter="upcoming">{{ site.sections.agenda.filter_upcoming }}</button>
+        <button class="filter-btn" data-filter="past">{{ site.sections.agenda.filter_past }}</button>
       </div>
 
       <div class="events-list">
@@ -1073,9 +1073,9 @@
   <!-- LINKEDIN FEED -->
   <div class="linkedin-section">
     <div>
-      <div class="section-label">Communauté</div>
-      <h2>Nos derniers posts</h2>
-      <p class="lead">Suivez l'actualité du club sur LinkedIn avec <strong>#lesgonesdumarket</strong></p>
+      <div class="section-label">{{ site.sections.linkedin.eyebrow }}</div>
+      <h2>{{ site.sections.linkedin.title }}</h2>
+      <p class="lead">{{ site.sections.linkedin.lead_html | safe }}</p>
       <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
     </div>
   </div>
@@ -1083,29 +1083,29 @@
   <!-- BANDEAU MARQUE (≈ 2/3) -->
   <div class="brand-divider">
     <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
-    <p>Le club marketing lyonnais</p>
+    <p>{{ site.brand_caption }}</p>
   </div>
 
   <!-- YOUTUBE -->
   <div class="youtube-section">
-    <div class="section-label">Replays</div>
-    <h2>Nos masterclasses en vidéo</h2>
-    <p>Retrouvez les replays et extraits de nos événements sur notre chaîne YouTube.</p>
+    <div class="section-label">{{ site.sections.youtube.eyebrow }}</div>
+    <h2>{{ site.sections.youtube.title }}</h2>
+    <p>{{ site.sections.youtube.desc }}</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank" class="youtube-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.8 3.6 12 3.6 12 3.6s-7.8 0-9.5.5c-1 .3-1.7 1.1-2 2.1C0 7.9 0 12 0 12s0 4.1.5 5.8c.3 1 1 1.8 2 2.1 1.7.5 9.5.5 9.5.5s7.8 0 9.5-.5c1-.3 1.7-1.1 2-2.1.5-1.7.5-5.8.5-5.8s0-4.1-.5-5.8zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
-        Voir la chaîne YouTube
+        {{ site.sections.youtube.cta_channel }}
       </a>
-      <a href="#candidature" class="youtube-btn" style="background:white;color:var(--corail);">Rejoindre le club →</a>
+      <a href="#candidature" class="youtube-btn" style="background:white;color:var(--corail);">{{ site.sections.youtube.cta_join }}</a>
     </div>
   </div>
 
   <!-- TÉMOIGNAGES -->
   <div class="temoignages-bg">
     <div class="temoignages-inner">
-      <div class="section-label">Ce qu'ils en pensent</div>
-      <h2>Ils auraient adoré<br>être membres.</h2>
-      <p class="temoignages-intro">Témoignages fictifs de personnalités qui auraient pu nous rejoindre.</p>
+      <div class="section-label">{{ site.sections.temoignages.eyebrow }}</div>
+      <h2>{{ site.sections.temoignages.title_html | safe }}</h2>
+      <p class="temoignages-intro">{{ site.sections.temoignages.intro }}</p>
       <div class="temoignages-grid">
 {% for t in testimonials.items %}
         <div class="temoignage-card">
@@ -1129,9 +1129,9 @@
   <!-- FAQ -->
   <div class="faq-bg">
     <div class="faq-inner">
-      <div class="section-label">Questions fréquentes</div>
-      <h2>Tu hésites encore ?</h2>
-      <p class="faq-lead">Les questions qu'on nous pose le plus souvent avant de candidater.</p>
+      <div class="section-label">{{ site.sections.faq.eyebrow }}</div>
+      <h2>{{ site.sections.faq.title }}</h2>
+      <p class="faq-lead">{{ site.sections.faq.lead }}</p>
       <div class="faq-list">
 {% for f in faq.items %}
         <details class="faq-item">
@@ -1146,9 +1146,9 @@
   <!-- PROCESSUS DE CANDIDATURE -->
   <div class="processus-bg">
     <div class="processus-inner">
-      <div class="section-label">Comment ça marche</div>
-      <h2>Rejoindre le club<br>en 4 étapes.</h2>
-      <p class="processus-intro">Pas de cooptation obligatoire, pas de dossier complexe. Un formulaire, une vérification rapide.</p>
+      <div class="section-label">{{ site.sections.processus.eyebrow }}</div>
+      <h2>{{ site.sections.processus.title_html | safe }}</h2>
+      <p class="processus-intro">{{ site.sections.processus.intro }}</p>
       <div class="processus-steps">
 {% for st in home.processus %}
         <div class="proc-step">
@@ -1167,9 +1167,9 @@
   <div class="candidature-section" id="candidature">
     <div>
       <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" style="height:64px;width:auto;filter:brightness(0) invert(1);opacity:0.92;margin:0 auto 2rem;display:block;" />
-      <div class="section-label">Nous rejoindre</div>
-      <h2>Candidater pour rejoindre le club</h2>
-      <p class="lead">Tu travailles dans le marketing à Lyon ? Envoie-nous ta candidature, on revient vers toi rapidement.</p>
+      <div class="section-label">{{ site.sections.candidature.eyebrow }}</div>
+      <h2>{{ site.sections.candidature.title }}</h2>
+      <p class="lead">{{ site.sections.candidature.lead }}</p>
 
       <!-- Formulaire de candidature — embarqué depuis Tally -->
       <div class="tally-embed">
@@ -1185,8 +1185,8 @@
     <div class="footer-inner">
       <a href="/" class="footer-logo"><img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" /></a>
       <div class="footer-links">
-        <a href="https://linkedin.com/company/gones-du-market" target="_blank">LinkedIn</a>
-        <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank">YouTube</a>
+        <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
+        <a href="{{ site.social.youtube }}" target="_blank">YouTube</a>
       </div>
     </div>
   </footer>
