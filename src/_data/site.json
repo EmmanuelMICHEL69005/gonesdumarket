@@ -80,5 +80,21 @@
   "social": {
     "linkedin": "https://linkedin.com/company/gones-du-market",
     "youtube": "https://www.youtube.com/@LesGonesduMarket"
+  },
+  "members_page": {
+    "gate_title": "Espace membres",
+    "gate_subtitle": "Réservé aux membres des Gones du Market'",
+    "gate_placeholder": "Mot de passe",
+    "logout": "Se déconnecter →",
+    "eyebrow": "Espace membres",
+    "title_html": "Bons plans &amp;<br>recommandations",
+    "intro": "Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.",
+    "search_placeholder": "Rechercher un outil, prestataire, sujet...",
+    "filter_all": "Tout",
+    "filter_prestataire": "Prestataires",
+    "filter_outil": "Outils",
+    "filter_conseil": "Conseils",
+    "footer": "© 2026 Les Gones du Market' · Lyon · Espace membres",
+    "back": "Retour au site"
   }
 }

@@ -444,10 +444,10 @@
   <!-- MOT DE PASSE -->
   <div id="password-gate">
     <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" style="width:120px;height:auto;display:block;margin:0 auto 1rem;filter:brightness(0) invert(1);" />
-    <h2>Espace membres</h2>
-    <p>Réservé aux membres des Gones du Market'</p>
+    <h2>{{ site.members_page.gate_title }}</h2>
+    <p>{{ site.members_page.gate_subtitle }}</p>
     <div id="password-form">
-      <input type="password" id="password-input" placeholder="Mot de passe" />
+      <input type="password" id="password-input" placeholder="{{ site.members_page.gate_placeholder }}" />
       <button id="password-submit">Accéder</button>
       <div id="password-error"></div>
     </div>
@@ -466,27 +466,27 @@
           <a href="index.html#themes" class="nav-link">Les thèmes</a>
           <a href="index.html#agenda" class="nav-link">Événements</a>
           <span class="nav-link active">Espace membres</span>
-          <button class="btn-logout" onclick="logout()">Se déconnecter →</button>
+          <button class="btn-logout" onclick="logout()">{{ site.members_page.logout }}</button>
         </div>
       </div>
     </nav>
 
     <div class="page-hero">
       <div class="page-hero-inner">
-        <div class="page-hero-tag">Espace membres</div>
-        <h1>Bons plans &amp;<br>recommandations</h1>
-        <p>Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.</p>
+        <div class="page-hero-tag">{{ site.members_page.eyebrow }}</div>
+        <h1>{{ site.members_page.title_html | safe }}</h1>
+        <p>{{ site.members_page.intro }}</p>
       </div>
     </div>
 
     <div class="filters-bar">
       <div class="filters-inner">
-        <input type="text" id="search-input" placeholder="Rechercher un outil, prestataire, sujet..." />
+        <input type="text" id="search-input" placeholder="{{ site.members_page.search_placeholder }}" />
         <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">Tout</button>
-          <button class="filter-tab" data-filter="prestataire">Prestataires</button>
-          <button class="filter-tab" data-filter="outil">Outils</button>
-          <button class="filter-tab" data-filter="conseil">Conseils</button>
+          <button class="filter-tab active" data-filter="all">{{ site.members_page.filter_all }}</button>
+          <button class="filter-tab" data-filter="prestataire">{{ site.members_page.filter_prestataire }}</button>
+          <button class="filter-tab" data-filter="outil">{{ site.members_page.filter_outil }}</button>
+          <button class="filter-tab" data-filter="conseil">{{ site.members_page.filter_conseil }}</button>
         </div>
         <span class="results-count" id="results-count"></span>
       </div>
@@ -498,8 +498,8 @@
 
     <footer>
       <div class="footer-inner">
-        <span>© 2026 Les Gones du Market' · Lyon · Espace membres</span>
-        <a href="index.html">Retour au site</a>
+        <span>{{ site.members_page.footer }}</span>
+        <a href="index.html">{{ site.members_page.back }}</a>
       </div>
     </footer>
 
