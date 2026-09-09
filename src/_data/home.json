@@ -1,0 +1,58 @@
+{
+  "concept_steps": [
+    {
+      "n": "1",
+      "title": "Un club sérieux, sans chichis",
+      "text": "Pas besoin d'un grand titre pour rejoindre les Gones. Ce qui compte, c'est ta curiosité, ton envie d'échanger et ton ancrage dans le marketing lyonnais."
+    },
+    {
+      "n": "2",
+      "title": "Des formats variés",
+      "text": "Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année… Chaque édition a son propre format."
+    },
+    {
+      "n": "3",
+      "title": "Un WhatsApp actif entre les événements",
+      "text": "6 fils d'échanges entre membres : recherche de prestataires, offres d'emploi, demandes de conseils, bons plans. Ce qui se passe entre deux événements, c'est souvent là que ça compte le plus."
+    }
+  ],
+  "raisons": [
+    {
+      "n": "01",
+      "title": "Des pairs qui te comprennent vraiment",
+      "text": "Pas besoin de tout réexpliquer. Ici, tout le monde sait ce que c'est de défendre un budget, de justifier un CAC ou de piloter seul la stratégie. Tu parles marketing, on répond marketing."
+    },
+    {
+      "n": "02",
+      "title": "Du concret, pas du networking de façade",
+      "text": "Chaque édition a un vrai sujet, de vrais intervenants, de vrais retours terrain. Tu repars avec des idées testables dès le lendemain — pas avec une pile de cartes de visite."
+    },
+    {
+      "n": "03",
+      "title": "Une communauté qui s'entraide vraiment",
+      "text": "Les membres reviennent parce qu'ils ont envie de retrouver les autres, pas juste d'assister à un talk. Entre les éditions, ça échange des bons plans, des prestataires fiables, des retours d'expérience. Le genre d'entraide qu'on ne trouve pas dans un réseau classique."
+    }
+  ],
+  "processus": [
+    {
+      "n": "01",
+      "title": "Tu envoies ta candidature",
+      "text": "Nom, poste, entreprise et quelques mots sur ton rapport au marketing lyonnais. 2 minutes chrono."
+    },
+    {
+      "n": "02",
+      "title": "On vérifie ton profil",
+      "text": "Le bureau s'assure que tu travailles bien dans le marketing à Lyon. Pas un entretien — une simple vérification."
+    },
+    {
+      "n": "03",
+      "title": "Réponse sous 48h",
+      "text": "On revient vers toi rapidement par e-mail. En cas de refus, on t'explique pourquoi et tu peux recandidater."
+    },
+    {
+      "n": "04",
+      "title": "Bienvenue dans le club",
+      "text": "Accès au groupe WhatsApp, aux recommandations membres et aux invitations pour les prochains événements."
+    }
+  ]
+}

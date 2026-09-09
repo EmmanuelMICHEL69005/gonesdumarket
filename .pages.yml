@@ -122,3 +122,34 @@ content:
           - { name: sujet, label: Sujet, type: string }
           - { name: contenu, label: Contenu, type: text }
           - { name: contact, label: Contact (optionnel), type: text }
+
+  # ─────────────── Page d'accueil : blocs éditoriaux ───────────────
+  - name: home
+    label: Accueil — concept, raisons, étapes
+    type: file
+    path: src/_data/home.json
+    fields:
+      - name: concept_steps
+        label: "Comment ça fonctionne (3 étapes)"
+        type: object
+        list: true
+        fields:
+          - { name: n, label: Numéro, type: string }
+          - { name: title, label: Titre, type: string }
+          - { name: text, label: Texte, type: text }
+      - name: raisons
+        label: "Trois raisons de nous rejoindre"
+        type: object
+        list: true
+        fields:
+          - { name: n, label: Numéro, type: string }
+          - { name: title, label: Titre, type: string }
+          - { name: text, label: Texte, type: text }
+      - name: processus
+        label: "Rejoindre le club en 4 étapes"
+        type: object
+        list: true
+        fields:
+          - { name: n, label: Numéro, type: string }
+          - { name: title, label: Titre, type: string }
+          - { name: text, label: Texte, type: text }
