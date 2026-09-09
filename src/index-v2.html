@@ -1226,22 +1226,12 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stats-inner">
+{% for s in stats.items %}
       <div class="stat">
-        <div class="stat-num">+200</div>
-        <div class="stat-desc">Membres</div>
+        <div class="stat-num">{{ s.number }}</div>
+        <div class="stat-desc">{{ s.label }}</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">8</div>
-        <div class="stat-desc">Éditions en 2025</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">6</div>
-        <div class="stat-desc">Canaux WhatsApp</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">2023</div>
-        <div class="stat-desc">Année de création</div>
-      </div>
+{% endfor %}
     </div>
   </div>
 
@@ -1295,41 +1285,13 @@
       <h2>Les thèmes abordés</h2>
       <p class="lead">Des sujets concrets, choisis par et pour la communauté marketing lyonnaise.</p>
       <div class="themes-grid">
+{% for t in themes.items %}
         <div class="theme-card">
-          <div class="theme-date">Juin 2026</div>
-          <h4>Matinée IA Pratique</h4>
-          <p>Trois ateliers en petit comité, laptop sur la table : GEO et visibilité dans les moteurs génératifs, construction d'un agent IA utile, et vibe coding. Repartir avec des compétences activables dès le lendemain.</p>
+          <div class="theme-date">{{ t.date }}</div>
+          <h4>{{ t.title }}</h4>
+          <p>{{ t.text }}</p>
         </div>
-        <div class="theme-card">
-          <div class="theme-date">Avril 2026</div>
-          <h4>Stack Marketing &amp; IA</h4>
-          <p>La stack ne se consolide pas, elle se stratifie. SaaS pour l'orchestration, outils IA-natifs pour la création, solutions maison pour la différenciation. La vraie question : est-ce que ça vaut vraiment son coût ?</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Mars 2026</div>
-          <h4>Employee Advocacy sur LinkedIn</h4>
-          <p>On ne force jamais un collectif à publier. On crée les conditions pour que ça devienne possible. Rituels éditoriaux, réduction de la friction, dynamique collective plutôt que performance individuelle.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Janvier 2026</div>
-          <h4>Marketing sans bullshit</h4>
-          <p>Défendre son budget avec 3 indicateurs compris par la direction vaut mieux que 15 métriques. Alignement Marketing × Sales, authenticité face à la surcharge informationnelle, ROI court terme sans sacrifier le long terme.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Décembre 2025</div>
-          <h4>Stratégie Vidéo 2026</h4>
-          <p>"On veut faire de la vidéo" n'est pas une stratégie. Objectifs clairs, cible définie, formats adaptés aux canaux, recyclage intelligent (1 webinar = 20 shorts), et mesure du ROI.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Novembre 2025</div>
-          <h4>Challenge ton plan marketing</h4>
-          <p>Format atelier en petits groupes : chaque marketeur présente son contexte et ses grandes lignes. La communauté joue le rôle de coach : challenge constructif, idées fraîches, retours d'expérience concrets.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Octobre 2025</div>
-          <h4>Microcanaux &amp; Intent Data</h4>
-          <p>Signature email comme micro-canal mesurable, micro-influenceurs comme levier d'amplification authentique, Intent Data pour transformer les signaux faibles en actions à fort impact. Faire plus avec moins.</p>
-        </div>
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1401,49 +1363,21 @@
       <h2>Ils auraient adoré<br />être membres.</h2>
       <p class="section-intro">Témoignages fictifs de personnalités qui auraient pu nous rejoindre.</p>
       <div class="temoignages-grid">
-
+{% for t in testimonials.items %}
         <div class="temoignage-card">
           <div class="temoignage-quote">
-            Les Gones du Market' incarnent ce que j'ai toujours défendu : le marketing commence par la communauté, pas par le produit. Ces marketeurs lyonnais l'ont compris avant tout le monde.
+            {{ t.quote }}
           </div>
           <div class="temoignage-author">
-            <div class="temoignage-avatar">PK</div>
+            <div class="temoignage-avatar">{{ t.initials }}</div>
             <div>
               <div class="temoignage-label">Témoignage fictif</div>
-              <div class="temoignage-name">Philip Kotler</div>
-              <div class="temoignage-title">Père du marketing moderne · Kellogg School of Management</div>
+              <div class="temoignage-name">{{ t.name }}</div>
+              <div class="temoignage-title">{{ t.role }}</div>
             </div>
           </div>
         </div>
-
-        <div class="temoignage-card">
-          <div class="temoignage-quote">
-            La permission, c'est la base. Mais ce qui se passe dans ce club, c'est encore mieux : la confiance entre pairs. Un réseau qui se construit sur la valeur, pas sur le bruit. Remarquable.
-          </div>
-          <div class="temoignage-author">
-            <div class="temoignage-avatar">SG</div>
-            <div>
-              <div class="temoignage-label">Témoignage fictif</div>
-              <div class="temoignage-name">Seth Godin</div>
-              <div class="temoignage-title">Auteur de Purple Cow · This Is Marketing</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="temoignage-card">
-          <div class="temoignage-quote">
-            J'aurais voulu avoir un truc comme ça quand je démarrais. L'entraide vraie, les bons plans concrets, pas du personal branding creux. C'est ça le marketing de demain.
-          </div>
-          <div class="temoignage-author">
-            <div class="temoignage-avatar">GV</div>
-            <div>
-              <div class="temoignage-label">Témoignage fictif</div>
-              <div class="temoignage-name">Gary Vaynerchuk</div>
-              <div class="temoignage-title">CEO VaynerMedia · Entrepreneur &amp; speaker</div>
-            </div>
-          </div>
-        </div>
-
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1461,237 +1395,31 @@
       </div>
 
       <div class="events-list">
-
-        <div class="ev-group-label" data-group="upcoming">À venir</div>
-
-        <div class="event-row next-up upcoming" data-status="upcoming">
+{% for grp in events.groups %}
+        <div class="ev-group-label" data-group="{{ grp.datagroup }}">{{ grp.label }}</div>
+{% for ev in grp.events %}
+        <div class="event-row{% if ev.featured %} next-up{% endif %} {{ ev.status }}" data-status="{{ ev.status }}">
           <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">24 sept.</span>
-            <span class="ev-year">2026</span>
+            <span class="ev-dow">{{ ev.dow }}</span>
+            <span class="ev-num">{{ ev.num }}</span>
+            <span class="ev-year">{{ ev.year }}</span>
           </div>
           <div class="ev-center">
-            <h3>Afterwork de rentrée</h3>
-            <p class="ev-sub">Afterwork · Lyon · On se retrouve et on accueille les nouveaux</p>
-            <span class="ev-badge badge-special">Prochain événement</span>
-          </div>
-          <div class="ev-right">
+            <h3>{{ ev.title }}</h3>
+            <p class="ev-sub">{{ ev.sub }}</p>
+{% if ev.speakers %}            <p class="ev-speakers">{{ ev.speakers }}</p>
+{% endif %}{% if ev.badge %}            <span class="ev-badge badge-special">{{ ev.badge }}</span>
+{% endif %}          </div>
+{% if ev.action == "register" %}          <div class="ev-right">
             <a href="#candidature" class="ev-btn">S'inscrire →</a>
           </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">8 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Talk REX avec Léa Gueniffet</h3>
-            <p class="ev-sub">Acquisition payante : ce qui marche vraiment et ce qui crame votre budget</p>
-          </div>
-          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">27 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Le Dîner des Gones</h3>
-            <p class="ev-sub">Dîner · 15 places · Le CMO face au Comex</p>
-          </div>
-          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">12 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Grand Débat RH</h3>
-            <p class="ev-sub">Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing</p>
-          </div>
-          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2027</h3>
-            <p class="ev-sub">Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté</p>
-          </div>
-          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">17 déc.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · On boucle 2026 ensemble</p>
-          </div>
-          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Déjà organisés en 2026</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 juin</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinée IA Pratique</h3>
-            <p class="ev-sub">Ateliers en petit comité · Chez Ellisphere, Lyon · 24 membres</p>
-            <p class="ev-speakers">GEO (Florian Chapelier), Agents IA (Alexandre Jeanpetit), Vibe coding (Arthur Burnichon)</p>
-          </div>
-          <div class="ev-right">
+{% elif ev.action == "linkedin" %}          <div class="ev-right">
             <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
           </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">28 avr.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stack Marketing &amp; IA</h3>
-            <p class="ev-sub">Afterwork · Chez Signitic, Lyon 3e</p>
-            <p class="ev-speakers">Avec Julian Maurel, Laurent Davesne, Laura Nguyen</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 mars</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Employee Advocacy sur LinkedIn</h3>
-            <p class="ev-sub">Masterclass · Ballab Café, Les Terreaux</p>
-            <p class="ev-speakers">Avec Marie-Francine Phan, experte Social Media &amp; Content</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">20 janv.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Marketing sans bullshit</h3>
-            <p class="ev-sub">Afterwork · L'Ellipse by FlexJob</p>
-            <p class="ev-speakers">Avec Audrey Digonnat, Benjamin Poirier, Adeline Dubost</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Retrospective 2025 · 8 événements</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · La Brasserie des 2 Rives, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">4 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stratégie Vidéo 2026</h3>
-            <p class="ev-sub">Afterwork · Chez Teazit, Lyon</p>
-            <p class="ev-speakers">Avec Emilien Colombain (CEO Teazit)</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">4 nov.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2026</h3>
-            <p class="ev-sub">Petit-déjeuner · Chez Positive Signitic, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">2 oct.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Microcanaux &amp; Intent Data</h3>
-            <p class="ev-sub">Afterwork · Chez Positive Signitic, Lyon</p>
-            <p class="ev-speakers">Avec Aurore Agnes, Margot Duchêne, Alexandre Jeanpetit</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">3 juin</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinales Publicis Media Connect</h3>
-            <p class="ev-sub">Partenariat · Rooftop by Dock40, Lyon</p>
-            <p class="ev-speakers">En partenariat avec Publicis Media Connect &amp; TF1 Pub</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-      </div>
+{% else %}          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
+{% endif %}        </div>
+{% endfor %}{% endfor %}
+            </div>
     </div>
   </div>
 
@@ -1732,42 +1460,12 @@
       <h2>Tu hésites encore ?</h2>
       <p class="faq-lead">Les questions qu'on nous pose le plus souvent avant de candidater.</p>
       <div class="faq-list">
-
+{% for f in faq.items %}
         <details class="faq-item">
-          <summary class="faq-q">Est-ce que mon profil correspond ?</summary>
-          <p class="faq-a">Le club est ouvert à toutes les personnes qui exercent une fonction <strong>marketing au sens large</strong> — acquisition, brand, growth, CRM, contenu, product marketing, communication marketing — avec <strong>au moins 3 ans d'expérience</strong>. Freelances, salarié·es et consultant·es sont les bienvenu·es. Il faut habiter ou travailler en <strong>région lyonnaise</strong>.</p>
+          <summary class="faq-q">{{ f.q }}</summary>
+          <p class="faq-a">{{ f.a | safe }}</p>
         </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Les profils 100% communication, c'est exclu ?</summary>
-          <p class="faq-a">Les profils orientés <strong>communication institutionnelle pure</strong> (relations presse, com interne, événementiel sans dimension marketing) sont généralement hors scope. Si tu as un doute sur ton profil, postule quand même — on te répondra honnêtement.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Est-ce que je dois m'engager à venir à tous les événements ?</summary>
-          <p class="faq-a"><strong>Aucune obligation.</strong> Pas de quota de présence, pas de durée d'engagement minimum. Tu viens aux événements qui t'intéressent, quand tu peux. La communauté, c'est aussi ce qui se passe entre les événements sur WhatsApp.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">C'est combien ?</summary>
-          <p class="faq-a">L'<strong>adhésion est gratuite</strong> pour l'instant. Certains événements (dîners, lieux privatisés) sont payants pour couvrir les frais de fonctionnement — les tarifs sont toujours communiqués en amont. Aucune mauvaise surprise.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Combien de temps pour avoir une réponse après ma candidature ?</summary>
-          <p class="faq-a">En général <strong>sous 48h</strong>. Le bureau est entièrement bénévole — ses membres ont des jobs et des vies de famille. Ils font au mieux pour répondre rapidement à chaque candidature.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Qu'est-ce que ça apporte concrètement ?</summary>
-          <p class="faq-a">Un accès à un réseau de marketeurs lyonnais qui se font vraiment confiance : <strong>prestataires validés par des pairs</strong>, bons plans partagés, <strong>entraide pour la recherche d'emploi</strong>, et parfois des opportunités de jobs diffusées en avant-première dans le groupe — avant d'être publiées ailleurs.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">C'est quoi le groupe WhatsApp concrètement ?</summary>
-          <p class="faq-a">Plusieurs fils actifs entre membres : un fil <strong>entraide métier</strong> (recommandations de prestataires, conseils, bons plans), un fil <strong>jobs</strong> (offres et recherches de profils), et un fil <strong>général</strong> pour la vie du club et les prochains événements.</p>
-        </details>
-
+{% endfor %}
       </div>
     </div>
   </div>

@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "q": "Est-ce que mon profil correspond ?",
+      "a": "Le club est ouvert à toutes les personnes qui exercent une fonction <strong>marketing au sens large</strong> — acquisition, brand, growth, CRM, contenu, product marketing, communication marketing — avec <strong>au moins 3 ans d'expérience</strong>. Freelances, salarié·es et consultant·es sont les bienvenu·es. Il faut habiter ou travailler en <strong>région lyonnaise</strong>."
+    },
+    {
+      "q": "Les profils 100% communication, c'est exclu ?",
+      "a": "Les profils orientés <strong>communication institutionnelle pure</strong> (relations presse, com interne, événementiel sans dimension marketing) sont généralement hors scope. Si tu as un doute sur ton profil, postule quand même — on te répondra honnêtement."
+    },
+    {
+      "q": "Est-ce que je dois m'engager à venir à tous les événements ?",
+      "a": "<strong>Aucune obligation.</strong> Pas de quota de présence, pas de durée d'engagement minimum. Tu viens aux événements qui t'intéressent, quand tu peux. La communauté, c'est aussi ce qui se passe entre les événements sur WhatsApp."
+    },
+    {
+      "q": "C'est combien ?",
+      "a": "L'<strong>adhésion est gratuite</strong> pour l'instant. Certains événements (dîners, lieux privatisés) sont payants pour couvrir les frais de fonctionnement — les tarifs sont toujours communiqués en amont. Aucune mauvaise surprise."
+    },
+    {
+      "q": "Combien de temps pour avoir une réponse après ma candidature ?",
+      "a": "En général <strong>sous 48h</strong>. Le bureau est entièrement bénévole — ses membres ont des jobs et des vies de famille. Ils font au mieux pour répondre rapidement à chaque candidature."
+    },
+    {
+      "q": "Qu'est-ce que ça apporte concrètement ?",
+      "a": "Un accès à un réseau de marketeurs lyonnais qui se font vraiment confiance : <strong>prestataires validés par des pairs</strong>, bons plans partagés, <strong>entraide pour la recherche d'emploi</strong>, et parfois des opportunités de jobs diffusées en avant-première dans le groupe — avant d'être publiées ailleurs."
+    },
+    {
+      "q": "C'est quoi le groupe WhatsApp concrètement ?",
+      "a": "Plusieurs fils actifs entre membres : un fil <strong>entraide métier</strong> (recommandations de prestataires, conseils, bons plans), un fil <strong>jobs</strong> (offres et recherches de profils), et un fil <strong>général</strong> pour la vie du club et les prochains événements."
+    }
+  ]
+}

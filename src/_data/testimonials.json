@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "quote": "Les Gones du Market' incarnent ce que j'ai toujours défendu : le marketing commence par la communauté, pas par le produit. Ces marketeurs lyonnais l'ont compris avant tout le monde.",
+      "initials": "PK",
+      "name": "Philip Kotler",
+      "role": "Père du marketing moderne · Kellogg School of Management"
+    },
+    {
+      "quote": "La permission, c'est la base. Mais ce qui se passe dans ce club, c'est encore mieux : la confiance entre pairs. Un réseau qui se construit sur la valeur, pas sur le bruit. Remarquable.",
+      "initials": "SG",
+      "name": "Seth Godin",
+      "role": "Auteur de Purple Cow · This Is Marketing"
+    },
+    {
+      "quote": "J'aurais voulu avoir un truc comme ça quand je démarrais. L'entraide vraie, les bons plans concrets, pas du personal branding creux. C'est ça le marketing de demain.",
+      "initials": "GV",
+      "name": "Gary Vaynerchuk",
+      "role": "CEO VaynerMedia · Entrepreneur & speaker"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 # Configuration Pages CMS — pagescms.org
-# Définit ce que le bureau peut éditer, sans toucher au code.
-# (Première brique : les événements. Les autres contenus s'ajouteront ici.)
+# Ce que le bureau peut éditer, sans toucher au code.
 
 media:
   input: src/images
   output: images
 
 content:
+  # ─────────────── Événements ───────────────
   - name: events
     label: Événements (agenda)
     type: file
@@ -21,8 +21,7 @@ content:
           - name: datagroup
             label: Filtre
             type: select
-            options:
-              values: [upcoming, past]
+            options: { values: [upcoming, past] }
           - name: events
             label: Événements
             type: object
@@ -32,17 +31,94 @@ content:
               - name: status
                 label: Statut
                 type: select
-                options:
-                  values: [upcoming, past]
-              - { name: featured, label: Mettre en avant (prochain événement), type: boolean }
-              - { name: dow, label: Jour de la semaine (ex. Jeudi), type: string }
+                options: { values: [upcoming, past] }
+              - { name: featured, label: Prochain événement (mis en avant), type: boolean }
+              - { name: dow, label: Jour (ex. Jeudi), type: string }
               - { name: num, label: Date (ex. 24 sept.), type: string }
-              - { name: year, label: Année (ex. 2026), type: string }
+              - { name: year, label: Année, type: string }
               - { name: sub, label: Sous-titre / lieu, type: text }
               - { name: speakers, label: Intervenants (optionnel), type: text }
               - { name: badge, label: Badge (optionnel), type: string }
               - name: action
                 label: Bouton à droite
                 type: select
-                options:
-                  values: [register, soon, linkedin]
+                options: { values: [register, soon, linkedin] }
+
+  # ─────────────── Thèmes abordés ───────────────
+  - name: themes
+    label: Thèmes abordés
+    type: file
+    path: src/_data/themes.json
+    fields:
+      - name: items
+        label: Thèmes
+        type: object
+        list: true
+        fields:
+          - { name: date, label: Date (ex. Juin 2026), type: string }
+          - { name: title, label: Titre, type: string }
+          - { name: text, label: Description, type: text }
+
+  # ─────────────── Chiffres clés ───────────────
+  - name: stats
+    label: Chiffres clés
+    type: file
+    path: src/_data/stats.json
+    fields:
+      - name: items
+        label: Chiffres
+        type: object
+        list: true
+        fields:
+          - { name: number, label: Nombre, type: string }
+          - { name: label, label: Libellé, type: string }
+
+  # ─────────────── Témoignages ───────────────
+  - name: testimonials
+    label: Témoignages
+    type: file
+    path: src/_data/testimonials.json
+    fields:
+      - name: items
+        label: Témoignages
+        type: object
+        list: true
+        fields:
+          - { name: quote, label: Citation, type: text }
+          - { name: initials, label: Initiales (avatar), type: string }
+          - { name: name, label: Nom, type: string }
+          - { name: role, label: Fonction, type: string }
+
+  # ─────────────── FAQ ───────────────
+  - name: faq
+    label: FAQ
+    type: file
+    path: src/_data/faq.json
+    fields:
+      - name: items
+        label: Questions
+        type: object
+        list: true
+        fields:
+          - { name: q, label: Question, type: string }
+          - { name: a, label: Réponse (HTML autorisé), type: text }
+
+  # ─────────────── Espace membres : recommandations ───────────────
+  - name: members
+    label: Espace membres — recommandations
+    type: file
+    path: src/_data/members.json
+    fields:
+      - name: recos
+        label: Recommandations
+        type: object
+        list: true
+        fields:
+          - { name: date, label: Date (JJ/MM/AAAA), type: string }
+          - name: type
+            label: Type
+            type: select
+            options: { values: [prestataire, outil, conseil] }
+          - { name: sujet, label: Sujet, type: string }
+          - { name: contenu, label: Contenu, type: text }
+          - { name: contact, label: Contact (optionnel), type: text }
