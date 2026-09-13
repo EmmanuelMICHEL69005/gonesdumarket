@@ -10,9 +10,15 @@
     { "emoji": "💻", "name": "Coworking entre Gônes", "desc": "On se retrouve pour travailler ensemble en journée." },
     { "emoji": "📸", "name": "Events", "desc": "Les coulisses et l'organisation des prochaines rencontres." }
   ],
-  "messages": [
-    { "group": "Entraide", "text": "Qui peut me recommander un presta clé en main pour une soirée de fin d'année (lieu, food, animations) ? ~200 personnes. Merci 🙏" },
-    { "group": "Jobs", "text": "Quelqu'un aurait le contact d'un monteur vidéo YouTube freelance ? On produit de nouvelles vidéos à partir de nos rushs." },
-    { "group": "Veille", "text": "Déjà testé le tracking des citations IA (AI Overview / AI Mode) via la Search Console ? Un petit REX m'intéresse." }
-  ]
+  "chat": {
+    "group": "Entraide",
+    "avatar": "🤝",
+    "meta": "+200 membres",
+    "messages": [
+      { "dir": "in", "author": "Une Gone", "color": "#e542a3", "text": "Qui peut me recommander un presta clé en main pour une soirée de fin d'année (lieu, food, animations) ? ~200 personnes 🙏", "time": "13:18" },
+      { "dir": "in", "author": "Un Gone", "color": "#53bdeb", "text": "J'ai un super contact, je t'envoie ça en MP 👌", "time": "13:24" },
+      { "dir": "out", "text": "Merci 🙌 c'est exactement ça la force du groupe", "time": "13:26" },
+      { "dir": "in", "author": "Un autre Gone", "color": "#dfa74a", "text": "+1, on a bossé avec eux l'an dernier, vraiment au top 🔥", "time": "13:31" }
+    ]
+  }
 }

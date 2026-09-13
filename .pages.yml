@@ -171,10 +171,23 @@ content:
           - { name: emoji, label: Emoji, type: string }
           - { name: name, label: Nom du groupe, type: string }
           - { name: desc, label: Description, type: text }
-      - name: messages
-        label: Exemples de messages (anonymisés)
+      - name: chat
+        label: Discussion illustrée (anonymisée)
         type: object
-        list: true
         fields:
-          - { name: group, label: Groupe, type: string }
-          - { name: text, label: Message, type: text }
+          - { name: group, label: Nom du groupe, type: string }
+          - { name: avatar, label: Emoji avatar, type: string }
+          - { name: meta, label: Sous-titre (nb de membres), type: string }
+          - name: messages
+            label: Messages
+            type: object
+            list: true
+            fields:
+              - name: dir
+                label: Sens (in = reçu, out = envoyé)
+                type: select
+                options: { values: [in, out] }
+              - { name: author, label: Auteur (messages reçus), type: string }
+              - { name: color, label: Couleur du nom (hex), type: string }
+              - { name: text, label: Message, type: text }
+              - { name: time, label: Heure, type: string }

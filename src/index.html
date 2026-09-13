@@ -289,14 +289,27 @@
     .wa-card-emoji { font-size: 1.4rem; line-height: 1; flex: none; }
     .wa-card-name { color: #fff; font-weight: 700; font-size: 1.02rem; margin-bottom: 0.25rem; }
     .wa-card-desc { color: #999; font-size: 0.92rem; line-height: 1.5; }
-    .wa-chat { max-width: 640px; }
-    .wa-chat-label { color: #777; font-size: 0.85rem; margin-bottom: 1rem; }
-    .wa-bubble { background: #1f2b1f; border: 1px solid #2c3a2c; border-left: 3px solid #25D366; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.75rem; }
-    .wa-bubble-meta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; }
-    .wa-bubble-author { color: #25D366; font-weight: 700; font-size: 0.82rem; }
-    .wa-bubble-tag { color: #9aa79a; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; background: #2c3a2c; padding: 0.12rem 0.55rem; border-radius: 100px; }
-    .wa-bubble-text { color: #d8d2cc; font-size: 0.95rem; line-height: 1.55; margin: 0; }
-    .wa-note { color: #666; font-size: 0.78rem; font-style: italic; margin-top: 0.75rem; }
+    .wa-chat { max-width: 440px; margin: 0 auto; text-align: center; }
+    .wa-chat-label { color: #8a8a8a; font-size: 0.85rem; margin-bottom: 1rem; }
+    .wa-phone { max-width: 400px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 55px rgba(0,0,0,0.5); border: 1px solid #2a3942; text-align: left; }
+    .wa-phone-head { display: flex; align-items: center; gap: 0.7rem; background: #202c33; padding: 0.7rem 0.9rem; }
+    .wa-phone-avatar { width: 38px; height: 38px; border-radius: 50%; background: #0b141a; display: grid; place-items: center; font-size: 1.1rem; flex: none; }
+    .wa-phone-id { flex: 1; min-width: 0; }
+    .wa-phone-name { color: #e9edef; font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+    .wa-phone-meta { color: #8696a0; font-size: 0.75rem; }
+    .wa-phone-wa { color: #25D366; display: inline-flex; }
+    .wa-phone-body { background-color: #0b141a; background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 22px 22px; padding: 1rem 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .wa-msg { max-width: 84%; padding: 0.5rem 0.65rem 0.4rem; border-radius: 9px; font-size: 0.9rem; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,0.25); }
+    .wa-msg--in { align-self: flex-start; background: #202c33; color: #e9edef; border-top-left-radius: 2px; }
+    .wa-msg--out { align-self: flex-end; background: #005c4b; color: #e9edef; border-top-right-radius: 2px; }
+    .wa-msg-author { display: block; font-weight: 700; font-size: 0.78rem; margin-bottom: 0.1rem; }
+    .wa-msg-text { display: inline; }
+    .wa-msg-time { display: block; text-align: right; font-size: 0.62rem; color: rgba(233,237,239,0.45); margin-top: 0.15rem; }
+    .wa-ticks { vertical-align: -1px; margin-left: 2px; }
+    .wa-phone-foot { display: flex; align-items: center; gap: 0.6rem; background: #202c33; padding: 0.55rem 0.8rem; }
+    .wa-foot-input { flex: 1; background: #2a3942; color: #8696a0; border-radius: 100px; padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+    .wa-foot-send { width: 34px; height: 34px; border-radius: 50%; background: #25D366; color: #0b141a; display: grid; place-items: center; font-size: 0.95rem; flex: none; }
+    .wa-note { color: #666; font-size: 0.78rem; font-style: italic; margin-top: 0.85rem; }
     @media (max-width: 768px) { .wa-bg { padding: 3.5rem 1.5rem; } .wa-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .community-strip { height: 320px; } .community-strip-overlay { padding: 1.5rem; } }
 
@@ -1001,15 +1014,32 @@
 {% endfor %}
       </div>
 
-      <div class="wa-chat" aria-label="Exemples de messages échangés">
-        <div class="wa-chat-label">Un aperçu de ce qui s'y échange&nbsp;:</div>
-{% for m in whatsapp.messages %}
-        <div class="wa-bubble">
-          <div class="wa-bubble-meta"><span class="wa-bubble-author">Membre</span><span class="wa-bubble-tag">{{ m.group }}</span></div>
-          <p class="wa-bubble-text">{{ m.text }}</p>
-        </div>
+      <div class="wa-chat">
+        <div class="wa-chat-label">L'entraide en direct — un échange, anonymisé&nbsp;:</div>
+        <div class="wa-phone" aria-label="Exemple de discussion WhatsApp">
+          <div class="wa-phone-head">
+            <span class="wa-phone-avatar" aria-hidden="true">{{ whatsapp.chat.avatar }}</span>
+            <div class="wa-phone-id">
+              <div class="wa-phone-name">{{ whatsapp.chat.group }}</div>
+              <div class="wa-phone-meta">{{ whatsapp.chat.meta }}</div>
+            </div>
+            <span class="wa-phone-wa" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.442zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></span>
+          </div>
+          <div class="wa-phone-body">
+{% for m in whatsapp.chat.messages %}
+            <div class="wa-msg wa-msg--{{ m.dir }}">
+{% if m.author %}              <span class="wa-msg-author" style="color:{{ m.color }}">{{ m.author }}</span>
+{% endif %}              <span class="wa-msg-text">{{ m.text }}</span>
+              <span class="wa-msg-time">{{ m.time }}{% if m.dir == "out" %} <svg class="wa-ticks" viewBox="0 0 18 18" width="16" height="16" aria-hidden="true"><path fill="#53bdeb" d="M17.394 5.035l-.57-.444a.434.434 0 00-.609.076l-6.39 8.198a.32.32 0 01-.484.033l-.358-.325a.32.32 0 00-.484.032l-.378.483a.418.418 0 00.036.541l1.32 1.266c.143.14.361.125.484-.033l7.417-9.516a.43.43 0 00-.076-.609zm-4.699.076l-.57-.444a.434.434 0 00-.609.076l-6.39 8.198a.32.32 0 01-.484.033L2.19 9.891a.418.418 0 00-.541.036l-.484.483a.418.418 0 00.036.541l3.39 3.265c.143.14.361.125.484-.033l7.417-9.516a.43.43 0 00-.076-.609z"/></svg>{% endif %}</span>
+            </div>
 {% endfor %}
-        <p class="wa-note">Exemples anonymisés, tirés des échanges du groupe.</p>
+          </div>
+          <div class="wa-phone-foot">
+            <span class="wa-foot-input">Message</span>
+            <span class="wa-foot-send" aria-hidden="true">➤</span>
+          </div>
+        </div>
+        <p class="wa-note">Conversation reconstituée et anonymisée à partir d'échanges réels du groupe.</p>
       </div>
     </div>
   </div>
