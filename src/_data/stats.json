@@ -2,7 +2,7 @@
   "items": [
     { "number": "+200", "label": "Membres" },
     { "number": "8", "label": "Éditions en 2025" },
-    { "number": "6", "label": "Canaux WhatsApp" },
+    { "number": "6", "label": "Canaux WhatsApp", "icon": "whatsapp" },
     { "number": "2023", "label": "Année de création" }
   ]
 }
