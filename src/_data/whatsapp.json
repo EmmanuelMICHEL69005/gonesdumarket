@@ -1,0 +1,18 @@
+{
+  "eyebrow": "La force de la communauté",
+  "title": "6 groupes WhatsApp, une entraide toute l'année",
+  "intro": "C'est là que la communauté vit vraiment : entre deux événements, les Gones s'entraident au quotidien. Recommandations, jobs, veille, bons plans — tout circule, entre pairs de confiance.",
+  "groups": [
+    { "emoji": "💬", "name": "Général", "desc": "La vie du club : annonces, prochains rendez-vous et discussions ouvertes." },
+    { "emoji": "🤝", "name": "Entraide", "desc": "Le cœur du réseau : prestataires recommandés, conseils et bons plans validés par des pairs." },
+    { "emoji": "💼", "name": "Jobs", "desc": "Offres, recherches de profils et mises en relation — souvent avant tout le monde." },
+    { "emoji": "🔭", "name": "Veille", "desc": "Articles, outils et tendances marketing & IA partagés en continu." },
+    { "emoji": "💻", "name": "Coworking entre Gônes", "desc": "On se retrouve pour travailler ensemble en journée." },
+    { "emoji": "📸", "name": "Events", "desc": "Les coulisses et l'organisation des prochaines rencontres." }
+  ],
+  "messages": [
+    { "group": "Entraide", "text": "Qui peut me recommander un presta clé en main pour une soirée de fin d'année (lieu, food, animations) ? ~200 personnes. Merci 🙏" },
+    { "group": "Jobs", "text": "Quelqu'un aurait le contact d'un monteur vidéo YouTube freelance ? On produit de nouvelles vidéos à partir de nos rushs." },
+    { "group": "Veille", "text": "Déjà testé le tracking des citations IA (AI Overview / AI Mode) via la Search Console ? Un petit REX m'intéresse." }
+  ]
+}

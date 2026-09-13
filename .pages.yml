@@ -153,3 +153,28 @@ content:
           - { name: n, label: Numéro, type: string }
           - { name: title, label: Titre, type: string }
           - { name: text, label: Texte, type: text }
+
+  # ─────────────── Bloc WhatsApp (communauté) ───────────────
+  - name: whatsapp
+    label: Bloc WhatsApp (communauté)
+    type: file
+    path: src/_data/whatsapp.json
+    fields:
+      - { name: eyebrow, label: Sur-titre, type: string }
+      - { name: title, label: Titre, type: string }
+      - { name: intro, label: Introduction, type: text }
+      - name: groups
+        label: Les groupes
+        type: object
+        list: true
+        fields:
+          - { name: emoji, label: Emoji, type: string }
+          - { name: name, label: Nom du groupe, type: string }
+          - { name: desc, label: Description, type: text }
+      - name: messages
+        label: Exemples de messages (anonymisés)
+        type: object
+        list: true
+        fields:
+          - { name: group, label: Groupe, type: string }
+          - { name: text, label: Message, type: text }
