@@ -1413,7 +1413,7 @@
 {% endif %}{% if ev.badge %}            <span class="ev-badge badge-special">{{ ev.badge }}</span>
 {% endif %}          </div>
 {% if ev.action == "register" %}          <div class="ev-right">
-            <a href="#candidature" class="ev-btn">S'inscrire →</a>
+            <a href="{{ ev.url if ev.url else '#candidature' }}" class="ev-btn"{% if ev.url %} target="_blank" rel="noopener"{% endif %}>S'inscrire →</a>
           </div>
 {% elif ev.action == "linkedin" %}          <div class="ev-right">
             <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>

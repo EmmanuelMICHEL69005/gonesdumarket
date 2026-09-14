@@ -43,6 +43,7 @@ content:
                 label: Bouton à droite
                 type: select
                 options: { values: [register, soon, linkedin] }
+              - { name: url, label: "Lien d'inscription (bouton S'inscrire)", type: string }
 
   # ─────────────── Thèmes abordés ───────────────
   - name: themes
