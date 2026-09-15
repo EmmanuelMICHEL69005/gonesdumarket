@@ -1,0 +1,45 @@
+name: Déployer le site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Construire le site
+        run: npm run build
+
+      - name: Déposer sur Gandi (SFTP)
+        env:
+          SFTP_USER: ${{ secrets.GANDI_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.GANDI_SFTP_PASS }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -c "
+            set sftp:auto-confirm yes;
+            set net:timeout 20; set net:max-retries 3; set net:reconnect-interval-base 5;
+            open -u '$SFTP_USER','$SFTP_PASS' sftp://sftp.sd5.gpaas.net;
+            cd vhosts/www.lesgonesdumarket.fr/htdocs;
+            set cmd:fail-exit no;
+            rm -f index.html; rm -f index-v2.html; rm -f membres.html;
+            rm -f beta-widget.js; rm -f site.js;
+            set cmd:fail-exit yes;
+            mirror --reverse --verbose --parallel=2 --no-perms _site/ ./;
+          "
