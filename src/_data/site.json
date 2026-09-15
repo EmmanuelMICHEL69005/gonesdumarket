@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "concept": "Le concept",
+    "themes": "Les thèmes",
+    "events": "Événements",
+    "members": "Espace membres",
+    "cta": "Nous rejoindre →"
+  },
+  "hero": {
+    "badge": "Lyon · Fondé en 2023",
+    "title_html": "210 passionné·es<br>de marketing<br>à <em>Lyon.</em>",
+    "desc": "Le club qui réunit les dirigeants marketing lyonnais pour échanger, apprendre et grandir ensemble, en toute convivialité.",
+    "cta": "Demander à rejoindre le club"
+  },
+  "community_caption_html": "<em>210 responsables marketing lyonnais,</em> un WhatsApp, des événements. Une vraie communauté.",
+  "brand_caption": "Le club marketing lyonnais",
+  "sections": {
+    "concept": {
+      "eyebrow": "Le concept",
+      "title": "Comment ça fonctionne",
+      "lead": "Les Gones du Market' c'est un espace de confiance pour toutes les personnes qui font du marketing à Lyon. Pas un réseau de façade, une vraie communauté.",
+      "cta": "Rejoindre le club →"
+    },
+    "themes": {
+      "eyebrow": "Nos sujets",
+      "title": "Les thèmes abordés",
+      "lead": "Des sujets concrets, choisis par et pour la communauté marketing lyonnaise."
+    },
+    "galerie": {
+      "eyebrow": "La vie du club",
+      "title": "Nos événements en images"
+    },
+    "raisons": {
+      "eyebrow": "Pourquoi nous rejoindre",
+      "title_html": "Trois raisons<br>(et une bonne ambiance).",
+      "intro": "Les Gones du Market', c'est plus qu'un événement. C'est un endroit où les marketeurs lyonnais progressent ensemble, sans langue de bois.",
+      "cta": "Candidater pour rejoindre le club →",
+      "note": "Sélection sur candidature · Réponse sous 48h"
+    },
+    "agenda": {
+      "eyebrow": "Prochaines masterclasses",
+      "title": "L'agenda 2026",
+      "filter_all": "Toutes",
+      "filter_upcoming": "À venir",
+      "filter_past": "Passés"
+    },
+    "linkedin": {
+      "eyebrow": "Communauté",
+      "title": "Nos derniers posts",
+      "lead_html": "Suivez l'actualité du club sur LinkedIn avec <strong>#lesgonesdumarket</strong>"
+    },
+    "youtube": {
+      "eyebrow": "Replays",
+      "title": "Nos masterclasses en vidéo",
+      "desc": "Retrouvez les replays et extraits de nos événements sur notre chaîne YouTube.",
+      "cta_channel": "Voir la chaîne YouTube",
+      "cta_join": "Rejoindre le club →"
+    },
+    "temoignages": {
+      "eyebrow": "Ce qu'ils en pensent",
+      "title_html": "Ils auraient adoré<br>être membres.",
+      "intro": "Témoignages fictifs de personnalités qui auraient pu nous rejoindre."
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "title": "Tu hésites encore ?",
+      "lead": "Les questions qu'on nous pose le plus souvent avant de candidater."
+    },
+    "processus": {
+      "eyebrow": "Comment ça marche",
+      "title_html": "Rejoindre le club<br>en 4 étapes.",
+      "intro": "Pas de cooptation obligatoire, pas de dossier complexe. Un formulaire, une vérification rapide."
+    },
+    "candidature": {
+      "eyebrow": "Nous rejoindre",
+      "title": "Candidater pour rejoindre le club",
+      "lead": "Tu travailles dans le marketing à Lyon ? Envoie-nous ta candidature, on revient vers toi rapidement."
+    }
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/gones-du-market",
+    "youtube": "https://www.youtube.com/@LesGonesduMarket"
+  },
+  "members_page": {
+    "gate_title": "Espace membres",
+    "gate_subtitle": "Réservé aux membres des Gones du Market'",
+    "gate_placeholder": "Mot de passe",
+    "logout": "Se déconnecter →",
+    "eyebrow": "Espace membres",
+    "title_html": "Bons plans &amp;<br>recommandations",
+    "intro": "Les recommandations issues du fil Entraide WhatsApp. Partagées par les membres, pour les membres.",
+    "search_placeholder": "Rechercher un outil, prestataire, sujet...",
+    "filter_all": "Tout",
+    "filter_prestataire": "Prestataires",
+    "filter_outil": "Outils",
+    "filter_conseil": "Conseils",
+    "footer": "© 2026 Les Gones du Market' · Lyon · Espace membres",
+    "back": "Retour au site"
+  }
+}

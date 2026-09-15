@@ -1,0 +1,24 @@
+{
+  "eyebrow": "La force de la communauté",
+  "title": "6 groupes WhatsApp, une entraide toute l'année",
+  "intro": "C'est là que la communauté vit vraiment : entre deux événements, les Gones s'entraident au quotidien. Recommandations, jobs, veille, bons plans — tout circule, entre pairs de confiance.",
+  "groups": [
+    { "emoji": "💬", "name": "Général", "desc": "La vie du club : annonces, prochains rendez-vous et discussions ouvertes." },
+    { "emoji": "🤝", "name": "Entraide", "desc": "Le cœur du réseau : prestataires recommandés, conseils et bons plans validés par des pairs." },
+    { "emoji": "💼", "name": "Jobs", "desc": "Offres, recherches de profils et mises en relation — souvent avant tout le monde." },
+    { "emoji": "🔭", "name": "Veille", "desc": "Articles, outils et tendances marketing & IA partagés en continu." },
+    { "emoji": "💻", "name": "Coworking entre Gônes", "desc": "On se retrouve pour travailler ensemble en journée." },
+    { "emoji": "📸", "name": "Events", "desc": "Les coulisses et l'organisation des prochaines rencontres." }
+  ],
+  "chat": {
+    "group": "Entraide",
+    "avatar": "🤝",
+    "meta": "210 membres",
+    "messages": [
+      { "dir": "in", "author": "Une Gone", "color": "#e542a3", "text": "Qui peut me recommander un presta clé en main pour une soirée de fin d'année (lieu, food, animations) ? ~200 personnes 🙏", "time": "13:18" },
+      { "dir": "in", "author": "Un Gone", "color": "#53bdeb", "text": "J'ai un super contact, je t'envoie ça en MP 👌", "time": "13:24" },
+      { "dir": "out", "text": "Merci 🙌 c'est exactement ça la force du groupe", "time": "13:26" },
+      { "dir": "in", "author": "Un autre Gone", "color": "#dfa74a", "text": "+1, on a bossé avec eux l'an dernier, vraiment au top 🔥", "time": "13:31" }
+    ]
+  }
+}

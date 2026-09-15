@@ -1,8 +1,7 @@
 /* Widget « version bêta » + signalement de bug — Les Gones du Market'
-   Les messages sont envoyés par email via Web3Forms (https://web3forms.com).
-   -> Remplace ACCESS_KEY par la clé reçue en créant une clé gratuite avec
-      l'adresse emmanuelmichel@gmail.com. Tant que la clé n'est pas valide,
-      le formulaire bascule automatiquement sur un lien mailto. */
+   Les messages (et captures d'écran) sont envoyés par email via Web3Forms.
+   -> ACCESS_KEY = clé Web3Forms liée à emmanuelmichel@gmail.com.
+      Sans clé valide, le formulaire bascule sur un lien mailto (sans image). */
 (function () {
   "use strict";
 
@@ -10,6 +9,8 @@
   var ENDPOINT   = "https://api.web3forms.com/submit";
   var CONTACT    = "emmanuelmichel@gmail.com";
   var SEEN_KEY   = "gdm_beta_seen";
+  var MAX_FILES  = 3;
+  var MAX_DIM    = 1600; // les captures sont réduites à 1600px max avant envoi
 
   var css = ''
     + '.beta-widget,.beta-widget *{box-sizing:border-box}'
@@ -24,7 +25,8 @@
     +   'max-height:calc(100vh - 96px);overflow-y:auto;'
     +   'background:#fff;color:#1A1A1A;border-radius:16px;box-shadow:0 16px 50px rgba(0,0,0,.28);padding:18px;'
     +   'font:400 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}'
-    + '.beta-panel[hidden],.beta-toast[hidden]{display:none}'
+    + '.beta-panel.drag{outline:2px dashed #E8614A;outline-offset:-6px}'
+    + '.beta-panel[hidden],.beta-toast[hidden],.beta-thumbs[hidden]{display:none}'
     + '.beta-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}'
     + '.beta-panel-head strong{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#E8614A}'
     + '.beta-close{background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:#888;padding:0 4px}'
@@ -32,9 +34,22 @@
     + '.beta-form{display:grid;gap:10px}'
     + '.beta-form label{display:grid;gap:4px;font-size:12px;font-weight:600;color:#333}'
     + '.beta-form label span{font-weight:400;color:#999}'
-    + '.beta-form textarea,.beta-form input{width:100%;font:inherit;padding:9px 10px;border:1px solid #ddd;'
+    + '.beta-form textarea,.beta-form input[type=email]{width:100%;font:inherit;padding:9px 10px;border:1px solid #ddd;'
     +   'border-radius:8px;resize:vertical;background:#fafafa;color:#1A1A1A}'
-    + '.beta-form textarea:focus,.beta-form input:focus{outline:none;border-color:#E8614A;background:#fff}'
+    + '.beta-form textarea:focus,.beta-form input[type=email]:focus{outline:none;border-color:#E8614A;background:#fff}'
+    // — zone captures —
+    + '.beta-attach{display:flex;align-items:center;gap:8px;flex-wrap:wrap}'
+    + '.beta-form .beta-attach-btn{display:inline-flex;align-items:center;gap:6px;cursor:pointer;'
+    +   'font:600 12px/1 inherit;color:#C94D38;background:#FBEDE9;border:1px dashed #E8614A;'
+    +   'padding:8px 12px;border-radius:8px}'
+    + '.beta-attach-hint{font-size:11px;color:#999;font-weight:400}'
+    + '.beta-thumbs{display:flex;gap:8px;flex-wrap:wrap}'
+    + '.beta-thumb{position:relative;width:58px;height:58px;border-radius:8px;overflow:hidden;'
+    +   'border:1px solid #e0d9d0;background:#fafafa}'
+    + '.beta-thumb img{width:100%;height:100%;object-fit:cover;display:block}'
+    + '.beta-thumb button{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;'
+    +   'border:none;background:rgba(0,0,0,.6);color:#fff;font:700 12px/1 inherit;cursor:pointer;'
+    +   'display:grid;place-items:center;padding:0}'
     + '.beta-submit{background:#E8614A;color:#fff;border:none;border-radius:8px;padding:10px;font:700 13px/1 inherit;'
     +   'cursor:pointer;transition:background .2s}'
     + '.beta-submit:hover{background:#C94D38}.beta-submit:disabled{opacity:.6;cursor:default}'
@@ -70,6 +85,12 @@
     +   '<form class="beta-form">'
     +     '<label>Votre message'
     +       '<textarea name="message" rows="4" required placeholder="Décrivez le problème…"></textarea></label>'
+    +     '<div class="beta-attach">'
+    +       '<label class="beta-attach-btn">📎 Joindre une capture'
+    +         '<input type="file" accept="image/*" multiple hidden></label>'
+    +       '<span class="beta-attach-hint">ou collez (Cmd/Ctrl+V) · glissez une image</span>'
+    +     '</div>'
+    +     '<div class="beta-thumbs" hidden></div>'
     +     '<label>Votre email <span>(facultatif, pour vous répondre)</span>'
     +       '<input type="email" name="email" placeholder="vous@exemple.com" autocomplete="email"></label>'
     +     '<button class="beta-submit" type="submit">Envoyer</button>'
@@ -77,11 +98,14 @@
     +   '</form></div>';
   document.body.appendChild(wrap);
 
-  var fab    = wrap.querySelector(".beta-fab");
-  var panel  = wrap.querySelector(".beta-panel");
-  var form   = wrap.querySelector(".beta-form");
-  var status = wrap.querySelector(".beta-status");
-  var toast  = null;
+  var fab     = wrap.querySelector(".beta-fab");
+  var panel   = wrap.querySelector(".beta-panel");
+  var form    = wrap.querySelector(".beta-form");
+  var status  = wrap.querySelector(".beta-status");
+  var fileIn  = wrap.querySelector('.beta-attach input[type=file]');
+  var thumbs  = wrap.querySelector(".beta-thumbs");
+  var toast   = null;
+  var attachments = []; // { blob, name, url }
 
   function openPanel() {
     panel.hidden = false;
@@ -101,6 +125,99 @@
     if (e.key === "Escape" && !panel.hidden) closePanel();
   });
 
+  /* ── Captures d'écran : compression + aperçus ── */
+  function compress(file, cb) {
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+    img.onload = function () {
+      URL.revokeObjectURL(url);
+      var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+      if (w > MAX_DIM || h > MAX_DIM) {
+        var r = Math.min(MAX_DIM / w, MAX_DIM / h);
+        w = Math.round(w * r); h = Math.round(h * r);
+      }
+      try {
+        var c = document.createElement("canvas");
+        c.width = w; c.height = h;
+        c.getContext("2d").drawImage(img, 0, 0, w, h);
+        c.toBlob(function (blob) { cb(blob || file); }, "image/jpeg", 0.85);
+      } catch (e) { cb(file); }
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); cb(file); };
+    img.src = url;
+  }
+
+  function addImage(file) {
+    if (!file || !/^image\//.test(file.type || "")) return;
+    if (attachments.length >= MAX_FILES) {
+      status.className = "beta-status err";
+      status.textContent = "3 captures maximum.";
+      return;
+    }
+    compress(file, function (blob) {
+      if (attachments.length >= MAX_FILES) return;
+      var item = { blob: blob, name: "capture-" + (attachments.length + 1) + ".jpg", url: URL.createObjectURL(blob) };
+      attachments.push(item);
+      renderThumbs();
+    });
+  }
+
+  function renderThumbs() {
+    thumbs.innerHTML = "";
+    attachments.forEach(function (a, i) {
+      var t = document.createElement("div");
+      t.className = "beta-thumb";
+      var im = document.createElement("img");
+      im.src = a.url; im.alt = "Capture " + (i + 1);
+      var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("aria-label", "Retirer la capture"); b.textContent = "×";
+      b.addEventListener("click", function () {
+        URL.revokeObjectURL(a.url);
+        attachments.splice(i, 1);
+        renderThumbs();
+      });
+      t.appendChild(im); t.appendChild(b);
+      thumbs.appendChild(t);
+    });
+    thumbs.hidden = attachments.length === 0;
+  }
+
+  function clearAttachments() {
+    attachments.forEach(function (a) { URL.revokeObjectURL(a.url); });
+    attachments = [];
+    renderThumbs();
+  }
+
+  // bouton fichier
+  fileIn.addEventListener("change", function () {
+    Array.prototype.forEach.call(fileIn.files || [], addImage);
+    fileIn.value = "";
+  });
+
+  // coller (Cmd/Ctrl+V) une image
+  panel.addEventListener("paste", function (e) {
+    var items = (e.clipboardData && e.clipboardData.items) || [];
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type && items[i].type.indexOf("image") === 0) {
+        var f = items[i].getAsFile();
+        if (f) { addImage(f); e.preventDefault(); }
+      }
+    }
+  });
+
+  // glisser-déposer
+  ["dragenter", "dragover"].forEach(function (ev) {
+    panel.addEventListener(ev, function (e) { e.preventDefault(); panel.classList.add("drag"); });
+  });
+  ["dragleave", "drop"].forEach(function (ev) {
+    panel.addEventListener(ev, function (e) { e.preventDefault(); if (ev === "drop" || e.target === panel) panel.classList.remove("drag"); });
+  });
+  panel.addEventListener("drop", function (e) {
+    var files = (e.dataTransfer && e.dataTransfer.files) || [];
+    Array.prototype.forEach.call(files, addImage);
+  });
+
+  /* ── Envoi ── */
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var btn = form.querySelector(".beta-submit");
@@ -108,23 +225,28 @@
 
     if (keyMissing) { showMailtoFallback(); return; }
 
-    var fd = new FormData(form);
+    var fd = new FormData();
+    fd.append("message", form.message.value);
+    if (form.email.value) fd.append("email", form.email.value);
     fd.append("access_key", ACCESS_KEY);
     fd.append("subject", "Bug signalé — lesgonesdumarket.fr (bêta)");
     fd.append("from_name", "Formulaire bêta — Les Gones du Market'");
     fd.append("page", location.href);
     fd.append("navigateur", navigator.userAgent);
     fd.append("ecran", (window.screen ? screen.width + "×" + screen.height : ""));
+    fd.append("captures", String(attachments.length));
+    attachments.forEach(function (a, i) { fd.append("capture" + (i + 1), a.blob, a.name); });
 
     btn.disabled = true;
     status.className = "beta-status";
-    status.textContent = "Envoi…";
+    status.textContent = attachments.length ? "Envoi de la capture…" : "Envoi…";
 
     fetch(ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } })
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !data.success) throw new Error(data && data.message);
         form.reset();
+        clearAttachments();
         status.className = "beta-status ok";
         status.textContent = "Merci ! Votre message a bien été envoyé.";
         markSeen();
@@ -136,15 +258,15 @@
 
   function showMailtoFallback() {
     var body = form.message ? form.message.value : "";
+    var note = attachments.length ? "\n\n(Les captures ne peuvent pas être jointes par ce lien : renvoyez-les en pièce jointe à votre email.)" : "";
     var href = "mailto:" + CONTACT
       + "?subject=" + encodeURIComponent("Bug lesgonesdumarket.fr (bêta)")
-      + "&body=" + encodeURIComponent(body + "\n\n---\nPage : " + location.href + "\nNavigateur : " + navigator.userAgent);
+      + "&body=" + encodeURIComponent(body + note + "\n\n---\nPage : " + location.href + "\nNavigateur : " + navigator.userAgent);
     status.className = "beta-status err";
     status.innerHTML = 'Envoi automatique indisponible — <a href="' + href + '">envoyer par email</a>.';
   }
 
   // Annonce « version bêta » : une seule fois par navigateur, et pas sur petit écran
-  // (le bouton flottant porte déjà le message « Version bêta · Signaler un bug »)
   var seen = false;
   try { seen = localStorage.getItem(SEEN_KEY) === "1"; } catch (e) {}
   var smallScreen = (window.innerWidth || document.documentElement.clientWidth) < 620;
@@ -164,7 +286,7 @@
       function dismissToast() { if (toast) { toast.remove(); toast = null; } markSeen(); }
       toast.querySelector(".t-report").addEventListener("click", openPanel);
       toast.querySelector(".t-dismiss").addEventListener("click", dismissToast);
-      setTimeout(dismissToast, 11000); // disparaît tout seul
+      setTimeout(dismissToast, 11000);
     }, 1800);
   } else if (!seen && smallScreen) {
     markSeen();

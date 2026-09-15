@@ -1,0 +1,13 @@
+{
+  "name": "gonesdumarket",
+  "version": "1.0.0",
+  "description": "Site des Gones du Market' — généré avec Eleventy, contenu éditable via Pages CMS",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

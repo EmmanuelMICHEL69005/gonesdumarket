@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace membres — Les Gones du Market'</title>
+  <meta name="google-site-verification" content="zRjsic6LWotRy7oeAsCIwBWLqNuXnJYjLoC9CalU2GU" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <style>
+    :root {
+      --corail:       #E8614A;
+      --corail-fonce: #C94D38;
+      --noir:         #1A1A1A;
+      --gris-clair:   #F5F4F2;
+      --gris:         #888888;
+      --blanc:        #FFFFFF;
+      /* alias hérités, mappés sur la charte du site */
+      --navy:         #1A1A1A;
+      --navy-mid:     #E8614A;
+      --slate:        #1A1A1A;
+      --bg:           #F5F4F2;
+      --bg-muted:     #EFEDEA;
+      --text-muted:   #666666;
+      --border:       #E4E2DD;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--noir);
+      background: var(--blanc);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MOT DE PASSE ── */
+    #password-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    #password-gate h2 {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+
+    #password-gate p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    #password-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #password-input {
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: rgba(255,255,255,0.06);
+      color: white;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s;
+    }
+
+    #password-input::placeholder { color: rgba(255,255,255,0.35); }
+    #password-input:focus { border-color: var(--corail); }
+    #password-input.error { border-color: #e74c3c; }
+
+    #password-submit {
+      background: var(--corail);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    #password-submit:hover { background: var(--corail-fonce); }
+
+    #password-error {
+      color: #e74c3c;
+      font-size: 0.8rem;
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    /* ── CONTENU PRINCIPAL ── */
+    #content { display: none; }
+
+    /* ── NAV PILL ── */
+    .nav {
+      position: sticky;
+      top: 1rem;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .nav-inner {
+      background: white;
+      border-radius: 100px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+      pointer-events: all;
+    }
+
+    .nav-logo img { height: 68px; width: auto; display: block; mix-blend-mode: multiply; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.875rem;
+      font-weight: 500;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; font-weight: 700; color: var(--corail); }
+
+    .nav-badge {
+      background: #FEF0ED;
+      color: var(--corail);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    .btn-logout {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      opacity: 0.5;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-logout:hover { opacity: 1; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--navy-mid);
+      color: white;
+      padding: 4rem 3rem 3.5rem;
+    }
+
+    .page-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-hero-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      color: white;
+      margin-bottom: 0.9rem;
+    }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    /* ── BARRE DE RECHERCHE + FILTRES ── */
+    .filters-bar {
+      background: var(--blanc);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 96px;
+      z-index: 99;
+    }
+
+    .filters-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #search-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--bg);
+    }
+
+    #search-input:focus { border-color: var(--corail); background: white; }
+
+    .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .filter-tab {
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .filter-tab:hover { border-color: var(--navy); color: var(--navy); }
+
+    .filter-tab.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: white;
+    }
+
+    .results-count {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── GRILLE DE CONTENU ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem;
+    }
+
+    .category-block { margin-bottom: 3rem; }
+
+    .category-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--corail);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .category-count {
+      background: #FEF0ED;
+      color: var(--corail);
+      font-size: 0.65rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 100px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--blanc);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      border-top: 3px solid transparent;
+      transition: box-shadow 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(10,26,43,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card[data-type="outil"] { border-top-color: #3B82F6; }
+    .card[data-type="prestataire"] { border-top-color: var(--corail); }
+    .card[data-type="conseil"] { border-top-color: #10B981; }
+
+    .card-type {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .card[data-type="outil"] .card-type { color: #3B82F6; }
+    .card[data-type="prestataire"] .card-type { color: var(--corail); }
+    .card[data-type="conseil"] .card-type { color: #10B981; }
+
+    .card-sujet {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-contenu {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .card-contact {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 0.6rem;
+      word-break: break-word;
+    }
+
+    .card-contact a { color: var(--corail); text-decoration: none; }
+    .card-contact a:hover { text-decoration: underline; }
+
+    .card-date {
+      font-size: 0.65rem;
+      color: rgba(10,26,43,0.25);
+      margin-top: 0.4rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.35);
+      padding: 2rem 3rem;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--corail); text-decoration: none; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden; }
+      .nav { padding: 0 1rem; }
+      .nav-inner { gap: 0.75rem; padding: 0.4rem 0.4rem 0.4rem 0.9rem; }
+      .nav-logo img { height: 46px; }
+      .nav-link:not(.active) { display: none; }
+      .btn-logout { padding: 0.5rem 0.9rem; }
+      .filters-bar { top: 76px; }
+    }
+
+    @media (max-width: 640px) {
+      .filters-bar, .main { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-hero { padding: 3rem 1.5rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .filters-inner { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOT DE PASSE -->
+  <div id="password-gate">
+    <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" style="width:120px;height:auto;display:block;margin:0 auto 1rem;filter:brightness(0) invert(1);" />
+    <h2>{{ site.members_page.gate_title }}</h2>
+    <p>{{ site.members_page.gate_subtitle }}</p>
+    <div id="password-form">
+      <input type="password" id="password-input" placeholder="{{ site.members_page.gate_placeholder }}" />
+      <button id="password-submit">Accéder</button>
+      <div id="password-error"></div>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div id="content">
+
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" />
+        </a>
+        <div class="nav-links">
+          <a href="index.html#concept" class="nav-link">Le concept</a>
+          <a href="index.html#themes" class="nav-link">Les thèmes</a>
+          <a href="index.html#agenda" class="nav-link">Événements</a>
+          <span class="nav-link active">Espace membres</span>
+          <button class="btn-logout" onclick="logout()">{{ site.members_page.logout }}</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="page-hero-tag">{{ site.members_page.eyebrow }}</div>
+        <h1>{{ site.members_page.title_html | safe }}</h1>
+        <p>{{ site.members_page.intro }}</p>
+      </div>
+    </div>
+
+    <div class="filters-bar">
+      <div class="filters-inner">
+        <input type="text" id="search-input" placeholder="{{ site.members_page.search_placeholder }}" />
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">{{ site.members_page.filter_all }}</button>
+          <button class="filter-tab" data-filter="prestataire">{{ site.members_page.filter_prestataire }}</button>
+          <button class="filter-tab" data-filter="outil">{{ site.members_page.filter_outil }}</button>
+          <button class="filter-tab" data-filter="conseil">{{ site.members_page.filter_conseil }}</button>
+        </div>
+        <span class="results-count" id="results-count"></span>
+      </div>
+    </div>
+
+    <div style="background: var(--bg);">
+      <div class="main" id="cards-container"></div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span>{{ site.members_page.footer }}</span>
+        <a href="index.html">{{ site.members_page.back }}</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+  // ── MOT DE PASSE ──
+  const MOT_DE_PASSE = 'gones2026';
+
+  function checkPassword() {
+    const input = document.getElementById('password-input');
+    const error = document.getElementById('password-error');
+    if (input.value === MOT_DE_PASSE) {
+      sessionStorage.setItem('gones_membre', '1');
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      renderCards(DATA, 'all', '');
+    } else {
+      input.classList.add('error');
+      error.textContent = 'Mot de passe incorrect.';
+      setTimeout(() => input.classList.remove('error'), 800);
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem('gones_membre');
+    location.reload();
+  }
+
+  document.getElementById('password-submit').addEventListener('click', checkPassword);
+  document.getElementById('password-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  if (sessionStorage.getItem('gones_membre') === '1') {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+
+  // ── DONNÉES ──
+  const DATA = {{ members.recos | dump | safe }};
+
+  // ── CATÉGORIES ──
+  function getCategorie(item) {
+    const s = item.sujet.toLowerCase();
+    if (s.includes('traiteur') || s.includes('événement') || s.includes('evenem') || s.includes('studio podcast') || s.includes('captation conf') || s.includes('agence événe') || s.includes('design d\'espace')) return 'Événementiel';
+    if (s.includes('vidéo') || s.includes('video') || s.includes('motion') || s.includes('captation') || s.includes('photo') || s.includes('podcast') || s.includes('prodsquare') || s.includes('vidéaste')) return 'Vidéo & Photo';
+    if (s.includes('sea') || s.includes('google ads') || s.includes('meta ads') || s.includes('trafic manager') || s.includes('affichage')) return 'SEA & Paid';
+    if ((s.includes('seo') && !s.includes('sea')) || s.includes('contenu') || s.includes('content') || s.includes('plugin seo') || s.includes('mots-clés') || s.includes('audit seo')) return 'SEO & Contenu';
+    if (s.includes('site') || s.includes('wordpress') || s.includes('webflow') || s.includes('développement') || s.includes('webmaster') || s.includes('webdesign') || s.includes('intégration web') || s.includes('shopify') || s.includes('agence digitale') || s.includes('migration')) return 'Sites web & Dev';
+    if (s.includes('email') || s.includes('automation') || s.includes('outreach') || s.includes('délivrabilité') || s.includes('reminder')) return 'Email & Automation';
+    if (s.includes('social') || s.includes('linkedin') || s.includes('influence') || s.includes('ugc') || s.includes('réseaux sociaux')) return 'Social & Influence';
+    if (s.includes('branding') || s.includes('marque') || s.includes('identité') || s.includes('design') || s.includes('graphiste') || s.includes('logo') || s.includes('packaging') || s.includes('rebranding') || s.includes('créa')) return 'Branding & Design';
+    if (s.includes('copy') || s.includes('rédact') || s.includes('traduct') || s.includes('localisation')) return 'Copywriting & Traduction';
+    if (s.includes('print') || s.includes('impression') || s.includes('goodie') || s.includes('textile') || s.includes('merchandis') || s.includes('kit') || s.includes('coffret') || s.includes('onboarding') || s.includes('imprimeur')) return 'Print & Goodies';
+    if (s.includes('crm') || s.includes('reporting') || s.includes('bi ') || s.includes('formulaire') || s.includes('sondage') || s.includes('landing') || s.includes('webinaire') || s.includes('nps') || s.includes('dam') || s.includes('pop-up') || s.includes('affiliation') || s.includes('billetterie') || s.includes('gestion événement') || s.includes('comptabilité') || s.includes('pdf')) return 'Outils Marketing';
+    if (s.includes('formation') || s.includes('coach') || s.includes('facilit') || s.includes('conduite')) return 'Formation & Coaching';
+    if (s.includes('data') || s.includes('enrichis') || s.includes('tracking') || s.includes('analytics') || s.includes('ga4') || s.includes('call track')) return 'Data & Analytics';
+    if (s.includes('rp') || s.includes('presse') || s.includes('média') || s.includes('media') || s.includes('achat') || s.includes('notoriété') || s.includes('institutionnel') || s.includes('crise')) return 'RP & Médias';
+    if (s.includes('growth') || s.includes('abm') || s.includes('prospection') || s.includes('lead') || s.includes('sdr') || s.includes('outbound')) return 'Growth & Prospection';
+    if (s.includes('recrutement') || s.includes('portage') || s.includes('comptab') || s.includes('expert-comptable') || s.includes('tjm') || s.includes('étude de marché') || s.includes('certification') || s.includes('oti')) return 'RH & Admin';
+    if (s.includes('génération d\'images') || s.includes('images ia') || s.includes('détecteur')) return 'IA & Outils créa';
+    return 'Autres';
+  }
+
+  const CATEGORIES_ORDER = [
+    'Sites web & Dev', 'SEO & Contenu', 'SEA & Paid', 'Growth & Prospection',
+    'Email & Automation', 'Social & Influence', 'Vidéo & Photo', 'Branding & Design',
+    'Copywriting & Traduction', 'Print & Goodies', 'Événementiel', 'Outils Marketing',
+    'Data & Analytics', 'RP & Médias', 'Formation & Coaching', 'IA & Outils créa',
+    'RH & Admin', 'Autres'
+  ];
+
+  // ── RENDU ──
+  function formatContact(contact) {
+    if (!contact) return '';
+    const parts = contact.split(' / ');
+    return parts.map(p => {
+      p = p.trim();
+      if (p.startsWith('http')) {
+        const label = p.replace('https://','').replace('http://','').split('/')[0];
+        return `<a href="${p}" target="_blank">${label}</a>`;
+      }
+      if (p.includes('@') && !p.startsWith('Via') && !p.includes('(')) {
+        return `<a href="mailto:${p}">${p}</a>`;
+      }
+      return p;
+    }).join('<br>');
+  }
+
+  function renderCards(data, typeFilter, searchQuery) {
+    const q = searchQuery.toLowerCase();
+    const filtered = data.filter(item => {
+      const matchType = typeFilter === 'all' || item.type === typeFilter;
+      const matchSearch = !q || item.sujet.toLowerCase().includes(q) || item.contenu.toLowerCase().includes(q) || (item.contact && item.contact.toLowerCase().includes(q));
+      return matchType && matchSearch;
+    });
+
+    document.getElementById('results-count').textContent = `${filtered.length} résultat${filtered.length > 1 ? 's' : ''}`;
+
+    const container = document.getElementById('cards-container');
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="no-results">Aucun résultat pour cette recherche.</div>';
+      return;
+    }
+
+    const byCategory = {};
+    filtered.forEach(item => {
+      const cat = getCategorie(item);
+      if (!byCategory[cat]) byCategory[cat] = [];
+      byCategory[cat].push(item);
+    });
+
+    const orderedKeys = CATEGORIES_ORDER.filter(k => byCategory[k]);
+    Object.keys(byCategory).forEach(k => { if (!orderedKeys.includes(k)) orderedKeys.push(k); });
+
+    container.innerHTML = orderedKeys.map(cat => {
+      const items = byCategory[cat];
+      const cards = items.map(item => `
+        <div class="card" data-type="${item.type}">
+          <div class="card-type">${item.type === 'outil' ? 'Outil' : item.type === 'prestataire' ? 'Prestataire' : 'Conseil'}</div>
+          <div class="card-sujet">${item.sujet}</div>
+          <div class="card-contenu">${item.contenu}</div>
+          ${item.contact ? `<div class="card-contact">${formatContact(item.contact)}</div>` : ''}
+          <div class="card-date">${item.date}</div>
+        </div>
+      `).join('');
+      return `
+        <div class="category-block">
+          <div class="category-title">
+            ${cat}
+            <span class="category-count">${items.length}</span>
+          </div>
+          <div class="cards-grid">${cards}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── FILTRES & RECHERCHE ──
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  document.querySelectorAll('.filter-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderCards(DATA, currentFilter, currentSearch);
+    });
+  });
+
+  document.getElementById('search-input').addEventListener('input', e => {
+    currentSearch = e.target.value;
+    renderCards(DATA, currentFilter, currentSearch);
+  });
+
+  // Init si déjà connecté
+  if (sessionStorage.getItem('gones_membre') === '1') {
+    renderCards(DATA, 'all', '');
+  }
+  </script>
+
+
+  <!-- Widget version bêta + signalement de bug -->
+  <script src="/beta-widget.js" defer></script>
+</body>
+</html>

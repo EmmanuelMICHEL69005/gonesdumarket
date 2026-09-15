@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Gones du Market' · Club marketing lyonnais</title>
   <meta name="google-site-verification" content="zRjsic6LWotRy7oeAsCIwBWLqNuXnJYjLoC9CalU2GU" />
-  <meta name="description" content="Les Gones du Market' réunissent +200 dirigeants et responsables marketing lyonnais : afterworks, masterclasses et un WhatsApp actif entre les événements. Sélection sur candidature." />
+  <meta name="description" content="Les Gones du Market' réunissent 210 dirigeants et responsables marketing lyonnais : afterworks, masterclasses et un WhatsApp actif entre les événements. Sélection sur candidature." />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -229,6 +229,8 @@
       line-height: 1;
     }
 
+    .stat-wa { vertical-align: -0.2em; margin-left: 0.35rem; }
+
     .stat-label {
       font-size: 0.9rem;
       color: #999;
@@ -267,12 +269,50 @@
       line-height: 1.75;
     }
 
+    #concept .lead { max-width: none; }
+
     /* ── BANDEAU COMMUNAUTÉ ── */
     .community-strip { position: relative; height: 480px; overflow: hidden; }
     .community-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
     .community-strip-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 55%); display: flex; align-items: flex-end; padding: 2.5rem 3rem; }
     .community-strip-caption { color: rgba(255,255,255,0.9); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
     .community-strip-caption em { color: var(--corail); font-style: normal; }
+
+    /* ── WHATSAPP ── */
+    .wa-bg { background: var(--noir); padding: 5rem 3rem; }
+    .wa-inner { max-width: 1100px; margin: 0 auto; }
+    .wa-head { max-width: 680px; margin-bottom: 2.5rem; }
+    .wa-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #25D366; margin-bottom: 0.9rem; }
+    .wa-eyebrow-ic { display: inline-flex; }
+    .wa-title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 0.9rem; }
+    .wa-intro { color: #b9b3ad; font-size: 1.05rem; line-height: 1.7; }
+    .wa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.75rem; }
+    .wa-card { display: flex; gap: 0.9rem; align-items: flex-start; background: #242424; border: 1px solid #333; border-radius: 14px; padding: 1.25rem; }
+    .wa-card-emoji { font-size: 1.4rem; line-height: 1; flex: none; }
+    .wa-card-name { color: #fff; font-weight: 700; font-size: 1.02rem; margin-bottom: 0.25rem; }
+    .wa-card-desc { color: #999; font-size: 0.92rem; line-height: 1.5; }
+    .wa-chat { max-width: 440px; margin: 0 auto; text-align: center; }
+    .wa-chat-label { color: #8a8a8a; font-size: 0.85rem; margin-bottom: 1rem; }
+    .wa-phone { max-width: 400px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 55px rgba(0,0,0,0.5); border: 1px solid #2a3942; text-align: left; }
+    .wa-phone-head { display: flex; align-items: center; gap: 0.7rem; background: #202c33; padding: 0.7rem 0.9rem; }
+    .wa-phone-avatar { width: 38px; height: 38px; border-radius: 50%; background: #0b141a; display: grid; place-items: center; font-size: 1.1rem; flex: none; }
+    .wa-phone-id { flex: 1; min-width: 0; }
+    .wa-phone-name { color: #e9edef; font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+    .wa-phone-meta { color: #8696a0; font-size: 0.75rem; }
+    .wa-phone-wa { color: #25D366; display: inline-flex; }
+    .wa-phone-body { background-color: #0b141a; background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 22px 22px; padding: 1rem 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .wa-msg { max-width: 84%; padding: 0.5rem 0.65rem 0.4rem; border-radius: 9px; font-size: 0.9rem; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,0.25); }
+    .wa-msg--in { align-self: flex-start; background: #202c33; color: #e9edef; border-top-left-radius: 2px; }
+    .wa-msg--out { align-self: flex-end; background: #005c4b; color: #e9edef; border-top-right-radius: 2px; }
+    .wa-msg-author { display: block; font-weight: 700; font-size: 0.78rem; margin-bottom: 0.1rem; }
+    .wa-msg-text { display: inline; }
+    .wa-msg-time { display: block; text-align: right; font-size: 0.62rem; color: rgba(233,237,239,0.45); margin-top: 0.15rem; }
+    .wa-ticks { vertical-align: -1px; margin-left: 2px; }
+    .wa-phone-foot { display: flex; align-items: center; gap: 0.6rem; background: #202c33; padding: 0.55rem 0.8rem; }
+    .wa-foot-input { flex: 1; background: #2a3942; color: #8696a0; border-radius: 100px; padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+    .wa-foot-send { width: 34px; height: 34px; border-radius: 50%; background: #25D366; color: #0b141a; display: grid; place-items: center; font-size: 0.95rem; flex: none; }
+    .wa-note { color: #666; font-size: 0.78rem; font-style: italic; margin-top: 0.85rem; }
+    @media (max-width: 768px) { .wa-bg { padding: 3.5rem 1.5rem; } .wa-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .community-strip { height: 320px; } .community-strip-overlay { padding: 1.5rem; } }
 
     /* ── COMMENT ÇA MARCHE ── */
@@ -710,7 +750,7 @@
     }
 
     .candidature-section > div {
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 5rem 3rem;
       text-align: center;
@@ -721,6 +761,7 @@
 
     .candidature-section .lead {
       color: rgba(255,255,255,0.85);
+      max-width: 600px;
       margin: 0 auto 2.5rem;
     }
 
@@ -732,7 +773,10 @@
       text-align: left;
     }
     .tally-embed iframe { display: block; width: 100%; border: 0; }
-    @media (max-width: 768px) { .tally-embed { padding: 1.25rem; } }
+    @media (max-width: 768px) {
+      .candidature-section > div { padding: 3.5rem 1.1rem; }
+      .tally-embed { padding: 1rem 0.85rem; border-radius: 12px; }
+    }
 
     form { display: grid; gap: 1rem; text-align: left; }
 
@@ -899,128 +943,133 @@
         <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" fetchpriority="high" decoding="async" style="height:84px;width:auto;display:block;" />
       </a>
       <nav>
-        <a href="#concept">Le concept</a>
-        <a href="#themes">Les thèmes</a>
-        <a href="#agenda">Événements</a>
-        <a href="membres.html">Espace membres</a>
-        <a href="#candidature" class="nav-cta">Nous rejoindre →</a>
+        <a href="#concept">{{ site.nav.concept }}</a>
+        <a href="#themes">{{ site.nav.themes }}</a>
+        <a href="#agenda">{{ site.nav.events }}</a>
+        <a href="membres.html">{{ site.nav.members }}</a>
+        <a href="#candidature" class="nav-cta">{{ site.nav.cta }}</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">Lyon · Fondé en 2023</div>
-    <h1>+200 passionné·es<br>de marketing<br>à <em>Lyon.</em></h1>
-    <p>Le club qui réunit les dirigeants marketing lyonnais pour échanger, apprendre et grandir ensemble. En toute convivialité.</p>
-    <a href="#candidature" class="hero-cta">Demander à rejoindre le club</a>
+    <div class="hero-badge">{{ site.hero.badge }}</div>
+    <h1>{{ site.hero.title_html | safe }}</h1>
+    <p>{{ site.hero.desc }}</p>
+    <a href="#candidature" class="hero-cta">{{ site.hero.cta }}</a>
   </div>
 
   <!-- STATS -->
   <div class="stats">
+{% for s in stats.items %}
     <div class="stat-item">
-      <div class="stat-number">+200</div>
-      <div class="stat-label">Membres</div>
+      <div class="stat-number">{{ s.number }}</div>
+      <div class="stat-label">{{ s.label }}{% if s.icon == "whatsapp" %} <svg class="stat-wa" viewBox="0 0 24 24" width="16" height="16" role="img" aria-label="WhatsApp"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.442zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>{% endif %}</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">8</div>
-      <div class="stat-label">Éditions en 2025</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">6</div>
-      <div class="stat-label">Canaux WhatsApp</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">2023</div>
-      <div class="stat-label">Année de création</div>
-    </div>
+{% endfor %}
   </div>
 
   <!-- BANDEAU COMMUNAUTÉ -->
   <div class="community-strip">
     <img src="images/afterwork-2026-1.jpg" alt="La communauté des Gones du Market'" width="1920" height="1280" loading="lazy" decoding="async" />
     <div class="community-strip-overlay">
-      <div class="community-strip-caption"><em>+200 marketeurs lyonnais,</em> un WhatsApp, des événements. Une vraie communauté.</div>
+      <div class="community-strip-caption">{{ site.community_caption_html | safe }}</div>
     </div>
   </div>
 
   <!-- COMMENT ÇA MARCHE -->
   <div style="background: var(--blanc);">
   <section id="concept">
-    <div class="section-label">Le concept</div>
-    <h2>Comment ça fonctionne</h2>
-    <p class="lead">Les Gones du Market' c'est un espace de confiance pour toutes les personnes qui font du marketing à Lyon. Pas un réseau de façade, une vraie communauté.</p>
+    <div class="section-label">{{ site.sections.concept.eyebrow }}</div>
+    <h2>{{ site.sections.concept.title }}</h2>
+    <p class="lead">{{ site.sections.concept.lead }}</p>
     <div class="steps">
+{% for st in home.concept_steps %}
       <div class="step">
-        <div class="step-number">1</div>
-        <h3>Un club sérieux, sans chichis</h3>
-        <p>Pas besoin d'un grand titre pour rejoindre les Gones. Ce qui compte, c'est ta curiosité, ton envie d'échanger et ton ancrage dans le marketing lyonnais.</p>
+        <div class="step-number">{{ st.n }}</div>
+        <h3>{{ st.title }}</h3>
+        <p>{{ st.text }}</p>
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Des formats variés</h3>
-        <p>Afterworks avec speakers, petits-déjeuners en format atelier, masterclasses thématiques, déjeuner de fin d'année… Chaque édition a son propre format.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Un WhatsApp actif entre les événements</h3>
-        <p>6 fils d'échanges entre membres : recherche de prestataires, offres d'emploi, demandes de conseils, bons plans. Ce qui se passe entre deux événements, c'est souvent là que ça compte le plus.</p>
-      </div>
+{% endfor %}
     </div>
     <div style="margin-top:2.5rem;">
-      <a href="#candidature" class="hero-cta" style="background:var(--corail);color:white;display:inline-block;padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Rejoindre le club →</a>
+      <a href="#candidature" class="hero-cta" style="background:var(--corail);color:white;display:inline-block;padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">{{ site.sections.concept.cta }}</a>
     </div>
   </section>
+  </div>
+
+  <!-- WHATSAPP : la communauté au quotidien -->
+  <div class="wa-bg">
+    <div class="wa-inner">
+      <div class="wa-head">
+        <div class="wa-eyebrow"><span class="wa-eyebrow-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.442zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></span>{{ whatsapp.eyebrow }}</div>
+        <h2 class="wa-title">{{ whatsapp.title }}</h2>
+        <p class="wa-intro">{{ whatsapp.intro }}</p>
+      </div>
+
+      <div class="wa-grid">
+{% for g in whatsapp.groups %}
+        <div class="wa-card">
+          <span class="wa-card-emoji" aria-hidden="true">{{ g.emoji }}</span>
+          <div>
+            <div class="wa-card-name">{{ g.name }}</div>
+            <div class="wa-card-desc">{{ g.desc }}</div>
+          </div>
+        </div>
+{% endfor %}
+      </div>
+
+      <div class="wa-chat">
+        <div class="wa-chat-label">L'entraide en direct — un échange, anonymisé&nbsp;:</div>
+        <div class="wa-phone" aria-label="Exemple de discussion WhatsApp">
+          <div class="wa-phone-head">
+            <span class="wa-phone-avatar" aria-hidden="true">{{ whatsapp.chat.avatar }}</span>
+            <div class="wa-phone-id">
+              <div class="wa-phone-name">{{ whatsapp.chat.group }}</div>
+              <div class="wa-phone-meta">{{ whatsapp.chat.meta }}</div>
+            </div>
+            <span class="wa-phone-wa" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.442zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></span>
+          </div>
+          <div class="wa-phone-body">
+{% for m in whatsapp.chat.messages %}
+            <div class="wa-msg wa-msg--{{ m.dir }}">
+{% if m.author %}              <span class="wa-msg-author" style="color:{{ m.color }}">{{ m.author }}</span>
+{% endif %}              <span class="wa-msg-text">{{ m.text }}</span>
+              <span class="wa-msg-time">{{ m.time }}{% if m.dir == "out" %} <svg class="wa-ticks" viewBox="0 0 18 18" width="16" height="16" aria-hidden="true"><path fill="#53bdeb" d="M17.394 5.035l-.57-.444a.434.434 0 00-.609.076l-6.39 8.198a.32.32 0 01-.484.033l-.358-.325a.32.32 0 00-.484.032l-.378.483a.418.418 0 00.036.541l1.32 1.266c.143.14.361.125.484-.033l7.417-9.516a.43.43 0 00-.076-.609zm-4.699.076l-.57-.444a.434.434 0 00-.609.076l-6.39 8.198a.32.32 0 01-.484.033L2.19 9.891a.418.418 0 00-.541.036l-.484.483a.418.418 0 00.036.541l3.39 3.265c.143.14.361.125.484-.033l7.417-9.516a.43.43 0 00-.076-.609z"/></svg>{% endif %}</span>
+            </div>
+{% endfor %}
+          </div>
+          <div class="wa-phone-foot">
+            <span class="wa-foot-input">Message</span>
+            <span class="wa-foot-send" aria-hidden="true">➤</span>
+          </div>
+        </div>
+        <p class="wa-note">Conversation reconstituée et anonymisée à partir d'échanges réels du groupe.</p>
+      </div>
+    </div>
   </div>
 
   <!-- BANDEAU MARQUE (≈ 1/3) -->
   <div class="brand-divider">
     <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
-    <p>Le club marketing lyonnais</p>
+    <p>{{ site.brand_caption }}</p>
   </div>
 
   <!-- THÈMES DES MASTERCLASSES -->
   <div class="themes-bg" id="themes">
     <div>
-      <div class="section-label">Nos sujets</div>
-      <h2>Les thèmes abordés</h2>
-      <p class="lead">Des sujets concrets, choisis par et pour la communauté marketing lyonnaise.</p>
+      <div class="section-label">{{ site.sections.themes.eyebrow }}</div>
+      <h2>{{ site.sections.themes.title }}</h2>
+      <p class="lead">{{ site.sections.themes.lead }}</p>
       <div class="themes-grid">
+{% for t in themes.items %}
         <div class="theme-card">
-          <div class="theme-date">Juin 2026</div>
-          <h4>Matinée IA Pratique</h4>
-          <p>Trois ateliers en petit comité, laptop sur la table : GEO et visibilité dans les moteurs génératifs, construction d'un agent IA utile, et vibe coding. Repartir avec des compétences activables dès le lendemain.</p>
+          <div class="theme-date">{{ t.date }}</div>
+          <h4>{{ t.title }}</h4>
+          <p>{{ t.text }}</p>
         </div>
-        <div class="theme-card">
-          <div class="theme-date">Avril 2026</div>
-          <h4>Stack Marketing &amp; IA</h4>
-          <p>La stack ne se consolide pas, elle se stratifie. SaaS pour l'orchestration, outils IA-natifs pour la création, solutions maison pour la différenciation. La vraie question : est-ce que ça vaut vraiment son coût ?</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Mars 2026</div>
-          <h4>Employee Advocacy sur LinkedIn</h4>
-          <p>On ne force jamais un collectif à publier. On crée les conditions pour que ça devienne possible. Rituels éditoriaux, réduction de la friction, dynamique collective plutôt que performance individuelle.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Janvier 2026</div>
-          <h4>Marketing sans bullshit</h4>
-          <p>Défendre son budget avec 3 indicateurs compris par la direction vaut mieux que 15 métriques. Alignement Marketing × Sales, authenticité face à la surcharge informationnelle, ROI court terme sans sacrifier le long terme.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Décembre 2025</div>
-          <h4>Stratégie Vidéo 2026</h4>
-          <p>"On veut faire de la vidéo" n'est pas une stratégie. Objectifs clairs, cible définie, formats adaptés aux canaux, recyclage intelligent (1 webinar = 20 shorts), et mesure du ROI.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Novembre 2025</div>
-          <h4>Challenge ton plan marketing</h4>
-          <p>Format atelier en petits groupes : chaque marketeur présente son contexte et ses grandes lignes. La communauté joue le rôle de coach : challenge constructif, idées fraîches, retours d'expérience concrets.</p>
-        </div>
-        <div class="theme-card">
-          <div class="theme-date">Octobre 2025</div>
-          <h4>Microcanaux &amp; Intent Data</h4>
-          <p>Signature email comme micro-canal mesurable, micro-influenceurs comme levier d'amplification authentique, Intent Data pour transformer les signaux faibles en actions à fort impact. Faire plus avec moins.</p>
-        </div>
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1028,8 +1077,8 @@
   <!-- GALERIE PHOTOS -->
   <div class="galerie-bg">
     <div class="galerie-inner">
-      <div class="section-label">La vie du club</div>
-      <h2>Nos événements en images</h2>
+      <div class="section-label">{{ site.sections.galerie.eyebrow }}</div>
+      <h2>{{ site.sections.galerie.title }}</h2>
       <div class="photo-grid">
         <img src="images/afterwork-2026-1.jpg" alt="La salle lors d'un afterwork" class="wide" loading="lazy" decoding="async" />
         <img src="images/afterwork-2026-2.jpeg" alt="Panel de speakers" loading="lazy" decoding="async" />
@@ -1054,33 +1103,25 @@
     <div class="raisons-inner">
       <div class="raisons-header">
         <div class="raisons-left">
-          <div class="section-label">Pourquoi nous rejoindre</div>
-          <h2 class="raisons-title">Trois raisons<br>(et une bonne ambiance).</h2>
+          <div class="section-label">{{ site.sections.raisons.eyebrow }}</div>
+          <h2 class="raisons-title">{{ site.sections.raisons.title_html | safe }}</h2>
         </div>
         <div class="raisons-right">
-          <p>Les Gones du Market', c'est plus qu'un événement . C'est un endroit où les marketeurs lyonnais progressent ensemble, sans chichis et sans langue de bois.</p>
+          <p>{{ site.sections.raisons.intro }}</p>
         </div>
       </div>
       <div class="raisons-grid">
+{% for r in home.raisons %}
         <div class="raison-card">
-          <div class="raison-num">01</div>
-          <h3>Des pairs qui te comprennent vraiment</h3>
-          <p>Pas besoin de tout réexpliquer. Ici, tout le monde sait ce que c'est de défendre un budget, de justifier un CAC ou de piloter seul la stratégie. Tu parles marketing, on répond marketing.</p>
+          <div class="raison-num">{{ r.n }}</div>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.text }}</p>
         </div>
-        <div class="raison-card">
-          <div class="raison-num">02</div>
-          <h3>Du concret, pas du networking de façade</h3>
-          <p>Chaque édition a un vrai sujet, de vrais intervenants, de vrais retours terrain. Tu repars avec des idées testables dès le lendemain — pas avec une pile de cartes de visite.</p>
-        </div>
-        <div class="raison-card">
-          <div class="raison-num">03</div>
-          <h3>Une communauté qui s'entraide vraiment</h3>
-          <p>Les membres reviennent parce qu'ils ont envie de retrouver les autres, pas juste d'assister à un talk. Entre les éditions, ça échange des bons plans, des prestataires fiables, des retours d'expérience. Le genre d'entraide qu'on ne trouve pas dans un réseau classique.</p>
-        </div>
+{% endfor %}
       </div>
       <div style="margin-top:2.5rem;text-align:center;">
-        <a href="#candidature" style="display:inline-block;background:var(--corail);color:white;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">Candidater pour rejoindre le club →</a>
-        <p style="margin-top:0.75rem;font-size:0.8rem;color:#666;">Sélection sur candidature · Réponse sous 48h</p>
+        <a href="#candidature" style="display:inline-block;background:var(--corail);color:white;padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.2s;">{{ site.sections.raisons.cta }}</a>
+        <p style="margin-top:0.75rem;font-size:0.8rem;color:#666;">{{ site.sections.raisons.note }}</p>
       </div>
     </div>
   </div>
@@ -1088,266 +1129,48 @@
   <!-- AGENDA COMPLET -->
   <div class="agenda-section" id="agenda">
     <div class="agenda-inner">
-      <div class="section-label">Prochaines masterclasses</div>
-      <h2>L'agenda 2026</h2>
+      <div class="section-label">{{ site.sections.agenda.eyebrow }}</div>
+      <h2>{{ site.sections.agenda.title }}</h2>
 
       <div class="agenda-filters">
-        <button class="filter-btn active" data-filter="all">Toutes</button>
-        <button class="filter-btn" data-filter="upcoming">À venir</button>
-        <button class="filter-btn" data-filter="past">Passés</button>
+        <button class="filter-btn active" data-filter="all">{{ site.sections.agenda.filter_all }}</button>
+        <button class="filter-btn" data-filter="upcoming">{{ site.sections.agenda.filter_upcoming }}</button>
+        <button class="filter-btn" data-filter="past">{{ site.sections.agenda.filter_past }}</button>
       </div>
 
       <div class="events-list">
-
-        <div class="ev-group-label" data-group="upcoming">À venir</div>
-
-        <div class="event-row next-up upcoming" data-status="upcoming">
+{% for grp in events.groups %}
+        <div class="ev-group-label" data-group="{{ grp.datagroup }}">{{ grp.label }}</div>
+{% for ev in grp.events %}
+        <div class="event-row{% if ev.featured %} next-up{% endif %} {{ ev.status }}" data-status="{{ ev.status }}">
           <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">24 sept.</span>
-            <span class="ev-year">2026</span>
+            <span class="ev-dow">{{ ev.dow }}</span>
+            <span class="ev-num">{{ ev.num }}</span>
+            <span class="ev-year">{{ ev.year }}</span>
           </div>
           <div class="ev-center">
-            <h3>Afterwork de rentrée</h3>
-            <p class="ev-sub">Afterwork · Lyon · On se retrouve et on accueille les nouveaux</p>
-            <span class="ev-badge badge-special">Prochain événement</span>
-          </div>
+            <h3>{{ ev.title }}</h3>
+            <p class="ev-sub">{{ ev.sub }}</p>
+{% if ev.speakers %}            <p class="ev-speakers">{{ ev.speakers }}</p>
+{% endif %}{% if ev.badge %}            <span class="ev-badge badge-special">{{ ev.badge }}</span>
+{% endif %}          </div>
           <div class="ev-right">
-            <a href="#candidature" class="ev-btn">S'inscrire →</a>
-          </div>
+{% if ev.action == "register" %}            <a href="{{ ev.url if ev.url else '#candidature' }}" class="ev-btn"{% if ev.url %} target="_blank" rel="noopener"{% endif %}>S'inscrire →</a>
+{% elif ev.action == "linkedin" %}            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
+{% else %}            <span class="ev-status">BIENTÔT</span>
+{% endif %}          </div>
         </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">8 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Talk REX avec Léa Gueniffet</h3>
-            <p class="ev-sub">Acquisition payante : ce qui marche vraiment et ce qui crame votre budget</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">27 oct.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Le Dîner des Gones</h3>
-            <p class="ev-sub">Dîner · 15 places · Le CMO face au Comex</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">12 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Grand Débat RH</h3>
-            <p class="ev-sub">Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 nov.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2027</h3>
-            <p class="ev-sub">Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="event-row upcoming" data-status="upcoming">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">17 déc.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · On boucle 2026 ensemble</p>
-          </div>
-          <div class="ev-right">
-            <span class="ev-status">BIENTÔT</span>
-          </div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Déjà organisés en 2026</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 juin</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinée IA Pratique</h3>
-            <p class="ev-sub">Ateliers en petit comité · Chez Ellisphere, Lyon · 24 membres</p>
-            <p class="ev-speakers">GEO (Florian Chapelier), Agents IA (Alexandre Jeanpetit), Vibe coding (Arthur Burnichon)</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">28 avr.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stack Marketing &amp; IA</h3>
-            <p class="ev-sub">Afterwork · Chez Signitic, Lyon 3e</p>
-            <p class="ev-speakers">Avec Julian Maurel, Laurent Davesne, Laura Nguyen</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">26 mars</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Employee Advocacy sur LinkedIn</h3>
-            <p class="ev-sub">Masterclass · Ballab Café, Les Terreaux</p>
-            <p class="ev-speakers">Avec Marie-Francine Phan, experte Social Media &amp; Content</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">20 janv.</span>
-            <span class="ev-year">2026</span>
-          </div>
-          <div class="ev-center">
-            <h3>Marketing sans bullshit</h3>
-            <p class="ev-sub">Afterwork · L'Ellipse by FlexJob</p>
-            <p class="ev-speakers">Avec Audrey Digonnat, Benjamin Poirier, Adeline Dubost</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="ev-group-label" data-group="past">Retrospective 2025 · 8 événements</div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">18 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Déjeuner de fin d'année</h3>
-            <p class="ev-sub">Déjeuner · La Brasserie des 2 Rives, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">4 déc.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Stratégie Vidéo 2026</h3>
-            <p class="ev-sub">Afterwork · Chez Teazit, Lyon</p>
-            <p class="ev-speakers">Avec Emilien Colombain (CEO Teazit)</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">4 nov.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Challenge ton plan marketing 2026</h3>
-            <p class="ev-sub">Petit-déjeuner · Chez Positive Signitic, Lyon</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Jeudi</span>
-            <span class="ev-num">2 oct.</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Microcanaux &amp; Intent Data</h3>
-            <p class="ev-sub">Afterwork · Chez Positive Signitic, Lyon</p>
-            <p class="ev-speakers">Avec Aurore Agnes, Margot Duchêne, Alexandre Jeanpetit</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <div class="event-row past" data-status="past">
-          <div class="ev-left">
-            <span class="ev-dow">Mardi</span>
-            <span class="ev-num">3 juin</span>
-            <span class="ev-year">2025</span>
-          </div>
-          <div class="ev-center">
-            <h3>Matinales Publicis Media Connect</h3>
-            <p class="ev-sub">Partenariat · Rooftop by Dock40, Lyon</p>
-            <p class="ev-speakers">En partenariat avec Publicis Media Connect &amp; TF1 Pub</p>
-          </div>
-          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
-          </div>
-        </div>
-
-      </div>
+{% endfor %}{% endfor %}
+            </div>
     </div>
   </div>
 
   <!-- LINKEDIN FEED -->
   <div class="linkedin-section">
     <div>
-      <div class="section-label">Communauté</div>
-      <h2>Nos derniers posts</h2>
-      <p class="lead">Suivez l'actualité du club sur LinkedIn avec <strong>#lesgonesdumarket</strong></p>
+      <div class="section-label">{{ site.sections.linkedin.eyebrow }}</div>
+      <h2>{{ site.sections.linkedin.title }}</h2>
+      <p class="lead">{{ site.sections.linkedin.lead_html | safe }}</p>
       <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
     </div>
   </div>
@@ -1355,73 +1178,44 @@
   <!-- BANDEAU MARQUE (≈ 2/3) -->
   <div class="brand-divider">
     <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" />
-    <p>Le club marketing lyonnais</p>
+    <p>{{ site.brand_caption }}</p>
   </div>
 
   <!-- YOUTUBE -->
   <div class="youtube-section">
-    <div class="section-label">Replays</div>
-    <h2>Nos masterclasses en vidéo</h2>
-    <p>Retrouvez les replays et extraits de nos événements sur notre chaîne YouTube.</p>
+    <div class="section-label">{{ site.sections.youtube.eyebrow }}</div>
+    <h2>{{ site.sections.youtube.title }}</h2>
+    <p>{{ site.sections.youtube.desc }}</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank" class="youtube-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.8 3.6 12 3.6 12 3.6s-7.8 0-9.5.5c-1 .3-1.7 1.1-2 2.1C0 7.9 0 12 0 12s0 4.1.5 5.8c.3 1 1 1.8 2 2.1 1.7.5 9.5.5 9.5.5s7.8 0 9.5-.5c1-.3 1.7-1.1 2-2.1.5-1.7.5-5.8.5-5.8s0-4.1-.5-5.8zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
-        Voir la chaîne YouTube
+        {{ site.sections.youtube.cta_channel }}
       </a>
-      <a href="#candidature" class="youtube-btn" style="background:white;color:var(--corail);">Rejoindre le club →</a>
     </div>
   </div>
 
   <!-- TÉMOIGNAGES -->
   <div class="temoignages-bg">
     <div class="temoignages-inner">
-      <div class="section-label">Ce qu'ils en pensent</div>
-      <h2>Ils auraient adoré<br>être membres.</h2>
-      <p class="temoignages-intro">Témoignages fictifs de personnalités qui auraient pu nous rejoindre.</p>
+      <div class="section-label">{{ site.sections.temoignages.eyebrow }}</div>
+      <h2>{{ site.sections.temoignages.title_html | safe }}</h2>
+      <p class="temoignages-intro">{{ site.sections.temoignages.intro }}</p>
       <div class="temoignages-grid">
-
+{% for t in testimonials.items %}
         <div class="temoignage-card">
           <div class="temoignage-quote">
-            Les Gones du Market' incarnent ce que j'ai toujours défendu : le marketing commence par la communauté, pas par le produit. Ces marketeurs lyonnais l'ont compris avant tout le monde.
+            {{ t.quote }}
           </div>
           <div class="temoignage-author">
-            <div class="temoignage-avatar">PK</div>
+            <div class="temoignage-avatar">{{ t.initials }}</div>
             <div>
               <div class="temoignage-fictif">Témoignage fictif</div>
-              <div class="temoignage-name">Philip Kotler</div>
-              <div class="temoignage-job">Père du marketing moderne · Kellogg School of Management</div>
+              <div class="temoignage-name">{{ t.name }}</div>
+              <div class="temoignage-job">{{ t.role }}</div>
             </div>
           </div>
         </div>
-
-        <div class="temoignage-card">
-          <div class="temoignage-quote">
-            La permission, c'est la base. Mais ce qui se passe dans ce club, c'est encore mieux : la confiance entre pairs. Un réseau qui se construit sur la valeur, pas sur le bruit. Remarquable.
-          </div>
-          <div class="temoignage-author">
-            <div class="temoignage-avatar">SG</div>
-            <div>
-              <div class="temoignage-fictif">Témoignage fictif</div>
-              <div class="temoignage-name">Seth Godin</div>
-              <div class="temoignage-job">Auteur de Purple Cow · This Is Marketing</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="temoignage-card">
-          <div class="temoignage-quote">
-            J'aurais voulu avoir un truc comme ça quand je démarrais. L'entraide vraie, les bons plans concrets, pas du personal branding creux. C'est ça le marketing de demain.
-          </div>
-          <div class="temoignage-author">
-            <div class="temoignage-avatar">GV</div>
-            <div>
-              <div class="temoignage-fictif">Témoignage fictif</div>
-              <div class="temoignage-name">Gary Vaynerchuk</div>
-              <div class="temoignage-job">CEO VaynerMedia · Entrepreneur &amp; speaker</div>
-            </div>
-          </div>
-        </div>
-
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1429,46 +1223,16 @@
   <!-- FAQ -->
   <div class="faq-bg">
     <div class="faq-inner">
-      <div class="section-label">Questions fréquentes</div>
-      <h2>Tu hésites encore ?</h2>
-      <p class="faq-lead">Les questions qu'on nous pose le plus souvent avant de candidater.</p>
+      <div class="section-label">{{ site.sections.faq.eyebrow }}</div>
+      <h2>{{ site.sections.faq.title }}</h2>
+      <p class="faq-lead">{{ site.sections.faq.lead }}</p>
       <div class="faq-list">
-
+{% for f in faq.items %}
         <details class="faq-item">
-          <summary class="faq-q">Est-ce que mon profil correspond ?</summary>
-          <p class="faq-a">Le club est ouvert à toutes les personnes qui exercent une fonction <strong>marketing au sens large</strong> — acquisition, brand, growth, CRM, contenu, product marketing, communication marketing — avec <strong>au moins 3 ans d'expérience</strong>. Freelances, salarié·es et consultant·es sont les bienvenu·es. Il faut habiter ou travailler en <strong>région lyonnaise</strong>.</p>
+          <summary class="faq-q">{{ f.q }}</summary>
+          <p class="faq-a">{{ f.a | safe }}</p>
         </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Les profils 100% communication, c'est exclu ?</summary>
-          <p class="faq-a">Les profils orientés <strong>communication institutionnelle pure</strong> (relations presse, com interne, événementiel sans dimension marketing) sont généralement hors scope. Si tu as un doute sur ton profil, postule quand même — on te répondra honnêtement.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Est-ce que je dois m'engager à venir à tous les événements ?</summary>
-          <p class="faq-a"><strong>Aucune obligation.</strong> Pas de quota de présence, pas de durée d'engagement minimum. Tu viens aux événements qui t'intéressent, quand tu peux. La communauté, c'est aussi ce qui se passe entre les événements sur WhatsApp.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">C'est combien ?</summary>
-          <p class="faq-a">L'<strong>adhésion est gratuite</strong> pour l'instant. Certains événements (dîners, lieux privatisés) sont payants pour couvrir les frais de fonctionnement — les tarifs sont toujours communiqués en amont. Aucune mauvaise surprise.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Combien de temps pour avoir une réponse après ma candidature ?</summary>
-          <p class="faq-a">En général <strong>sous 48h</strong>. Le bureau est entièrement bénévole — ses membres ont des jobs et des vies de famille. Ils font au mieux pour répondre rapidement à chaque candidature.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Qu'est-ce que ça apporte concrètement ?</summary>
-          <p class="faq-a">Un accès à un réseau de marketeurs lyonnais qui se font vraiment confiance : <strong>prestataires validés par des pairs</strong>, bons plans partagés, <strong>entraide pour la recherche d'emploi</strong>, et parfois des opportunités de jobs diffusées en avant-première dans le groupe — avant d'être publiées ailleurs.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">C'est quoi le groupe WhatsApp concrètement ?</summary>
-          <p class="faq-a">Plusieurs fils actifs entre membres : un fil <strong>entraide métier</strong> (recommandations de prestataires, conseils, bons plans), un fil <strong>jobs</strong> (offres et recherches de profils), et un fil <strong>général</strong> pour la vie du club et les prochains événements.</p>
-        </details>
-
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1476,43 +1240,19 @@
   <!-- PROCESSUS DE CANDIDATURE -->
   <div class="processus-bg">
     <div class="processus-inner">
-      <div class="section-label">Comment ça marche</div>
-      <h2>Rejoindre le club<br>en 4 étapes.</h2>
-      <p class="processus-intro">Pas de cooptation obligatoire, pas de dossier complexe. Un formulaire, une vérification rapide.</p>
+      <div class="section-label">{{ site.sections.processus.eyebrow }}</div>
+      <h2>{{ site.sections.processus.title_html | safe }}</h2>
+      <p class="processus-intro">{{ site.sections.processus.intro }}</p>
       <div class="processus-steps">
-
+{% for st in home.processus %}
         <div class="proc-step">
-          <div class="proc-step-num">01</div>
+          <div class="proc-step-num">{{ st.n }}</div>
           <div>
-            <div class="proc-step-title">Tu envoies ta candidature</div>
-            <div class="proc-step-desc">Nom, poste, entreprise et quelques mots sur ton rapport au marketing lyonnais. 2 minutes chrono.</div>
+            <div class="proc-step-title">{{ st.title }}</div>
+            <div class="proc-step-desc">{{ st.text }}</div>
           </div>
         </div>
-
-        <div class="proc-step">
-          <div class="proc-step-num">02</div>
-          <div>
-            <div class="proc-step-title">On vérifie ton profil</div>
-            <div class="proc-step-desc">Le bureau s'assure que tu travailles bien dans le marketing à Lyon. Pas un entretien — une simple vérification.</div>
-          </div>
-        </div>
-
-        <div class="proc-step">
-          <div class="proc-step-num">03</div>
-          <div>
-            <div class="proc-step-title">Réponse sous 48h</div>
-            <div class="proc-step-desc">On revient vers toi rapidement par e-mail. En cas de refus, on t'explique pourquoi et tu peux recandidater.</div>
-          </div>
-        </div>
-
-        <div class="proc-step">
-          <div class="proc-step-num">04</div>
-          <div>
-            <div class="proc-step-title">Bienvenue dans le club</div>
-            <div class="proc-step-desc">Accès au groupe WhatsApp, aux recommandations membres et aux invitations pour les prochains événements.</div>
-          </div>
-        </div>
-
+{% endfor %}
       </div>
     </div>
   </div>
@@ -1521,9 +1261,9 @@
   <div class="candidature-section" id="candidature">
     <div>
       <img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" style="height:64px;width:auto;filter:brightness(0) invert(1);opacity:0.92;margin:0 auto 2rem;display:block;" />
-      <div class="section-label">Nous rejoindre</div>
-      <h2>Candidater pour rejoindre le club</h2>
-      <p class="lead">Tu travailles dans le marketing à Lyon ? Envoie-nous ta candidature, on revient vers toi rapidement.</p>
+      <div class="section-label">{{ site.sections.candidature.eyebrow }}</div>
+      <h2>{{ site.sections.candidature.title }}</h2>
+      <p class="lead">{{ site.sections.candidature.lead }}</p>
 
       <!-- Formulaire de candidature — embarqué depuis Tally -->
       <div class="tally-embed">
@@ -1539,8 +1279,8 @@
     <div class="footer-inner">
       <a href="/" class="footer-logo"><img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" loading="lazy" decoding="async" /></a>
       <div class="footer-links">
-        <a href="https://linkedin.com/company/gones-du-market" target="_blank">LinkedIn</a>
-        <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank">YouTube</a>
+        <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
+        <a href="{{ site.social.youtube }}" target="_blank">YouTube</a>
       </div>
     </div>
   </footer>
