@@ -3,8 +3,13 @@
 # enregistrement fait depuis Pages CMS.
 #
 # Secrets à définir dans GitHub (Settings → Secrets and variables → Actions) :
-#   GANDI_SFTP_USER  = l'Utilisateur du jeton SFTP Gandi (dédié au déploiement)
+#   GANDI_SFTP_USER  = l'Utilisateur du jeton SFTP Gandi (le jeton actuel convient)
 #   GANDI_SFTP_PASS  = le jeton SFTP
+#
+# Note : on supprime d'abord les fichiers texte/JS avant de les redéposer.
+# Cela évite l'erreur « permission denied » à l'écrasement (quand un fichier
+# appartient à un autre propriétaire) : supprimer dépend des droits du dossier,
+# pas du fichier. --no-perms évite aussi toute tentative de chmod.
 name: Déployer le site
 
 on:
@@ -43,6 +48,10 @@ jobs:
             set sftp:auto-confirm yes;
             set net:timeout 20; set net:max-retries 3; set net:reconnect-interval-base 5;
             open -u '$SFTP_USER','$SFTP_PASS' sftp://sftp.sd5.gpaas.net;
-            mirror --reverse --verbose --parallel=2 \
-              _site/ vhosts/www.lesgonesdumarket.fr/htdocs/
+            cd vhosts/www.lesgonesdumarket.fr/htdocs;
+            set cmd:fail-exit no;
+            rm -f index.html; rm -f index-v2.html; rm -f membres.html;
+            rm -f beta-widget.js; rm -f site.js;
+            set cmd:fail-exit yes;
+            mirror --reverse --verbose --parallel=2 --no-perms _site/ ./;
           "
