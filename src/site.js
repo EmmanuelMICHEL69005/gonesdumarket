@@ -25,7 +25,7 @@
   /* ── 2. Compte à rebours du prochain événement (index-v2 uniquement) ── */
   var cdDays = document.getElementById("cd-days");
   if (cdDays) {
-    var target = new Date("2026-09-24T18:30:00"); // Apéro de rentrée
+    var target = new Date("2026-10-08T18:30:00"); // Talk REX avec Léa Gueniffet
     var set = function (id, v) {
       var el = document.getElementById(id);
       if (el) el.textContent = String(v).padStart(2, "0");

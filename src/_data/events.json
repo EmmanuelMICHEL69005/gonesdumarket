@@ -8,22 +8,12 @@
           "status": "upcoming",
           "featured": true,
           "dow": "Jeudi",
-          "num": "24 sept.",
-          "year": "2026",
-          "title": "Afterwork de rentrée",
-          "sub": "Afterwork · Lyon · On se retrouve et on accueille les nouveaux",
-          "badge": "Prochain événement",
-          "action": "register",
-          "url": "https://yp.events/6f781d78-433c-4154-a598-9d6e0c856daa/Afterwork-L-Apero-de-rentree-des-Gones-du-Market"
-        },
-        {
-          "status": "upcoming",
-          "dow": "Jeudi",
           "num": "8 oct.",
           "year": "2026",
           "title": "Talk REX avec Léa Gueniffet",
           "sub": "Acquisition payante : ce qui marche vraiment et ce qui crame votre budget",
-          "action": "soon"
+          "badge": "Prochain événement",
+          "action": "register"
         },
         {
           "status": "upcoming",
@@ -67,6 +57,15 @@
       "label": "Déjà organisés en 2026",
       "datagroup": "past",
       "events": [
+        {
+          "status": "past",
+          "dow": "Jeudi",
+          "num": "24 sept.",
+          "year": "2026",
+          "title": "Afterwork de rentrée",
+          "sub": "Afterwork · Lyon · On se retrouve et on accueille les nouveaux",
+          "action": "linkedin"
+        },
         {
           "status": "past",
           "dow": "Jeudi",
