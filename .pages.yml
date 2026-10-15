@@ -192,3 +192,20 @@ content:
               - { name: color, label: Couleur du nom (hex), type: string }
               - { name: text, label: Message, type: text }
               - { name: time, label: Heure, type: string }
+
+  # ─────────────── Popup promo (prochain événement) ───────────────
+  - name: promo
+    label: Popup promo (prochain événement)
+    type: file
+    path: src/_data/promo.json
+    fields:
+      - { name: enabled, label: Activer le popup, type: boolean }
+      - { name: eyebrow, label: Sur-titre, type: string }
+      - { name: title, label: Titre, type: string }
+      - { name: when, label: Date / heure, type: string }
+      - { name: where, label: Lieu, type: string }
+      - { name: theme, label: Accroche, type: text }
+      - { name: seats_left, label: Places restantes, type: number }
+      - { name: seats_total, label: Places totales, type: number }
+      - { name: cta, label: Texte du bouton, type: string }
+      - { name: url, label: Lien d'inscription, type: string }

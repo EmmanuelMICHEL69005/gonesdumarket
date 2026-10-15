@@ -4,6 +4,32 @@
 (function () {
   "use strict";
 
+  /* ── 0. Popup promo (prochain événement) ── */
+  var promo = document.getElementById("gdm-promo");
+  if (promo) {
+    var cta = promo.querySelector("[data-promo-cta]");
+    var seenKey = "gdm_promo_" + (cta ? cta.getAttribute("href") : "x"); // ré-affiché si l'event change
+    var promoSeen = false;
+    try { promoSeen = localStorage.getItem(seenKey) === "1"; } catch (e) {}
+    var closePromo = function () {
+      promo.classList.remove("show");
+      setTimeout(function () { promo.hidden = true; }, 250);
+      try { localStorage.setItem(seenKey, "1"); } catch (e) {}
+    };
+    if (!promoSeen) {
+      setTimeout(function () {
+        promo.hidden = false;
+        requestAnimationFrame(function () { promo.classList.add("show"); });
+      }, 1200);
+    }
+    promo.querySelector(".gdm-promo-close").addEventListener("click", closePromo);
+    var later = promo.querySelector("[data-promo-later]");
+    if (later) later.addEventListener("click", closePromo);
+    if (cta) cta.addEventListener("click", closePromo);
+    promo.addEventListener("click", function (e) { if (e.target === promo) closePromo(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !promo.hidden) closePromo(); });
+  }
+
   /* ── 1. Filtres de l'agenda (Toutes / À venir / Passés) ── */
   var filterBtns = document.querySelectorAll(".filter-btn");
   if (filterBtns.length) {

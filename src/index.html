@@ -932,6 +932,30 @@
       h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
       .lead { font-size: 1.1rem; }
     }
+    /* ── POPUP PROMO (prochain événement) ── */
+    @keyframes gdm-pulse { 0% { box-shadow: 0 0 0 0 rgba(212,248,74,.7); } 70% { box-shadow: 0 0 0 7px rgba(212,248,74,0); } 100% { box-shadow: 0 0 0 0 rgba(212,248,74,0); } }
+    .gdm-promo-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(20,12,8,.62); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 18px; opacity: 0; transition: opacity .25s; }
+    .gdm-promo-overlay.show { opacity: 1; }
+    .gdm-promo-overlay[hidden] { display: none; }
+    .gdm-promo { background: #fff; color: #1A1A1A; width: 100%; max-width: 440px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,.42); transform: translateY(14px) scale(.98); transition: transform .25s; max-height: calc(100vh - 36px); overflow-y: auto; }
+    .gdm-promo-overlay.show .gdm-promo { transform: none; }
+    .gdm-promo-head { position: relative; background: var(--corail); color: #fff; padding: 24px 24px 20px; text-align: center; }
+    .gdm-promo-close { position: absolute; top: 10px; right: 12px; width: 32px; height: 32px; border: none; background: rgba(255,255,255,.22); color: #fff; border-radius: 50%; font: 400 21px/1 system-ui; cursor: pointer; }
+    .gdm-promo-close:hover { background: rgba(255,255,255,.35); }
+    .gdm-promo-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+    .gdm-promo-pulse { width: 8px; height: 8px; border-radius: 50%; background: #d4f84a; animation: gdm-pulse 2s infinite; flex: none; }
+    .gdm-promo-title { font-size: 1.55rem; font-weight: 900; letter-spacing: -.02em; line-height: 1.08; margin: .6rem 0 0; }
+    .gdm-promo-body { padding: 20px 24px 24px; }
+    .gdm-promo-meta { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; color: #444; font-size: .97rem; }
+    .gdm-promo-meta b { color: #1A1A1A; }
+    .gdm-promo-theme { color: #666; font-size: .92rem; line-height: 1.55; margin: 0 0 1.15rem; }
+    .gdm-promo-seats { display: flex; align-items: center; gap: .55rem; background: #FBEDE9; border: 1px solid #F3C9BF; color: #C94D38; font-weight: 700; border-radius: 12px; padding: .75rem .9rem; margin-bottom: 1.15rem; font-size: .97rem; }
+    .gdm-promo-seats b { font-weight: 800; }
+    .gdm-promo-cta { display: block; background: var(--corail); color: #fff; text-align: center; font-weight: 800; font-size: 1.02rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: background .2s, transform .15s; }
+    .gdm-promo-cta:hover { background: var(--corail-fonce); transform: translateY(-1px); }
+    .gdm-promo-later { display: block; width: 100%; margin-top: .6rem; background: none; border: none; color: #9a9a9a; font: 500 .85rem/1 inherit; cursor: pointer; padding: .5rem; }
+    .gdm-promo-later:hover { color: #666; }
+    @media (max-width: 480px) { .gdm-promo-title { font-size: 1.35rem; } .gdm-promo-head { padding: 20px 20px 18px; } .gdm-promo-body { padding: 18px 20px 22px; } }
   </style>
 </head>
 <body>
@@ -1286,6 +1310,29 @@
   </footer>
 
   <!-- Comportements de page (agenda, feed LinkedIn, Tally) + widget bêta -->
+{% if promo.enabled %}
+  <!-- POPUP PROMO : prochain événement -->
+  <div class="gdm-promo-overlay" id="gdm-promo" hidden>
+    <div class="gdm-promo" role="dialog" aria-modal="true" aria-label="{{ promo.title }}">
+      <div class="gdm-promo-head">
+        <button class="gdm-promo-close" type="button" aria-label="Fermer">&times;</button>
+        <span class="gdm-promo-eyebrow"><span class="gdm-promo-pulse" aria-hidden="true"></span>{{ promo.eyebrow }}</span>
+        <h3 class="gdm-promo-title">{{ promo.title }}</h3>
+      </div>
+      <div class="gdm-promo-body">
+        <div class="gdm-promo-meta">
+          <span>🗓️ <b>{{ promo.when }}</b></span>
+          <span>📍 {{ promo.where }}</span>
+        </div>
+        <p class="gdm-promo-theme">{{ promo.theme }}</p>
+        <div class="gdm-promo-seats">🔥 Plus que <b>{{ promo.seats_left }} places</b> sur {{ promo.seats_total }} !</div>
+        <a class="gdm-promo-cta" href="{{ promo.url }}" target="_blank" rel="noopener" data-promo-cta>{{ promo.cta }}</a>
+        <button class="gdm-promo-later" type="button" data-promo-later>Plus tard</button>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
   <script src="/site.js" defer></script>
   <script src="/beta-widget.js" defer></script>
 </body>
