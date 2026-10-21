@@ -1417,7 +1417,7 @@
             <a href="{{ ev.url if ev.url else '#candidature' }}" class="ev-btn"{% if ev.url %} target="_blank" rel="noopener"{% endif %}>S'inscrire →</a>
           </div>
 {% elif ev.action == "linkedin" %}          <div class="ev-right">
-            <a href="https://www.linkedin.com/company/gones-du-market" target="_blank" class="ev-btn-ghost">LinkedIn ↗</a>
+            <a href="{{ ev.linkedin_url if ev.linkedin_url else 'https://www.linkedin.com/company/gones-du-market' }}" target="_blank" rel="noopener" class="ev-btn-ghost">LinkedIn ↗</a>
           </div>
 {% else %}          <div class="ev-right"><span class="ev-status">BIENTÔT</span></div>
 {% endif %}        </div>

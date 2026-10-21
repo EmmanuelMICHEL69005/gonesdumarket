@@ -38,6 +38,7 @@ content:
               - { name: year, label: Année, type: string }
               - { name: sub, label: Sous-titre / lieu, type: text }
               - { name: speakers, label: Intervenants (optionnel), type: text }
+              - { name: linkedin_url, label: Lien du post LinkedIn (événements passés), type: string }
               - { name: badge, label: Badge (optionnel), type: string }
               - name: action
                 label: Bouton à droite
