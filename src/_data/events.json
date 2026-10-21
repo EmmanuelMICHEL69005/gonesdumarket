@@ -5,41 +5,32 @@
       "datagroup": "upcoming",
       "events": [
         {
+          "title": "Grand Débat RH",
           "status": "upcoming",
-          "featured": true,
-          "dow": "Mardi",
-          "num": "27 oct.",
-          "year": "2026",
-          "title": "Le Dîner des Gones",
-          "sub": "Dîner · 10 places · Restaurant Le F2, Lyon 2e · 19h30 — La vraie vie d'un CMO en 2026",
-          "badge": "Prochain événement",
-          "action": "register",
-          "url": "https://ypl.me/TtB"
-        },
-        {
-          "status": "upcoming",
+          "featured": false,
           "dow": "Jeudi",
           "num": "12 nov.",
           "year": "2026",
-          "title": "Grand Débat RH",
           "sub": "Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing",
           "action": "soon"
         },
         {
+          "title": "Challenge ton plan marketing 2027",
           "status": "upcoming",
+          "featured": false,
           "dow": "Jeudi",
           "num": "26 nov.",
           "year": "2026",
-          "title": "Challenge ton plan marketing 2027",
           "sub": "Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté",
           "action": "soon"
         },
         {
+          "title": "Déjeuner de fin d'année",
           "status": "upcoming",
+          "featured": false,
           "dow": "Jeudi",
           "num": "17 déc.",
           "year": "2026",
-          "title": "Déjeuner de fin d'année",
           "sub": "Déjeuner · On boucle 2026 ensemble",
           "action": "soon"
         }
@@ -50,60 +41,66 @@
       "datagroup": "past",
       "events": [
         {
+          "title": "Talk REX avec Léa Gueniffet",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "8 oct.",
           "year": "2026",
-          "title": "Talk REX avec Léa Gueniffet",
           "sub": "Afterwork · Lyon 3, rue Corneille",
           "speakers": "Avec Léa Gueniffet — acquisition payante, ce qui marche et ce qui crame votre budget",
           "action": "linkedin"
         },
         {
+          "title": "Afterwork de rentrée",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "24 sept.",
           "year": "2026",
-          "title": "Afterwork de rentrée",
           "sub": "Afterwork · Lyon · On se retrouve et on accueille les nouveaux",
           "action": "linkedin"
         },
         {
+          "title": "Matinée IA Pratique",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "18 juin",
           "year": "2026",
-          "title": "Matinée IA Pratique",
           "sub": "Ateliers en petit comité · Chez Ellisphere, Lyon · 24 membres",
           "speakers": "GEO (Florian Chapelier), Agents IA (Alexandre Jeanpetit), Vibe coding (Arthur Burnichon)",
           "action": "linkedin"
         },
         {
+          "title": "Stack Marketing & IA",
           "status": "past",
+          "featured": false,
           "dow": "Mardi",
           "num": "28 avr.",
           "year": "2026",
-          "title": "Stack Marketing & IA",
           "sub": "Afterwork · Chez Signitic, Lyon 3e",
           "speakers": "Avec Julian Maurel, Laurent Davesne, Laura Nguyen",
           "action": "linkedin"
         },
         {
+          "title": "Employee Advocacy sur LinkedIn",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "26 mars",
           "year": "2026",
-          "title": "Employee Advocacy sur LinkedIn",
           "sub": "Masterclass · Ballab Café, Les Terreaux",
           "speakers": "Avec Marie-Francine Phan, experte Social Media & Content",
           "action": "linkedin"
         },
         {
+          "title": "Marketing sans bullshit",
           "status": "past",
+          "featured": false,
           "dow": "Mardi",
           "num": "20 janv.",
           "year": "2026",
-          "title": "Marketing sans bullshit",
           "sub": "Afterwork · L'Ellipse by FlexJob",
           "speakers": "Avec Audrey Digonnat, Benjamin Poirier, Adeline Dubost",
           "action": "linkedin"
@@ -115,49 +112,54 @@
       "datagroup": "past",
       "events": [
         {
+          "title": "Déjeuner de fin d'année",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "18 déc.",
           "year": "2025",
-          "title": "Déjeuner de fin d'année",
           "sub": "Déjeuner · La Brasserie des 2 Rives, Lyon",
           "action": "linkedin"
         },
         {
+          "title": "Stratégie Vidéo 2026",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "4 déc.",
           "year": "2025",
-          "title": "Stratégie Vidéo 2026",
           "sub": "Afterwork · Chez Teazit, Lyon",
           "speakers": "Avec Emilien Colombain (CEO Teazit)",
           "action": "linkedin"
         },
         {
+          "title": "Challenge ton plan marketing 2026",
           "status": "past",
+          "featured": false,
           "dow": "Mardi",
           "num": "4 nov.",
           "year": "2025",
-          "title": "Challenge ton plan marketing 2026",
           "sub": "Petit-déjeuner · Chez Positive Signitic, Lyon",
           "action": "linkedin"
         },
         {
+          "title": "Microcanaux & Intent Data",
           "status": "past",
+          "featured": false,
           "dow": "Jeudi",
           "num": "2 oct.",
           "year": "2025",
-          "title": "Microcanaux & Intent Data",
           "sub": "Afterwork · Chez Positive Signitic, Lyon",
           "speakers": "Avec Aurore Agnes, Margot Duchêne, Alexandre Jeanpetit",
           "action": "linkedin"
         },
         {
+          "title": "Matinales Publicis Media Connect",
           "status": "past",
+          "featured": false,
           "dow": "Mardi",
           "num": "3 juin",
           "year": "2025",
-          "title": "Matinales Publicis Media Connect",
           "sub": "Partenariat · Rooftop by Dock40, Lyon",
           "speakers": "En partenariat avec Publicis Media Connect & TF1 Pub",
           "action": "linkedin"
