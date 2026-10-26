@@ -1112,7 +1112,9 @@
 
     .footer-links {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem 1.5rem;
     }
 
     footer a {
@@ -1540,6 +1542,7 @@
       <div class="footer-links">
         <a href="https://linkedin.com/company/gones-du-market" target="_blank">LinkedIn</a>
         <a href="https://www.youtube.com/@LesGonesduMarket" target="_blank">YouTube</a>
+        <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
       </div>
     </div>
   </footer>
