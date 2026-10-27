@@ -886,7 +886,7 @@
     .faq-contact { margin-top: 1.75rem; text-align: center; color: #666; font-size: .95rem; }
     .faq-contact a { color: var(--corail); font-weight: 600; text-decoration: none; white-space: nowrap; }
     .faq-contact a:hover { text-decoration: underline; }
-    .cand-contact { margin: -1rem auto 2rem; color: rgba(255,255,255,.85); font-size: .95rem; }
+    .cand-contact { margin: -1rem auto 2rem; color: rgba(255,255,255,.85); font-size: .95rem; line-height: 1.7; }
     .cand-contact a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 
     .footer-inner {
@@ -1250,7 +1250,7 @@
   </div>
 
   <!-- FAQ -->
-  <div class="faq-bg">
+  <div class="faq-bg" id="faq">
     <div class="faq-inner">
       <div class="section-label">{{ site.sections.faq.eyebrow }}</div>
       <h2>{{ site.sections.faq.title }}</h2>
@@ -1294,7 +1294,7 @@
       <div class="section-label">{{ site.sections.candidature.eyebrow }}</div>
       <h2>{{ site.sections.candidature.title }}</h2>
       <p class="lead">{{ site.sections.candidature.lead }}</p>
-      <p class="cand-contact">Une question avant de candidater ? <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
+      <p class="cand-contact">Une question avant de candidater ? La réponse est sûrement dans la <a href="#faq">FAQ</a>.<br>Toujours un doute ? Écris-nous à <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
 
       <!-- Formulaire de candidature — embarqué depuis Tally -->
       <div class="tally-embed">
