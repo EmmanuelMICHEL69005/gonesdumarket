@@ -1,0 +1,260 @@
+{%- set THEMES = { "marketing": "Marketing", "ia": "IA", "acquisition": "Acquisition et SEO", "ecommerce": "E-commerce et retail", "com": "Communication et événementiel" } -%}
+{%- set ZONES = { "lyon": "Lyon et région", "france": "France", "en-ligne": "En ligne" } -%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda des événements marketing, IA et acquisition · Lyon et France · Les Gones du Market'</title>
+  <meta name="description" content="Salons, conférences, meetups et afterworks marketing, IA et acquisition à Lyon, en Auvergne-Rhône-Alpes et en France : la sélection des Gones du Market' pour {{ agenda.period | lower }}." />
+  <!-- Page test : non indexée tant que le gabarit n'est pas validé -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <style>
+    :root {
+      --corail: #E8614A;
+      --corail-fonce: #C94D38;
+      --corail-pale: #FBEDE9;
+      --noir: #1A1A1A;
+      --gris-clair: #F5F4F2;
+      --gris-texte: #5f5a56;
+      --ligne: #E6E1DC;
+      --blanc: #FFFFFF;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--noir); background: var(--gris-clair); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Barre du haut */
+    .topbar { background: var(--blanc); border-bottom: 1px solid var(--ligne); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .8rem; }
+    .topbar img { height: 46px; width: auto; display: block; }
+    .topbar a.back { font-size: .88rem; font-weight: 700; text-decoration: none; color: var(--corail-fonce); }
+
+    /* En-tête */
+    .hero { background: var(--corail); color: var(--blanc); padding: 3.5rem 0 3rem; }
+    .hero .wrap { display: grid; gap: 1rem; }
+    .test-flag { justify-self: start; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; background: rgba(0,0,0,.18); padding: .35rem .75rem; border-radius: 999px; }
+    .hero h1 { font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1; letter-spacing: -.035em; max-width: 18ch; text-wrap: balance; }
+    .hero h1 em { font-style: normal; color: var(--noir); }
+    .hero p { font-size: 1.1rem; max-width: 60ch; }
+    .hero .updated { font-size: .88rem; opacity: .9; }
+
+    /* Filtres */
+    .filters { background: var(--blanc); border-bottom: 1px solid var(--ligne); position: sticky; top: 0; z-index: 5; }
+    .filters .wrap { display: grid; gap: .6rem; padding-block: .9rem; }
+    .frow { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; }
+    .flabel { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gris-texte); min-width: 4.5rem; }
+    .chip { font: inherit; font-size: .85rem; font-weight: 700; padding: .38rem .8rem; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); color: var(--noir); cursor: pointer; }
+    .chip:hover { border-color: var(--corail); }
+    .chip[aria-pressed="true"] { background: var(--noir); border-color: var(--noir); color: var(--blanc); }
+    .chip--gones[aria-pressed="true"] { background: var(--corail); border-color: var(--corail); }
+    .chip:focus-visible { outline: 2px solid var(--corail); outline-offset: 2px; }
+    .count { font-size: .88rem; color: var(--gris-texte); }
+    .count b { color: var(--noir); }
+
+    /* Liste */
+    main { padding: 2.5rem 0 3.5rem; }
+    main .wrap { display: grid; gap: 2.75rem; }
+    .month { display: grid; gap: .9rem; }
+    .month h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 900; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .75rem; }
+    .month h2 span { font-size: .9rem; font-weight: 700; color: var(--corail); letter-spacing: 0; }
+    .ev { background: var(--blanc); border-radius: 14px; border: 1px solid var(--ligne); display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 1.25rem; padding: 1.2rem 1.3rem; align-items: start; }
+    .ev--gones { border: 2px solid var(--corail); }
+    .date { display: grid; gap: .1rem; text-align: center; }
+    .date b { font-size: 1.9rem; font-weight: 900; line-height: 1; color: var(--corail); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .date span { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gris-texte); }
+    .body { display: grid; gap: .4rem; min-width: 0; }
+    .body h3 { font-size: 1.08rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; text-wrap: balance; }
+    .meta { font-size: .88rem; color: var(--gris-texte); }
+    .meta b { color: var(--noir); font-weight: 700; }
+    .desc { font-size: .93rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .15rem; }
+    .tag { font-size: .72rem; font-weight: 700; padding: .18rem .55rem; border-radius: 6px; background: var(--gris-clair); color: var(--noir); }
+    .tag--gones { background: var(--corail); color: var(--blanc); }
+    .side { display: grid; gap: .5rem; justify-items: end; text-align: right; min-width: 9.5rem; }
+    .status { font-size: .72rem; font-weight: 700; padding: .2rem .55rem; border-radius: 999px; }
+    .status--verifie { background: #E7F3EA; color: #2F6B3D; }
+    .status--a-verifier { background: var(--corail-pale); color: var(--corail-fonce); }
+    .price { font-size: .82rem; color: var(--gris-texte); }
+    .btn { display: inline-block; font-size: .85rem; font-weight: 800; text-decoration: none; background: var(--noir); color: var(--blanc); padding: .55rem .9rem; border-radius: 10px; white-space: nowrap; }
+    .btn:hover { background: var(--corail-fonce); }
+    .btn:focus-visible { outline: 2px solid var(--corail); outline-offset: 2px; }
+    .note { font-size: .8rem; color: var(--corail-fonce); }
+    .empty { background: var(--blanc); border-radius: 14px; padding: 1.5rem; text-align: center; color: var(--gris-texte); }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 0 1rem; }
+      .ev { grid-template-columns: 3.6rem 1fr; gap: .9rem; padding: 1rem; }
+      .date b { font-size: 1.45rem; }
+      .side { grid-column: 1 / -1; justify-items: start; text-align: left; min-width: 0; grid-template-columns: auto auto; align-items: center; gap: .5rem .75rem; }
+      .side .btn { grid-column: 1 / -1; justify-self: stretch; text-align: center; }
+      .flabel { min-width: 0; width: 100%; }
+      .topbar img { height: 38px; }
+      .filters { position: static; }
+    }
+
+    /* Rendez-vous récurrents et contact */
+    .recurring { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .9rem; }
+    .rec { background: var(--blanc); border-radius: 14px; border: 1px solid var(--ligne); padding: 1.2rem 1.3rem; display: grid; gap: .4rem; align-content: start; }
+    .rec .k { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--corail); }
+    .rec h3 { font-size: 1.05rem; font-weight: 800; }
+    .rec a { font-weight: 700; color: var(--corail-fonce); font-size: .9rem; }
+    .propose { background: var(--noir); color: var(--blanc); border-radius: 16px; padding: 1.75rem; display: grid; gap: .6rem; }
+    .propose h2 { font-size: 1.4rem; font-weight: 900; letter-spacing: -.02em; }
+    .propose p { color: #d8d3cf; max-width: 60ch; }
+    .propose a { color: var(--blanc); font-weight: 800; }
+    .legend { font-size: .85rem; color: var(--gris-texte); display: grid; gap: .3rem; }
+    footer { background: var(--noir); color: #bdb7b2; font-size: .85rem; padding: 1.5rem 0; }
+    footer a { color: var(--corail); text-decoration: none; }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+  {%- for e in agenda.events %}
+    {"@type":"Event","name":{{ e.title | dump | safe }},"startDate":"{{ e.start }}"{% if e.end %},"endDate":"{{ e.end }}"{% endif %},"eventStatus":"https://schema.org/EventScheduled",
+     "eventAttendanceMode":"{% if e.zone == 'en-ligne' %}https://schema.org/OnlineEventAttendanceMode{% else %}https://schema.org/OfflineEventAttendanceMode{% endif %}",
+     "location":{% if e.zone == 'en-ligne' %}{"@type":"VirtualLocation","url":{{ e.url | dump | safe }}}{% else %}{"@type":"Place","name":{{ e.venue | dump | safe }},"address":{"@type":"PostalAddress","addressLocality":{{ e.city | dump | safe }},"addressCountry":"FR"}}{% endif %},
+     "organizer":{"@type":"Organization","name":{{ e.organizer | dump | safe }}},"url":{{ e.url | dump | safe }},"description":{{ e.desc | dump | safe }}}{% if not loop.last %},{% endif %}
+  {%- endfor %}
+  ]}
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a href="/" aria-label="Les Gones du Market' : accueil"><img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" /></a>
+      <a class="back" href="/">← Retour au site</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="test-flag">Page test · non indexée</span>
+      <h1>Agenda des événements marketing, <em>IA et acquisition</em></h1>
+      <p>Salons, conférences, meetups et afterworks à ne pas manquer quand on fait du marketing : à Lyon, dans la région et partout en France. {{ agenda.period }}.</p>
+      <p class="updated">Sélection des Gones du Market' · mise à jour le {{ agenda.updated }}</p>
+    </div>
+  </section>
+
+  <nav class="filters" aria-label="Filtrer les événements">
+    <div class="wrap">
+      <div class="frow" role="group" aria-label="Lieu">
+        <span class="flabel">Lieu</span>
+        <button class="chip" type="button" data-zone="all" aria-pressed="true">Tous</button>
+        {%- for key, label in ZONES %}
+        <button class="chip" type="button" data-zone="{{ key }}" aria-pressed="false">{{ label }}</button>
+        {%- endfor %}
+        <button class="chip chip--gones" type="button" id="only-gones" aria-pressed="false">Événements des Gones</button>
+      </div>
+      <div class="frow" role="group" aria-label="Thème">
+        <span class="flabel">Thème</span>
+        <button class="chip" type="button" data-theme="all" aria-pressed="true">Tous</button>
+        {%- for key, label in THEMES %}
+        <button class="chip" type="button" data-theme="{{ key }}" aria-pressed="false">{{ label }}</button>
+        {%- endfor %}
+      </div>
+      <p class="count" aria-live="polite"><b id="count">{{ agenda.events | length }}</b> événements affichés</p>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      {%- set months = ["novembre", "décembre"] %}
+      {%- for m in months %}
+      <section class="month" data-month="{{ m }}">
+        <h2>{{ m | capitalize }} 2026</h2>
+        {%- for e in agenda.events %}{% if e.month == m %}
+        <article class="ev{% if e.gones %} ev--gones{% endif %}" data-zone="{{ e.zone }}" data-themes="{{ e.themes | join(' ') }}" data-gones="{{ 'oui' if e.gones else 'non' }}">
+          <div class="date"><b>{{ e.day }}</b><span>{{ e.small }}</span></div>
+          <div class="body">
+            <h3>{{ e.title }}</h3>
+            <p class="meta"><b>{{ e.when }}</b>{% if e.hours %} · {{ e.hours }}{% endif %} · {{ e.venue }}, {{ e.city }}</p>
+            <p class="meta">Organisé par {{ e.organizer }} · {{ e.format }}</p>
+            <p class="desc">{{ e.desc }}</p>
+            <div class="tags">
+              {%- if e.gones %}<span class="tag tag--gones">Événement des Gones</span>{% endif %}
+              <span class="tag">{{ ZONES[e.zone] }}</span>
+              {%- for t in e.themes %}<span class="tag">{{ THEMES[t] }}</span>{% endfor %}
+            </div>
+            {%- if e.note %}<p class="note">{{ e.note }}</p>{% endif %}
+          </div>
+          <div class="side">
+            <span class="status status--{{ e.status }}">{{ "Dates vérifiées" if e.status == "verifie" else "À vérifier" }}</span>
+            <span class="price">{{ e.price }}</span>
+            <a class="btn" href="{{ e.url }}"{% if not e.gones %} target="_blank" rel="noopener"{% endif %}>{{ "Voir l'agenda des Gones" if e.gones else "Site de l'événement →" }}</a>
+          </div>
+        </article>
+        {%- endif %}{% endfor %}
+      </section>
+      {%- endfor %}
+      <p class="empty" id="empty" hidden>Aucun événement ne correspond à ces filtres. Essayez un autre lieu ou un autre thème.</p>
+
+      <section class="month">
+        <h2>Rendez-vous réguliers à Lyon <span>Toute l'année</span></h2>
+        <div class="recurring">
+          {%- for r in agenda.recurring %}
+          <div class="rec"><span class="k">{{ r.rhythm }} · {{ r.organizer }}</span><h3>{{ r.title }}</h3><p class="meta">{{ r.desc }}</p><a href="{{ r.url }}" target="_blank" rel="noopener">Voir les prochaines dates →</a></div>
+          {%- endfor %}
+        </div>
+      </section>
+
+      <div class="propose">
+        <h2>Un événement manque à l'appel ?</h2>
+        <p>Vous organisez ou repérez un événement marketing, IA ou acquisition à Lyon ou en France : écrivez-nous à <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a> avec la date, le lieu et le lien d'inscription.</p>
+      </div>
+
+      <div class="legend">
+        <p><b>Dates vérifiées</b> : date et lieu confirmés sur le site de l'organisateur ou par plusieurs sources concordantes.</p>
+        <p><b>À vérifier</b> : relevé dans un agenda spécialisé (Blog du Modérateur, Abondance, Brief IA) ; consultez le site de l'organisateur avant de vous déplacer.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Les Gones du Market' · Lyon · <a href="/">lesgonesdumarket.fr</a></div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var zone = "all", theme = "all", onlyGones = false;
+    var events = document.querySelectorAll(".ev");
+    var months = document.querySelectorAll(".month[data-month]");
+    var count = document.getElementById("count");
+    var empty = document.getElementById("empty");
+    function apply() {
+      var n = 0;
+      events.forEach(function (ev) {
+        var ok = (zone === "all" || ev.dataset.zone === zone)
+          && (theme === "all" || (" " + ev.dataset.themes + " ").indexOf(" " + theme + " ") > -1)
+          && (!onlyGones || ev.dataset.gones === "oui");
+        ev.hidden = !ok; if (ok) n++;
+      });
+      months.forEach(function (m) { m.hidden = !m.querySelector(".ev:not([hidden])"); });
+      count.textContent = n;
+      empty.hidden = n > 0;
+    }
+    function group(selector, attr, set) {
+      var btns = document.querySelectorAll(selector);
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          set(b.getAttribute(attr)); apply();
+        });
+      });
+    }
+    group(".chip[data-zone]", "data-zone", function (v) { zone = v; });
+    group(".chip[data-theme]", "data-theme", function (v) { theme = v; });
+    var g = document.getElementById("only-gones");
+    g.addEventListener("click", function () {
+      onlyGones = !onlyGones; g.setAttribute("aria-pressed", onlyGones ? "true" : "false"); apply();
+    });
+  })();
+  </script>
+  <script src="/beta-widget.js" defer></script>
+</body>
+</html>
