@@ -1,0 +1,369 @@
+{
+  "title": "Réseaux et clubs marketing à Lyon : le panorama",
+  "question": "Quel réseau rejoindre quand on fait du marketing à Lyon ?",
+  "published": "2026-10-29",
+  "updated": "29 octobre 2026",
+  "updated_iso": "2026-10-29",
+  "answer": [
+    "Il n'existe pas un seul réseau marketing à Lyon mais une quinzaine de clubs, d'associations et de meetups qui ne visent pas les mêmes personnes.",
+    "Pour échanger entre pairs du marketing, les deux options les plus directes sont l'ADETEM Club Rhône-Alpes (conférences ouvertes à tous, adossées à une association nationale) et Les Gones du Market' (221 marketeurs, entraide quotidienne, adhésion gratuite sur candidature).",
+    "Si vous travaillez dans la tech, l'ADIRA, la French Tech ou la Digital League complètent ; pour essayer sans engagement, commencez par un meetup gratuit comme Lyon Digital Hub ou Lyon Data Science."
+  ],
+  "families": [
+    { "key": "marketing", "title": "Clubs et associations marketing", "intro": "Le marketing est leur sujet principal. Ce sont les réseaux les plus directs pour rencontrer des pairs." },
+    { "key": "tech", "title": "Réseaux tech et numérique avec un volet marketing", "intro": "Le marketing y est un groupe de travail parmi d'autres. L'adhésion se fait le plus souvent au nom de l'entreprise." },
+    { "key": "femmes", "title": "Réseaux féminins", "intro": "Un réseau transversal à grande échelle et un petit cercle de pairs, deux formats très différents." },
+    { "key": "meetups", "title": "Meetups gratuits : numérique, data et IA", "intro": "Gratuits, sans adhésion, en soirée. Le bon moyen de tester avant de s'engager ailleurs." },
+    { "key": "national", "title": "Rendez-vous nationaux suivis par les marketeurs lyonnais", "intro": "Des événements parisiens que les membres des Gones citent souvent, avec une communauté autour." }
+  ],
+  "networks": [
+    {
+      "id": "gones",
+      "name": "Les Gones du Market'",
+      "family": "marketing",
+      "gones": true,
+      "short": "Communauté de marketeurs lyonnais créée en 2023. Elle échange au quotidien sur WhatsApp et se retrouve en afterworks, retours d'expérience et dîners.",
+      "for": "Marketeurs avec au moins 3 ans d'expérience, salariés, freelances ou consultants, en région lyonnaise",
+      "format": "6 canaux WhatsApp (entraide, jobs, veille, événements…) et événements en petit comité",
+      "rhythm": "8 événements en 2025",
+      "cost": "Adhésion gratuite ; certains événements payants (dîners, lieux privatisés)",
+      "access": "Sur candidature, réponse en général sous 48 h",
+      "facts": [
+        "221 membres en octobre 2026",
+        "Bureau entièrement bénévole",
+        "Aucune obligation de présence"
+      ],
+      "ideal": "Vous voulez des réponses rapides de pairs : un prestataire recommandé, un outil, une offre d'emploi, un retour d'expérience.",
+      "limits": "Pas de conférences grand format. Les profils 100 % communication institutionnelle et les juniors (moins de 3 ans d'expérience) ne sont pas dans la cible.",
+      "url": "/#candidature",
+      "link": "Candidater",
+      "status": "verifie",
+      "sources": [ { "label": "Les Gones du Market' : FAQ", "url": "https://www.lesgonesdumarket.fr/#faq" } ]
+    },
+    {
+      "id": "adetem",
+      "name": "ADETEM · Club Région Rhône-Alpes",
+      "family": "marketing",
+      "short": "Le club régional de l'ADETEM, l'association nationale des professionnels du marketing.",
+      "for": "Professionnels du marketing, de la communication et du digital",
+      "format": "Conférences, afterworks, webinaires, visites d'entreprises, ateliers",
+      "rhythm": "Environ 8 rendez-vous en 2025",
+      "cost": "Inclus dans l'adhésion ADETEM ; tarifs sur adetem.org",
+      "access": "Événements annoncés ouverts à tous",
+      "facts": [
+        "Animé par des bénévoles d'entreprises de la région (Stora Enso, Foodaly, Groupe LDLC, Insign)",
+        "2026 : webinaire marketing mix modeling (3 février), rencontre IT et marketing avec l'ADIRA (2 avril), visite de la Maison de la danse (22 juin)",
+        "Annoncé : « AI Act : que faut-il (réellement) faire ? » le 3 novembre 2026",
+        "Un afterwork réservé aux directeurs marketing a eu lieu en novembre 2025"
+      ],
+      "ideal": "Vous cherchez des conférences de fond et un réseau marketing installé, relié à une association nationale.",
+      "limits": "Calendrier irrégulier : 4 rendez-vous publiés pour 2026.",
+      "url": "https://adetem.org/club/rhone-alpes/",
+      "link": "Site du club",
+      "status": "verifie",
+      "sources": [ { "label": "ADETEM : Club Région Rhône-Alpes", "url": "https://adetem.org/club/rhone-alpes/" } ]
+    },
+    {
+      "id": "fepsem",
+      "name": "FePSeM · Afterwork Search Marketing Lyon",
+      "family": "marketing",
+      "short": "La fédération des professionnels du search marketing, association fondée en 2008 sous le nom de SEO Camp.",
+      "for": "Spécialistes SEO, SEA et analytics",
+      "format": "Afterwork lyonnais et Salon du Search Marketing",
+      "rhythm": "Afterwork une fois par mois, selon l'agenda de la FePSeM",
+      "cost": "Non précisé",
+      "access": "Inscription à chaque événement",
+      "facts": [
+        "Salon du Search Marketing à Lyon le 5 novembre 2025 ; la date 2027 n'est pas encore annoncée",
+        "Couvre le SEO, le SEA et l'analytics"
+      ],
+      "ideal": "Vous travaillez l'acquisition (SEO, SEA, visibilité dans les IA) et cherchez des pairs techniques.",
+      "limits": "Les dates des afterworks ne sont pas publiées à l'avance : vérifiez l'agenda avant de vous déplacer.",
+      "url": "https://fepsem.org/agenda-des-evenements-search-marketing/",
+      "link": "Agenda FePSeM",
+      "status": "a-verifier",
+      "sources": [
+        { "label": "FePSeM : agenda des événements", "url": "https://fepsem.org/agenda-des-evenements-search-marketing/" },
+        { "label": "HelloAsso : Search Marketing Lyon 2025", "url": "https://www.helloasso.com/associations/federation-des-professionnels-du-search-marketing/evenements/search-marketing-lyon-2025" }
+      ]
+    },
+    {
+      "id": "adira",
+      "name": "ADIRA · Groupe Marketing digital & Relation client",
+      "family": "tech",
+      "short": "L'association des acteurs du numérique en Auvergne-Rhône-Alpes. Son groupe Marketing digital existe depuis 2017.",
+      "for": "Entreprises, collectivités et écoles : DSI, digital et fonctions métiers",
+      "format": "Groupe de travail : expert invité ou séance de co-développement",
+      "rhythm": "Toutes les 5 à 6 semaines",
+      "cost": "De 240 € (freelance de moins de 3 ans) à 3 700 € HT par an selon la taille de l'organisation (grille 2026)",
+      "access": "Adhésion de l'organisation : formulaire, entretien, puis charte",
+      "facts": [
+        "Thèmes : nouveaux usages, transformation digitale, inbound, emailing, offres digitales innovantes",
+        "Plusieurs collaborateurs d'une même organisation adhérente peuvent participer",
+        "Rencontre IT et marketing co-organisée avec l'ADETEM le 2 avril 2026"
+      ],
+      "ideal": "Votre entreprise est déjà adhérente, ou vous travaillez à la jonction du marketing et de l'IT.",
+      "limits": "Groupe réservé aux adhérents, et l'assiduité y est attendue.",
+      "url": "https://www.adira.org/groupes/marketing-digital/",
+      "link": "Page du groupe",
+      "status": "verifie",
+      "sources": [
+        { "label": "ADIRA : groupe Marketing digital & Relation client", "url": "https://www.adira.org/groupes/marketing-digital/" },
+        { "label": "ADIRA : adhésion et tarifs 2026", "url": "https://www.adira.org/adhesion/" }
+      ]
+    },
+    {
+      "id": "french-tech",
+      "name": "French Tech Saint-Étienne Lyon",
+      "family": "tech",
+      "short": "L'association qui fédère l'écosystème startup du territoire, labellisée Capitale French Tech jusqu'en 2028.",
+      "for": "Startups, scale-ups et acteurs de l'innovation",
+      "format": "Programmes d'accompagnement, ateliers, webinaires, événement annuel BIG UP",
+      "rhythm": "Plusieurs événements par mois",
+      "cost": "Non publié ; adhésion de la startup",
+      "access": "Demande d'adhésion sur le site",
+      "facts": [
+        "555 startups adhérentes et plus de 700 acteurs fédérés, selon le site de l'association",
+        "BIG UP 2026 le 6 juillet au Musée des Confluences, environ 300 participants attendus",
+        "Pas de commission marketing identifiée"
+      ],
+      "ideal": "Vous faites le marketing d'une startup et voulez rencontrer fondateurs, financeurs et programmes d'accompagnement.",
+      "limits": "C'est un réseau d'entreprises, pas de marketeurs : les échanges portent surtout sur le financement et la croissance.",
+      "url": "https://lafrenchtech-stl.com/",
+      "link": "Site de l'association",
+      "status": "verifie",
+      "sources": [
+        { "label": "French Tech Saint-Étienne Lyon", "url": "https://lafrenchtech-stl.com/" },
+        { "label": "Lyon Capitale : label Capitale French Tech reconduit jusqu'en 2028", "url": "https://www.lyoncapitale.fr/?p=500725" },
+        { "label": "Lyon Capitale : BIG UP 2026 au Musée des Confluences", "url": "https://www.lyoncapitale.fr/actualite/la-french-tech-saint-etienne-lyon-organise-big-up-2026-au-musee-des-confluences" }
+      ]
+    },
+    {
+      "id": "digital-league",
+      "name": "Digital League",
+      "family": "tech",
+      "short": "Le cluster des entreprises du numérique en Auvergne-Rhône-Alpes, né de la fusion du Clust'R Numérique et de Numélink.",
+      "for": "Entreprises du numérique, écoles, laboratoires, investisseurs",
+      "format": "Événements régionaux et clubs thématiques, dont un club « Sales & market »",
+      "rhythm": "Toute l'année, sans calendrier fixe publié",
+      "cost": "Non publié",
+      "access": "Adhésion de l'entreprise",
+      "facts": [
+        "Plus de 430 adhérents, selon le site du cluster",
+        "Clubs thématiques : IA, produit, cybersécurité, RH, sales & market…",
+        "Journée sur le financement des entreprises tech annoncée le 26 novembre 2026"
+      ],
+      "ideal": "Vous travaillez dans une entreprise du numérique et voulez croiser marketing et ventes.",
+      "limits": "Le club Sales & market vise surtout les entreprises du secteur numérique ; son rythme n'est pas publié.",
+      "url": "https://www.digital-league.org/",
+      "link": "Site du cluster",
+      "status": "a-verifier",
+      "sources": [ { "label": "Digital League", "url": "https://www.digital-league.org/" } ]
+    },
+    {
+      "id": "lyonnes",
+      "name": "L'Équipe des Lyonnes",
+      "family": "femmes",
+      "short": "Réseau féminin lyonnais qui veut faire progresser la place des femmes dans le débat public et faire émerger les talents féminins.",
+      "for": "Femmes actives de tous secteurs ; tous les événements sont ouverts aux hommes",
+      "format": "Cafés des Lyonnes, cafés-débats, masterclass, rencontres annuelles, podcast",
+      "rhythm": "Environ 3 événements par mois",
+      "cost": "Environ 30 € par an en individuel (tarif relevé en 2024) ; formules pour les entreprises",
+      "access": "Adhésion et signature de la charte des valeurs",
+      "facts": [
+        "Plus de 3 000 membres",
+        "Soirée au CIRC le 11 mars 2026 avec environ 300 personnes",
+        "Livre blanc annuel sur l'engagement des femmes dans le débat public"
+      ],
+      "ideal": "Vous cherchez un réseau large et transversal, au-delà du marketing.",
+      "limits": "Ce n'est pas un réseau métier : les échanges propres au marketing y sont rares.",
+      "url": "https://www.lequipedeslyonnes.fr/",
+      "link": "Site du réseau",
+      "status": "verifie",
+      "sources": [ { "label": "L'Équipe des Lyonnes", "url": "https://www.lequipedeslyonnes.fr/" } ]
+    },
+    {
+      "id": "lean-in",
+      "name": "Lean In Circle Lyon Marketing",
+      "family": "femmes",
+      "short": "Un cercle Lean In qui réunit des femmes des métiers de la communication et du marketing.",
+      "for": "Femmes en communication et marketing, à tout stade de carrière : salariées, freelances, entrepreneuses",
+      "format": "Petit groupe de pairs, discussions structurées sur la carrière et le leadership",
+      "rhythm": "Une fois par mois",
+      "cost": "Gratuit",
+      "access": "Demande depuis la page du cercle",
+      "facts": [
+        "13 membres et une animatrice affichés sur la page du cercle",
+        "Les cercles Lean In comptent en général 8 à 12 personnes"
+      ],
+      "ideal": "Vous voulez un petit groupe de confiance pour parler carrière et leadership.",
+      "limits": "L'activité récente n'est pas visible sur la page publique : contactez l'animatrice avant de vous inscrire.",
+      "url": "https://leanincircles.org/circle/lyon-marketing",
+      "link": "Page du cercle",
+      "status": "a-verifier",
+      "sources": [ { "label": "Lean In Circles : Lyon Marketing", "url": "https://leanincircles.org/circle/lyon-marketing" } ]
+    },
+    {
+      "id": "lyon-digital-hub",
+      "name": "Lyon Digital Hub",
+      "family": "meetups",
+      "short": "Afterwork gratuit organisé par des bénévoles : des pros du numérique répondent aux questions, sans discours commercial.",
+      "for": "Professionnels du numérique, avec une zone Marketing / Growth",
+      "format": "Afterwork par zones thématiques : produit, dev, design, data/IA, marketing/growth, no-code, startup",
+      "rhythm": "Une fois par mois, en soirée",
+      "cost": "Gratuit, consommations à votre charge",
+      "access": "Inscription sur Meetup",
+      "facts": [
+        "1 026 membres sur Meetup, note de 4,7 sur 5",
+        "Lieu habituel : Black Hole, rue de la Baleine (Lyon 5e)",
+        "Prochaines dates : 12 novembre (AI Act) et 9 décembre 2026"
+      ],
+      "ideal": "Vous voulez tester un format sans engagement et parler growth avec des profils tech.",
+      "limits": "Affluence variable : de quelques personnes à une trentaine selon les soirées.",
+      "url": "https://www.meetup.com/lyondigitalhub/",
+      "link": "Groupe Meetup",
+      "status": "verifie",
+      "sources": [ { "label": "Meetup : Lyon Digital Hub", "url": "https://www.meetup.com/lyondigitalhub/" } ]
+    },
+    {
+      "id": "lyon-data-science",
+      "name": "Lyon Data Science",
+      "family": "meetups",
+      "short": "Association à but non lucratif, constituée en 2016, qui anime la communauté data et IA lyonnaise.",
+      "for": "Toute personne intéressée par la data, l'IA et leurs usages concrets",
+      "format": "Conférences, tables rondes, ateliers pratiques",
+      "rhythm": "Plusieurs rencontres par mois",
+      "cost": "Gratuit ; adhésion facultative",
+      "access": "Inscription sur Meetup",
+      "facts": [
+        "4 873 membres sur Meetup",
+        "Lieux : TUBÀ (Part-Dieu) et Epitech Lyon",
+        "Novembre 2026 : table ronde le 10, conférence sur l'IA frugale le 12, atelier dashboard le 17"
+      ],
+      "ideal": "Vous pilotez la data marketing ou voulez comprendre l'IA au-delà des outils grand public.",
+      "limits": "Contenus orientés data et technique, rarement marketing.",
+      "url": "https://www.meetup.com/lyondatascience/",
+      "link": "Groupe Meetup",
+      "status": "verifie",
+      "sources": [ { "label": "Meetup : Lyon Data Science", "url": "https://www.meetup.com/lyondatascience/" } ]
+    },
+    {
+      "id": "mindstone",
+      "name": "Mindstone Lyon · AI Meetup",
+      "family": "meetups",
+      "short": "L'édition lyonnaise des meetups Mindstone sur l'IA appliquée au travail.",
+      "for": "Professionnels de tous métiers qui utilisent l'IA au quotidien",
+      "format": "Trois interventions (technique, démonstration, impact sur le travail), puis networking",
+      "rhythm": "Une fois par mois",
+      "cost": "Non précisé",
+      "access": "Inscription sur Luma",
+      "facts": [
+        "Édition de novembre 2026 annoncée à Epitech Lyon",
+        "Interventions en français et en anglais"
+      ],
+      "ideal": "Vous voulez des cas d'usage IA concrets, faciles à reproduire.",
+      "limits": "Pas spécifique au marketing.",
+      "url": "https://luma.com/calendar/cal-zVeWgzCRgBQXzvT",
+      "link": "Calendrier Luma",
+      "status": "verifie",
+      "sources": [
+        { "label": "Luma : calendrier Mindstone", "url": "https://luma.com/calendar/cal-zVeWgzCRgBQXzvT" },
+        { "label": "Luma : Mindstone Lyon September AI Meetup", "url": "https://luma.com/e3rpmv3b" }
+      ]
+    },
+    {
+      "id": "cmo-in-tech",
+      "name": "CMO in Tech",
+      "family": "national",
+      "short": "Une journée pour les directions marketing de la tech B2B, organisée par le cabinet Gtec.",
+      "for": "CMO, heads of growth, communication et product marketing de la tech B2B",
+      "format": "8 conférences, ateliers et networking ; un « Club CMO in Tech » annoncé",
+      "rhythm": "Annuel (1re édition le 28 avril 2026)",
+      "cost": "Environ 90 € en 2026",
+      "access": "Inscription sur le site",
+      "facts": [
+        "Paris La Défense (Courbevoie)",
+        "Plus de 20 intervenants et environ 150 CMO",
+        "Thèmes : IA, data, alignement sales/marketing, martech, contenu, leadership"
+      ],
+      "ideal": "Vous dirigez le marketing d'une entreprise tech B2B et cherchez des pairs au même niveau.",
+      "limits": "À Paris ; la date 2027 n'est pas confirmée.",
+      "url": "https://www.cabinet-gtec.fr/cmo-in-tech-par-gtec/",
+      "link": "Site de l'événement",
+      "status": "verifie",
+      "sources": [ { "label": "Cabinet Gtec : CMO in Tech", "url": "https://www.cabinet-gtec.fr/cmo-in-tech-par-gtec/" } ]
+    },
+    {
+      "id": "france-digitale",
+      "name": "France Digitale · CMO & Sales Day",
+      "family": "national",
+      "short": "L'association des startups et des investisseurs du numérique organise chaque printemps une demi-journée pour les directions marketing et commerciales.",
+      "for": "Leaders marketing, sales et communication des scale-ups et des fonds d'investissement",
+      "format": "Conférences et ateliers participatifs, une trentaine d'intervenants",
+      "rhythm": "Annuel (9 avril 2026 à Paris)",
+      "cost": "Non publié",
+      "access": "Inscription auprès de France Digitale",
+      "facts": [
+        "Héritier du « CMO Day » (10 avril 2025 à Paris)",
+        "France Digitale Day, son grand rendez-vous annuel, a eu lieu le 16 septembre 2026"
+      ],
+      "ideal": "Vous travaillez dans une scale-up et voulez comparer vos pratiques avec d'autres CMO.",
+      "limits": "Événement parisien ; la date 2027 n'est pas encore annoncée.",
+      "url": "https://francedigitale.org/",
+      "link": "Site de France Digitale",
+      "status": "a-verifier",
+      "sources": [
+        { "label": "Blog du Modérateur : événements d'avril 2026", "url": "https://www.blogdumoderateur.com/evenements-digital-avril-2026/" },
+        { "label": "Blog du Modérateur : CMO Day 2025", "url": "https://www.blogdumoderateur.com/agenda/cmo-day-2025/" },
+        { "label": "Dealroom : France Digitale Day 2026", "url": "https://dealroom.co/events/france-digitale-day-2026/" }
+      ]
+    }
+  ],
+  "dormant": [
+    { "name": "After work des pros du web à Lyon", "fact": "1 752 membres sur Meetup, mais le dernier afterwork (n° 39) date du 10 mars 2020.", "url": "https://www.meetup.com/fr-FR/After-work-des-pros-du-web-a-Lyon/" },
+    { "name": "SEO Lyon", "fact": "Groupe Meetup dédié au SEO ; ses événements passés vont de 2019 à 2023 et aucun n'est annoncé.", "url": "https://www.meetup.com/seo-lyon/" },
+    { "name": "HubSpot User Group Lyon", "fact": "La dernière session lyonnaise repérée date de 2021. L'annuaire des HUG liste les groupes actifs, dont des groupes en ligne.", "url": "https://www.hubspot.com/hubspot-user-groups" },
+    { "name": "La Cuisine du Web", "fact": "Association lyonnaise à l'origine de BlendWebMix ; nous n'avons pas trouvé de programme pour 2026.", "url": "https://www.lejournaldesentreprises.com/breve/clap-de-fin-pour-la-tour-du-web-135368" },
+    { "name": "Club de la Communication à Lyon", "fact": "Association de communicants enregistrée place de la Bourse (Lyon 2e) ; nous n'avons trouvé ni site ni agenda à jour.", "url": "https://www.verif.com/societe/CLUB-DE-LA-COMMUNICATION-A-LYON-923394340/" }
+  ],
+  "profiles": [
+    { "who": "Vous dirigez le marketing", "detail": "CMO, head of marketing, directeur ou directrice marketing", "picks": ["ADETEM", "CMO in Tech", "France Digitale CMO & Sales Day", "Dîners des Gones"] },
+    { "who": "Vous êtes marketeur ou marketeuse en poste", "detail": "Responsable, chef de projet, chargé de marketing avec 3 ans d'expérience ou plus", "picks": ["Les Gones du Market'", "ADETEM", "Lyon Digital Hub"] },
+    { "who": "Vous êtes freelance ou consultant", "detail": "Vous cherchez des pairs, des missions et des recommandations", "picks": ["Les Gones du Market'", "ADIRA (tarif freelance de 240 à 480 €)", "Lyon Digital Hub"] },
+    { "who": "Vous travaillez dans la tech", "detail": "Startup, scale-up, ESN, éditeur de logiciels", "picks": ["ADIRA", "French Tech Saint-Étienne Lyon", "Digital League", "CMO in Tech"] },
+    { "who": "Vous travaillez l'acquisition", "detail": "SEO, SEA, visibilité dans les moteurs IA", "picks": ["FePSeM", "Les Gones du Market'"] },
+    { "who": "Vous voulez progresser sur l'IA", "detail": "Usages concrets, outils, réglementation", "picks": ["Lyon Data Science", "Mindstone Lyon", "ADETEM (AI Act, 3 novembre)", "Lyon Digital Hub (AI Act, 12 novembre)"] },
+    { "who": "Vous cherchez un réseau féminin", "detail": "Transversal ou en petit comité", "picks": ["L'Équipe des Lyonnes", "Lean In Circle Lyon Marketing"] },
+    { "who": "Vous débutez", "detail": "Moins de 3 ans d'expérience, alternance, reconversion", "picks": ["ADETEM (ouvert à tous)", "Meetups gratuits", "Lean In Circle Lyon Marketing", "Le réseau alumni de votre école"] }
+  ],
+  "faq": [
+    {
+      "q": "Quel est le principal réseau marketing à Lyon ?",
+      "a": "Il n'y en a pas un seul. L'ADETEM Club Rhône-Alpes est la déclinaison régionale de l'association nationale des professionnels du marketing. Les Gones du Market' réunissent 221 marketeurs lyonnais autour d'une entraide quotidienne. Le groupe Marketing digital de l'ADIRA s'adresse aux entreprises adhérentes de l'association du numérique régional."
+    },
+    {
+      "q": "Existe-t-il des réseaux marketing gratuits à Lyon ?",
+      "a": "Oui. L'adhésion aux Gones du Market' est gratuite (certains événements sont payants), les meetups Lyon Digital Hub et Lyon Data Science sont gratuits, tout comme les cercles Lean In. Les événements du club ADETEM sont annoncés ouverts à tous : vérifiez le tarif à chaque inscription."
+    },
+    {
+      "q": "Combien coûte l'adhésion à l'ADIRA ?",
+      "a": "En 2026, l'adhésion annuelle va de 240 € HT pour un freelance de moins de 3 ans à 3 700 € HT pour une entreprise de plus de 2 500 collaborateurs. Elle est souscrite par l'organisation et plusieurs collaborateurs peuvent en profiter."
+    },
+    {
+      "q": "L'Équipe des Lyonnes est-elle réservée aux femmes ?",
+      "a": "Le réseau rassemble plus de 3 000 femmes, mais tous ses événements sont ouverts aux hommes, qui peuvent aussi adhérer."
+    },
+    {
+      "q": "Je débute dans le marketing : quel réseau rejoindre ?",
+      "a": "Les Gones du Market' demandent au moins 3 ans d'expérience. En début de carrière, les événements ouverts de l'ADETEM, les meetups gratuits (Lyon Digital Hub, Lyon Data Science, Mindstone), le cercle Lean In Lyon Marketing et le réseau alumni de votre école sont les plus accessibles."
+    },
+    {
+      "q": "Peut-on être membre de plusieurs réseaux ?",
+      "a": "Oui, et c'est courant. Dans les groupes des Gones, plusieurs membres participent aussi aux ateliers de l'ADETEM et de l'ADIRA ou aux soirées des Lyonnes. Les formats sont complémentaires : conférences d'un côté, entraide entre pairs de l'autre."
+    },
+    {
+      "q": "Comment rejoindre Les Gones du Market' ?",
+      "a": "En remplissant le formulaire de candidature sur la page d'accueil. Le club s'adresse aux personnes qui exercent une fonction marketing au sens large, avec au moins 3 ans d'expérience, et qui vivent ou travaillent en région lyonnaise. La réponse arrive en général sous 48 heures."
+    }
+  ]
+}

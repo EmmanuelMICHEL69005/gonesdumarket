@@ -1,0 +1,386 @@
+{%- set R = reseaux -%}
+{%- set SITE_URL = "https://www.lesgonesdumarket.fr" -%}
+{%- set PAGE_URL = SITE_URL + "/reseaux-clubs-marketing-lyon.html" -%}
+{%- set STATUS = { "verifie": "Vérifié le " + R.updated, "a-verifier": "Infos partielles" } -%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ R.title }} · Les Gones du Market'</title>
+  <meta name="description" content="ADETEM, ADIRA, Les Lyonnes, French Tech, meetups gratuits… Le comparatif des réseaux et clubs marketing à Lyon : pour qui, quel rythme, quel coût, comment adhérer." />
+  <!-- Page test : non indexée tant que le gabarit et l'auteur ne sont pas validés -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <style>
+    :root {
+      --corail: #E8614A;
+      --corail-fonce: #C94D38;
+      --corail-pale: #FBEDE9;
+      --noir: #1A1A1A;
+      --gris-clair: #F5F4F2;
+      --gris-texte: #5f5a56;
+      --ligne: #E6E1DC;
+      --blanc: #FFFFFF;
+      --vert: #2F6B3D;
+      --vert-pale: #E7F3EA;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--noir); background: var(--gris-clair); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow { max-width: 68ch; }
+
+    /* Barre du haut */
+    .topbar { background: var(--blanc); border-bottom: 1px solid var(--ligne); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .8rem; }
+    .topbar img { height: 46px; width: auto; display: block; }
+    .topbar a.back { font-size: .88rem; font-weight: 700; text-decoration: none; color: var(--corail-fonce); }
+
+    /* En-tête */
+    .hero { background: var(--corail); color: var(--blanc); padding: 3.5rem 0 3rem; }
+    .hero .wrap { display: grid; gap: 1rem; }
+    .test-flag { justify-self: start; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; background: rgba(0,0,0,.18); padding: .35rem .75rem; border-radius: 999px; }
+    .crumbs { font-size: .85rem; opacity: .92; }
+    .crumbs a { text-decoration: none; font-weight: 700; }
+    .eyebrow { font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--noir); }
+    .hero h1 { font-size: clamp(2rem, 5.5vw, 3.5rem); font-weight: 900; line-height: 1.02; letter-spacing: -.035em; max-width: 20ch; text-wrap: balance; }
+    .byline { display: flex; gap: .85rem; align-items: center; font-size: .9rem; margin-top: .4rem; }
+    .avatar { flex: none; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--noir); color: var(--blanc); display: grid; place-items: center; font-weight: 900; font-size: .85rem; letter-spacing: .02em; }
+    .byline b { font-weight: 800; }
+    .draft { display: inline-block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; background: var(--blanc); color: var(--corail-fonce); padding: .1rem .5rem; border-radius: 999px; margin-left: .3rem; vertical-align: 1px; }
+
+    /* Sections */
+    main { padding: 2.5rem 0 3.5rem; }
+    main > .wrap { display: grid; gap: 3.25rem; }
+    section { display: grid; gap: 1rem; scroll-margin-top: 1rem; }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 900; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; }
+    h2 small { display: block; font-size: .9rem; font-weight: 700; color: var(--corail); letter-spacing: 0; margin-bottom: .2rem; }
+    .lead { color: var(--gris-texte); max-width: 68ch; }
+
+    /* Réponse courte */
+    .answer { background: var(--blanc); border-radius: 16px; border-left: 6px solid var(--corail); padding: 1.6rem 1.75rem; display: grid; gap: .7rem; }
+    .answer .k { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--corail-fonce); }
+    .answer p { font-size: 1.08rem; max-width: 68ch; }
+    .jump { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .4rem; }
+    .jump a { font-size: .82rem; font-weight: 700; text-decoration: none; padding: .35rem .75rem; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); }
+    .jump a:hover { border-color: var(--corail); }
+
+    /* Comparatif */
+    .cmp-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--ligne); background: var(--blanc); }
+    .cmp { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .cmp th { text-align: left; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--gris-texte); padding: .85rem 1rem; background: var(--gris-clair); }
+    .cmp td { padding: .85rem 1rem; border-top: 1px solid var(--ligne); vertical-align: top; }
+    .cmp td:first-child { font-weight: 800; min-width: 11rem; }
+    .cmp td:first-child a { text-decoration: none; }
+    .cmp td:first-child a:hover { color: var(--corail-fonce); }
+    .cmp tr.is-gones td:first-child { color: var(--corail-fonce); }
+    .cmp .fam { display: block; font-size: .72rem; font-weight: 700; color: var(--gris-texte); }
+
+    /* Profils */
+    .profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: .9rem; }
+    .profile { background: var(--blanc); border-radius: 14px; border: 1px solid var(--ligne); padding: 1.15rem 1.2rem; display: grid; gap: .45rem; align-content: start; }
+    .profile h3 { font-size: 1rem; font-weight: 800; line-height: 1.3; }
+    .profile p { font-size: .85rem; color: var(--gris-texte); }
+    .picks { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; margin-top: .2rem; }
+    .picks li { font-size: .78rem; font-weight: 700; padding: .2rem .55rem; border-radius: 6px; background: var(--gris-clair); }
+
+    /* Fiches réseau */
+    .family { display: grid; gap: 1rem; }
+    .nets { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 1rem; align-items: start; }
+    .net { background: var(--blanc); border-radius: 14px; border: 1px solid var(--ligne); padding: 1.35rem 1.4rem; display: grid; gap: .85rem; scroll-margin-top: 1rem; min-width: 0; }
+    .net--gones { border: 2px solid var(--corail); }
+    .net-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem .75rem; }
+    .net h3 { font-size: 1.2rem; font-weight: 900; letter-spacing: -.01em; line-height: 1.25; }
+    .status { font-size: .72rem; font-weight: 700; padding: .2rem .6rem; border-radius: 999px; white-space: nowrap; }
+    .status--verifie { background: var(--vert-pale); color: var(--vert); }
+    .status--a-verifier { background: var(--corail-pale); color: var(--corail-fonce); }
+    .tag-gones { font-size: .72rem; font-weight: 800; padding: .2rem .6rem; border-radius: 999px; background: var(--corail); color: var(--blanc); }
+    .net .short { font-size: .95rem; }
+    .net dl { display: grid; grid-template-columns: 6.5rem 1fr; gap: .45rem 1rem; font-size: .9rem; }
+    .net dt { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; color: var(--gris-texte); padding-top: .2rem; }
+    .net dd { min-width: 0; }
+    .facts { list-style: none; display: grid; gap: .3rem; font-size: .88rem; }
+    .facts li { padding-left: 1.1rem; position: relative; }
+    .facts li::before { content: ""; position: absolute; left: 0; top: .6em; width: .45rem; height: .45rem; border-radius: 2px; background: var(--corail); }
+    .fit { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+    .fit div { background: var(--gris-clair); border-radius: 10px; padding: .75rem .9rem; font-size: .86rem; }
+    .fit b { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .15rem; }
+    .fit .ok b { color: var(--vert); }
+    .fit .ko b { color: var(--corail-fonce); }
+    .btn { justify-self: start; display: inline-block; font-size: .85rem; font-weight: 800; text-decoration: none; background: var(--noir); color: var(--blanc); padding: .55rem .95rem; border-radius: 10px; }
+    .btn:hover { background: var(--corail-fonce); }
+    .btn--corail { background: var(--corail); }
+    .btn:focus-visible, .jump a:focus-visible { outline: 2px solid var(--corail); outline-offset: 2px; }
+
+    /* Réseaux en sommeil */
+    .dormant { background: var(--blanc); border-radius: 14px; border: 1px dashed #cfc7c0; padding: 1.2rem 1.4rem; display: grid; gap: .1rem; }
+    .dormant div { padding: .7rem 0; border-top: 1px solid var(--ligne); font-size: .9rem; }
+    .dormant div:first-child { border-top: 0; }
+    .dormant b { font-weight: 800; }
+    .dormant a { color: var(--corail-fonce); font-weight: 700; font-size: .85rem; }
+
+    /* Encadrés */
+    .insight { background: var(--noir); color: var(--blanc); border-radius: 16px; padding: 1.75rem; display: grid; gap: .8rem; }
+    .insight h2 { font-size: 1.45rem; }
+    .insight .k { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--corail); }
+    .insight ul { display: grid; gap: .5rem; padding-left: 1.1rem; color: #e2ddd9; max-width: 70ch; }
+    .insight a { color: var(--blanc); font-weight: 800; }
+    .aside { background: var(--blanc); border-radius: 14px; border: 1px solid var(--ligne); padding: 1.4rem 1.5rem; display: grid; gap: .6rem; }
+    .aside h2 { font-size: 1.3rem; }
+    .aside a { color: var(--corail-fonce); font-weight: 700; }
+
+    /* FAQ */
+    .faq { display: grid; gap: .6rem; }
+    .faq details { background: var(--blanc); border-radius: 12px; border: 1px solid var(--ligne); }
+    .faq summary { cursor: pointer; list-style: none; padding: 1rem 1.2rem; font-weight: 800; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--corail); font-size: 1.3rem; line-height: 1; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq summary:focus-visible { outline: 2px solid var(--corail); outline-offset: 2px; border-radius: 12px; }
+    .faq details p { padding: 0 1.2rem 1.1rem; max-width: 70ch; }
+
+    /* Transparence, sources, CTA */
+    .transp { font-size: .92rem; color: var(--gris-texte); display: grid; gap: .5rem; max-width: 72ch; }
+    .transp b { color: var(--noir); }
+    .transp a { color: var(--corail-fonce); font-weight: 700; }
+    .sources { columns: 2 22rem; column-gap: 2rem; font-size: .84rem; color: var(--gris-texte); padding-left: 1.1rem; }
+    .sources li { break-inside: avoid; margin-bottom: .35rem; }
+    .sources a { color: var(--noir); }
+    .cta { background: var(--corail); color: var(--blanc); border-radius: 16px; padding: 2rem 1.75rem; display: grid; gap: .7rem; justify-items: start; }
+    .cta h2 { color: var(--blanc); }
+    .cta p { max-width: 60ch; }
+    .cta .btn { background: var(--noir); }
+    .legend { font-size: .85rem; color: var(--gris-texte); display: grid; gap: .3rem; }
+    footer { background: var(--noir); color: #bdb7b2; font-size: .85rem; padding: 1.5rem 0; }
+    footer a { color: var(--corail); text-decoration: none; }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 0 1rem; }
+      .topbar img { height: 38px; }
+      .hero { padding: 2.5rem 0 2.25rem; }
+      .answer { padding: 1.25rem 1.2rem; }
+      .answer p { font-size: 1rem; }
+      .net { padding: 1.15rem 1.1rem; }
+      .net dl { grid-template-columns: 1fr; gap: .1rem; }
+      .net dd { margin-bottom: .45rem; }
+      .fit { grid-template-columns: 1fr; }
+      .btn { justify-self: stretch; text-align: center; }
+      /* Comparatif en fiches empilées */
+      .cmp-wrap { overflow: visible; border: 0; background: none; }
+      .cmp thead { display: none; }
+      .cmp, .cmp tbody, .cmp tr, .cmp td { display: block; width: 100%; }
+      .cmp tr { background: var(--blanc); border: 1px solid var(--ligne); border-radius: 12px; padding: .55rem 1rem; margin-bottom: .6rem; }
+      .cmp td { border: 0; padding: .3rem 0; display: grid; grid-template-columns: 5.5rem 1fr; gap: .75rem; }
+      .cmp td::before { content: attr(data-label); font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--gris-texte); padding-top: .15rem; }
+      .cmp td:first-child { display: block; font-size: 1.02rem; padding-bottom: .4rem; border-bottom: 1px solid var(--ligne); margin-bottom: .2rem; min-width: 0; }
+      .cmp td:first-child::before { content: none; }
+      .insight, .cta { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Accueil","item":"{{ SITE_URL }}/"},
+      {"@type":"ListItem","position":2,"name":{{ R.title | dump | safe }},"item":"{{ PAGE_URL }}"}
+    ]},
+    {"@type":"Article","@id":"{{ PAGE_URL }}#article","headline":{{ R.title | dump | safe }},"alternativeHeadline":{{ R.question | dump | safe }},
+     "datePublished":"{{ R.published }}","dateModified":"{{ R.updated_iso }}","inLanguage":"fr-FR","mainEntityOfPage":"{{ PAGE_URL }}",
+     "author":{"@type":"Organization","name":"Les Gones du Market'","url":"{{ SITE_URL }}/"},
+     "publisher":{"@type":"Organization","name":"Les Gones du Market'","url":"{{ SITE_URL }}/","logo":{"@type":"ImageObject","url":"{{ SITE_URL }}/images/logo.svg"}},
+     "about":{"@id":"{{ PAGE_URL }}#liste"}},
+    {"@type":"ItemList","@id":"{{ PAGE_URL }}#liste","name":{{ R.title | dump | safe }},"itemListElement":[
+    {%- for n in R.networks %}
+      {"@type":"ListItem","position":{{ loop.index }},"item":{"@type":"Organization","name":{{ n.name | dump | safe }},"url":{{ ((SITE_URL + n.url) if n.url[0] == "/" else n.url) | dump | safe }},"description":{{ n.short | dump | safe }}}}{% if not loop.last %},{% endif %}
+    {%- endfor %}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+    {%- for f in R.faq %}
+      {"@type":"Question","name":{{ f.q | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ f.a | dump | safe }}}}{% if not loop.last %},{% endif %}
+    {%- endfor %}
+    ]}
+  ]}
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a href="/" aria-label="Les Gones du Market' : accueil"><img src="images/logo.svg" alt="Les Gones du Market'" width="842" height="595" /></a>
+      <a class="back" href="/">← Retour au site</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="test-flag">Page test · non indexée</span>
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Réseaux et clubs marketing à Lyon</nav>
+      <p class="eyebrow">{{ R.title }}</p>
+      <h1>{{ R.question }}</h1>
+      <div class="byline">
+        <span class="avatar" aria-hidden="true">GM</span>
+        <p><b>Par un co-fondateur des Gones du Market'</b><span class="draft">Nom à valider</span><br>Relecture SEO et GEO : Emmanuel Michel · Mis à jour le {{ R.updated }}</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap">
+
+      <section aria-labelledby="bref">
+        <div class="answer">
+          <span class="k" id="bref">La réponse courte</span>
+          {%- for p in R.answer %}
+          <p>{{ p }}</p>
+          {%- endfor %}
+          <div class="jump">
+            {%- for f in R.families %}
+            <a href="#{{ f.key }}">{{ f.title }}</a>
+            {%- endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="comparatif">
+        <h2 id="comparatif"><small>{{ R.networks | length }} réseaux comparés</small>Le comparatif en un coup d'œil</h2>
+        <div class="cmp-wrap">
+          <table class="cmp">
+            <thead>
+              <tr><th scope="col">Réseau</th><th scope="col">Pour qui</th><th scope="col">Rythme</th><th scope="col">Coût</th><th scope="col">Accès</th></tr>
+            </thead>
+            <tbody>
+              {%- for n in R.networks %}
+              <tr{% if n.gones %} class="is-gones"{% endif %}>
+                <td><a href="#{{ n.id }}">{{ n.name }}</a><span class="fam">{% for fa in R.families %}{% if fa.key == n.family %}{{ fa.title }}{% endif %}{% endfor %}</span></td>
+                <td data-label="Pour qui">{{ n.for }}</td>
+                <td data-label="Rythme">{{ n.rhythm }}</td>
+                <td data-label="Coût">{{ n.cost }}</td>
+                <td data-label="Accès">{{ n.access }}</td>
+              </tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="choisir">
+        <h2 id="choisir"><small>Selon votre situation</small>Comment choisir son réseau</h2>
+        <p class="lead">Les réseaux ne s'excluent pas : beaucoup de marketeurs lyonnais en combinent deux ou trois, par exemple un club de pairs pour l'entraide et une association pour les conférences.</p>
+        <div class="profiles">
+          {%- for p in R.profiles %}
+          <div class="profile">
+            <h3>{{ p.who }}</h3>
+            <p>{{ p.detail }}</p>
+            <ul class="picks">{% for x in p.picks %}<li>{{ x }}</li>{% endfor %}</ul>
+          </div>
+          {%- endfor %}
+        </div>
+      </section>
+
+      {%- for f in R.families %}
+      <section class="family" id="{{ f.key }}" aria-labelledby="h-{{ f.key }}">
+        <h2 id="h-{{ f.key }}">{{ f.title }}</h2>
+        <p class="lead">{{ f.intro }}</p>
+        <div class="nets">
+          {%- for n in R.networks %}{% if n.family == f.key %}
+          <article class="net{% if n.gones %} net--gones{% endif %}" id="{{ n.id }}">
+            <div class="net-head">
+              <h3>{{ n.name }}</h3>
+              {%- if n.gones %}<span class="tag-gones">Notre club</span>{% else %}<span class="status status--{{ n.status }}">{{ STATUS[n.status] }}</span>{% endif %}
+            </div>
+            <p class="short">{{ n.short }}</p>
+            <dl>
+              <dt>Pour qui</dt><dd>{{ n.for }}</dd>
+              <dt>Format</dt><dd>{{ n.format }}</dd>
+              <dt>Rythme</dt><dd>{{ n.rhythm }}</dd>
+              <dt>Coût</dt><dd>{{ n.cost }}</dd>
+              <dt>Accès</dt><dd>{{ n.access }}</dd>
+            </dl>
+            <ul class="facts">{% for x in n.facts %}<li>{{ x }}</li>{% endfor %}</ul>
+            <div class="fit">
+              <div class="ok"><b>Idéal si</b>{{ n.ideal }}</div>
+              <div class="ko"><b>À savoir</b>{{ n.limits }}</div>
+            </div>
+            <a class="btn{% if n.gones %} btn--corail{% endif %}" href="{{ n.url }}"{% if not n.gones %} target="_blank" rel="noopener"{% endif %}>{{ n.link }} →</a>
+          </article>
+          {%- endif %}{% endfor %}
+        </div>
+      </section>
+      {%- endfor %}
+
+      <section aria-labelledby="sommeil">
+        <h2 id="sommeil"><small>Souvent cités, peu ou pas actifs</small>Réseaux en sommeil ou à vérifier</h2>
+        <p class="lead">Ces groupes apparaissent encore dans les recherches, mais nous n'avons pas trouvé d'activité récente. Avant de vous inscrire, vérifiez la date du dernier événement.</p>
+        <div class="dormant">
+          {%- for d in R.dormant %}
+          <div><b>{{ d.name }}</b> : {{ d.fact }} <a href="{{ d.url }}" target="_blank" rel="noopener">Voir la source</a></div>
+          {%- endfor %}
+        </div>
+      </section>
+
+      <section class="insight" aria-labelledby="observe">
+        <span class="k">Synthèse anonymisée des échanges entre membres, 2023-2026</span>
+        <h2 id="observe">Ce qu'on observe chez les Gones</h2>
+        <ul>
+          <li>Les membres citent régulièrement les ateliers de l'ADETEM et de l'ADIRA, les soirées des Lyonnes, CMO in Tech et le CMO & Sales Day de France Digitale.</li>
+          <li>Codes promo et invitations pour ces événements circulent entre membres : c'est l'un des usages les plus appréciés du groupe Événements.</li>
+          <li>En 2026, des membres ont demandé à deux reprises un agenda commun, pour éviter d'organiser le même soir que les autres réseaux. Nous l'avons lancé : <a href="/agenda-evenements-marketing.html">l'agenda des événements marketing, IA et acquisition</a>.</li>
+        </ul>
+      </section>
+
+      <section class="aside" aria-labelledby="dirigeants">
+        <h2 id="dirigeants">Et les réseaux de dirigeants ?</h2>
+        <p>Les réseaux de dirigeants généralistes, comme le CJD, BNI, l'APM ou le MEDEF Lyon-Rhône, ne sont pas centrés sur le marketing. Entrep'runners, un club lyonnais de dirigeants qui courent ensemble, les compare dans son <a href="https://www.entreprunners.fr/reseau-dirigeants-lyon/" target="_blank" rel="noopener">guide des réseaux de dirigeants à Lyon</a> et dans un <a href="https://www.entreprunners.fr/reseaux-femmes-dirigeantes-lyon/" target="_blank" rel="noopener">panorama des réseaux de femmes dirigeantes</a>.</p>
+      </section>
+
+      <section aria-labelledby="faq">
+        <h2 id="faq"><small>Questions fréquentes</small>Réseaux marketing à Lyon : vos questions</h2>
+        <div class="faq">
+          {%- for f in R.faq %}
+          <details{% if loop.first %} open{% endif %}>
+            <summary>{{ f.q }}</summary>
+            <p>{{ f.a }}</p>
+          </details>
+          {%- endfor %}
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="rejoindre">
+        <h2 id="rejoindre">Envie d'essayer Les Gones du Market' ?</h2>
+        <p>Adhésion gratuite, sur candidature, pour les marketeurs de la région lyonnaise avec au moins 3 ans d'expérience. Réponse en général sous 48 heures.</p>
+        <a class="btn" href="/#candidature">Candidater →</a>
+      </section>
+
+      <section aria-labelledby="methode">
+        <h2 id="methode"><small>Méthode</small>Transparence et sources</h2>
+        <div class="transp">
+          <p><b>Les Gones du Market' publient cette page et figurent dans le panorama.</b> Chaque réseau est décrit avec les mêmes rubriques, à partir de son site officiel, de sa page Meetup ou de la presse. Nous signalons ce qui n'a pas pu être vérifié.</p>
+          <p>Vous animez l'un de ces réseaux et une information est inexacte ou manque ? Écrivez-nous à <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a> : nous mettrons la page à jour.</p>
+        </div>
+        <div class="legend">
+          <p><b>Vérifié</b> : informations relevées sur le site de l'organisateur le {{ R.updated }}.</p>
+          <p><b>Infos partielles</b> : rythme, tarif ou activité récente non publiés ; contactez le réseau avant de vous engager.</p>
+        </div>
+        <ol class="sources">
+          {%- for n in R.networks %}{% for s in n.sources %}
+          <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a></li>
+          {%- endfor %}{% endfor %}
+          {%- for d in R.dormant %}
+          <li><a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.name }}</a></li>
+          {%- endfor %}
+        </ol>
+        <p class="legend">Sources consultées le {{ R.updated }}.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Les Gones du Market' · Lyon · <a href="/">lesgonesdumarket.fr</a> · <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></div>
+  </footer>
+
+  <script src="/beta-widget.js" defer></script>
+</body>
+</html>
