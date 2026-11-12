@@ -120,30 +120,6 @@
     },
     {
       "start": "2026-11-12",
-      "title": "Grand Débat RH",
-      "organizer": "Les Gones du Market'",
-      "city": "Lyon",
-      "venue": "Lieu communiqué aux membres",
-      "zone": "lyon",
-      "themes": [
-        "marketing"
-      ],
-      "format": "Débat",
-      "price": "Réservé aux membres",
-      "url": "https://www.lesgonesdumarket.fr/#agenda",
-      "status": "verifie",
-      "gones": true,
-      "desc": "Salaires, impact de l'IA sur nos métiers, marché de l'emploi et freelancing.",
-      "end": "",
-      "hours": "",
-      "note": "",
-      "when": "Jeudi 12 novembre",
-      "day": "12",
-      "month": "novembre",
-      "small": "Jeu. · nov."
-    },
-    {
-      "start": "2026-11-12",
       "hours": "17h30 – 21h30",
       "title": "Soirée CODIR Data & IA : passer de l'expérimentation à l'industrialisation",
       "organizer": "Ellisphere et Datasulting",
@@ -310,6 +286,30 @@
       "day": "18–19",
       "month": "novembre",
       "small": "nov."
+    },
+    {
+      "start": "2026-11-19",
+      "title": "Comment casser le plafond de ta rém quand le marché ralentit",
+      "organizer": "Les Gones du Market' × futur proche",
+      "city": "Lyon 3e",
+      "venue": "ORIS Materials Intelligence, 6 rue du Général Mouton-Duvernet",
+      "zone": "lyon",
+      "themes": [
+        "marketing"
+      ],
+      "format": "Table ronde",
+      "price": "15,90 €, sur réservation",
+      "url": "https://yp.events/d05348cb-1aa3-4cb4-b3c0-df55491593e0/Comment-casser-le-plafond-de-ta-rem-quand-le-marche-ralentit",
+      "status": "verifie",
+      "gones": true,
+      "desc": "Restitution du Baromètre Rémunération 2026 de futur proche (focus AURA), table ronde sur la progression de carrière et de rémunération quand le marché ralentit, puis cocktail. Ouvert aux salariés comme aux indépendants du marketing et de la communication.",
+      "end": "",
+      "hours": "À partir de 18h30",
+      "note": "",
+      "when": "Jeudi 19 novembre",
+      "day": "19",
+      "month": "novembre",
+      "small": "Jeu. · nov."
     },
     {
       "start": "2026-11-20",

@@ -5,14 +5,17 @@
       "datagroup": "upcoming",
       "events": [
         {
-          "title": "Grand Débat RH",
+          "title": "Comment casser le plafond de ta rém quand le marché ralentit",
           "status": "upcoming",
           "featured": false,
           "dow": "Jeudi",
-          "num": "12 nov.",
+          "num": "19 nov.",
           "year": "2026",
-          "sub": "Salaires, impact de l'IA sur nos métiers, marché de l'emploi, freelancing",
-          "action": "soon"
+          "sub": "Table ronde + cocktail · ORIS, Lyon 3e · 18h30 · 15,90 €",
+          "speakers": "Avec Dominique Trémouille (futur proche) — les chiffres du Baromètre Rémunération 2026, focus AURA",
+          "badge": "Prochain événement",
+          "action": "register",
+          "url": "https://yp.events/d05348cb-1aa3-4cb4-b3c0-df55491593e0/Comment-casser-le-plafond-de-ta-rem-quand-le-marche-ralentit"
         },
         {
           "title": "Challenge ton plan marketing 2027",
