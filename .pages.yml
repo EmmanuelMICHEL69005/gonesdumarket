@@ -6,6 +6,20 @@ media:
   output: images
 
 content:
+  # ─────────────── En-tête de l'accueil ───────────────
+  - name: hero
+    label: Accueil — en-tête (nombre de membres)
+    type: file
+    path: src/_data/hero.json
+    fields:
+      - name: count
+        label: "Nombre de membres affiché (ex. + de 250)"
+        type: string
+        description: "Repris dans le titre « … passionné·es de marketing à Lyon » et dans le bandeau photo. Pensez aussi à mettre à jour « Chiffres clés »."
+      - { name: badge, label: Pastille au-dessus du titre, type: string }
+      - { name: desc, label: Texte sous le titre, type: text }
+      - { name: cta, label: Texte du bouton, type: string }
+
   # ─────────────── Événements ───────────────
   - name: events
     label: Événements (agenda)
