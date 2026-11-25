@@ -5,37 +5,17 @@
       "datagroup": "upcoming",
       "events": [
         {
-          "title": "Comment casser le plafond de ta rém quand le marché ralentit",
-          "status": "upcoming",
-          "featured": false,
-          "dow": "Jeudi",
-          "num": "19 nov.",
-          "year": "2026",
-          "sub": "Table ronde + cocktail · ORIS, Lyon 3e · 18h30 · 15,90 €",
-          "speakers": "Avec Dominique Trémouille (futur proche) — les chiffres du Baromètre Rémunération 2026, focus AURA",
-          "badge": "Prochain événement",
-          "action": "register",
-          "url": "https://yp.events/d05348cb-1aa3-4cb4-b3c0-df55491593e0/Comment-casser-le-plafond-de-ta-rem-quand-le-marche-ralentit"
-        },
-        {
-          "title": "Challenge ton plan marketing 2027",
-          "status": "upcoming",
-          "featured": false,
-          "dow": "Jeudi",
-          "num": "26 nov.",
-          "year": "2026",
-          "sub": "Petit-déjeuner · Tu viens avec ton plan, tu repars avec les feedbacks de la communauté",
-          "action": "soon"
-        },
-        {
           "title": "Déjeuner de fin d'année",
           "status": "upcoming",
           "featured": false,
           "dow": "Jeudi",
           "num": "17 déc.",
           "year": "2026",
-          "sub": "Déjeuner · On boucle 2026 ensemble",
-          "action": "soon"
+          "sub": "Déjeuner networking · Restaurant F2, Lyon 2e · 12h15 · Réservé aux membres",
+          "speakers": "Tablées composées par métiers et secteurs : bilan 2026, perspectives 2027 et la suite des Gones",
+          "badge": "Prochain événement",
+          "action": "register",
+          "url": "https://yp.events/da9e468e-2352-4243-9c61-53a923e57caf/Dejeuner-de-fin-d-annee-des-Gones-du-Market"
         }
       ]
     },
@@ -43,6 +23,17 @@
       "label": "Déjà organisés en 2026",
       "datagroup": "past",
       "events": [
+        {
+          "title": "Comment casser le plafond de ta rém quand le marché ralentit",
+          "status": "past",
+          "featured": false,
+          "dow": "Jeudi",
+          "num": "19 nov.",
+          "year": "2026",
+          "sub": "Table ronde + cocktail · ORIS, Lyon 3e",
+          "speakers": "Avec Dominique Trémouille (futur proche) — Baromètre Rémunération 2026, focus AURA",
+          "action": "linkedin"
+        },
         {
           "title": "Talk REX avec Léa Gueniffet",
           "status": "past",
